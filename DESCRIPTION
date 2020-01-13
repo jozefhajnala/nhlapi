@@ -1,0 +1,22 @@
+Package: nhlapi
+Type: Package
+Title: Get And Process NHL Statistics
+Version: 0.0.9
+Author: person("Jozef", "Hajnala", email = "jozef.hajnala@gmail.com", role = c("aut", "cre"))
+Maintainer: Jozef Hajnala <jozef.hajnala@gmail.com>
+Description: Get and process the data from the NHL API.
+Depends: R (>= 2.10)
+Imports: jsonlite
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
+Roxygen: list(markdown = TRUE)
+Suggests: 
+    testthat,
+    roxygen2,
+    knitr,
+    rmarkdown
+License: AGPL-3
+URL: https://github.com/jozefhajnala/nhlapi
+BugReports: https://github.com/jozefhajnala/nhlapi/issues
+VignetteBuilder: knitr
