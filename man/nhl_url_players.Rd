@@ -16,6 +16,8 @@ nhl_url_players(playerIds)
 Create an NHL API URL for players
 }
 \examples{
-\dontrun{nhl_url_player(8477474)}
+\dontrun{
+  nhl_url_players(c(8477474, 8477475))
+}
 
 }

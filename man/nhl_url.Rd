@@ -10,15 +10,17 @@ nhl_url(endPoint = NULL, suffixes = NULL, params = NULL,
 \arguments{
 \item{endPoint}{\code{character(1)} the endpoint.}
 
-\item{suffixes}{\code{character()} vector of suffixes, appended to the url.}
+\item{suffixes}{\code{list} of suffixes that will be
+concatenated to the end of the urls, separated by
+\code{/}.}
 
 \item{params}{\code{named list} of parameters that will be concatenated
 to the end of the url after \code{?}.}
 
-\item{baseUrl}{\code{character(1)}, basee location of the NHL API.}
+\item{baseUrl}{\code{character(1)}, base location of the NHL API.}
 }
 \value{
-\code{character(1)}, the created URL.
+\code{character()}, the created URLs.
 }
 \description{
 Create an NHL API URL
