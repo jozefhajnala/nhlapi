@@ -4,10 +4,12 @@
 \alias{nhl_get_data}
 \title{Get data from the API}
 \usage{
-nhl_get_data(sUrl)
+nhl_get_data(sUrl, silent = FALSE)
 }
 \arguments{
 \item{sUrl}{\code{character(1)}, the URL to get the data from.}
+
+\item{silent}{\code{logical(1)}, passed to \code{try()}.}
 }
 \value{
 \code{list} with the retrieved data or class \code{try-error}.
