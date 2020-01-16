@@ -41,7 +41,7 @@ nhl_url <- function(
 #'   can have multiple values, in which case multiple urls
 #'   are created.
 #'
-#' @return `character()` of the same length as all the 
+#' @return `character()` of the same length as all the
 #'   combinations of `url` and `params`.
 nhl_url_add_params <- function(url, params) {
   res <- expand.grid(c(list(url = url), params), stringsAsFactors = FALSE)
@@ -60,7 +60,7 @@ nhl_url_add_params <- function(url, params) {
 #'   concatenated to the end of the urls, separated by
 #'   `/`.
 #'
-#' @return `character()` of the same length as all the 
+#' @return `character()` of the same length as all the
 #'   combinations of `url` and `suffixes`.
 nhl_url_add_suffixes <- function(url, suffixes) {
   res <- expand.grid(c(list(url = url), suffixes), stringsAsFactors = FALSE)

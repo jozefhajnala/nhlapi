@@ -12,7 +12,11 @@
 #'   # Joe Sakic, regular season 1995/1996
 #'   nhl_url_players_seasons(8451101L, "19951996")
 #'   # Joe Sakic, playoffs 1995/1996 and 1996/1997
-#'   nhl_url_players_seasons(8451101L, c("19951996", "19961997"), playoffs = TRUE)
+#'   nhl_url_players_seasons(
+#'     8451101L,
+#'     c("19951996", "19961997"),
+#'     playoffs = TRUE
+#'    )
 #' }
 nhl_url_players_seasons <- function(playerIds, seasons, playoffs = FALSE) {
   statsString <- if (isTRUE(playoffs))
@@ -20,7 +24,7 @@ nhl_url_players_seasons <- function(playerIds, seasons, playoffs = FALSE) {
   else
     "statsSingleSeason"
   nhl_url_add_params(
-    nhl_url_players_stats(playerIds), 
+    nhl_url_players_stats(playerIds),
     params = list(stats = statsString, season = seasons)
   )
 }
@@ -34,7 +38,7 @@ nhl_url_players_seasons <- function(playerIds, seasons, playoffs = FALSE) {
 #' }
 nhl_url_players_allseasons <- function(playerIds) {
   nhl_url_add_params(
-    nhl_url_players_stats(playerIds), 
+    nhl_url_players_stats(playerIds),
     params = c(stats = "yearByYear")
   )
 }

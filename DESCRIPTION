@@ -6,7 +6,7 @@ Author: person("Jozef", "Hajnala", email = "jozef.hajnala@gmail.com", role = c("
 Maintainer: Jozef Hajnala <jozef.hajnala@gmail.com>
 Description: Get and process the data from the NHL API.
 Depends: R (>= 2.10)
-Imports: jsonlite
+Imports: methods, jsonlite
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1

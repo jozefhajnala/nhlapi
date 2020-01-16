@@ -3,3 +3,4 @@
 export(nhl_make_seasons)
 export(nhl_url)
 importFrom(jsonlite,fromJSON)
+importFrom(methods,as)

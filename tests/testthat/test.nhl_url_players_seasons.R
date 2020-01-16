@@ -25,7 +25,11 @@ testthat::test_that(
 testthat::test_that(
   "nhl_url_players_seasons generates 2 playoff urls for 1 player",
   testthat::expect_equal(
-    nhl_url_players_seasons(8451101L, c("19951996", "19961997"), playoffs = TRUE),
+    nhl_url_players_seasons(
+      8451101L,
+      c("19951996", "19961997"),
+      playoffs = TRUE
+    ),
     paste0(baseurl, c(
       "people/8451101/stats?stats=statsSingleSeasonPlayoffs&season=19951996",
       "people/8451101/stats?stats=statsSingleSeasonPlayoffs&season=19961997"

@@ -27,6 +27,10 @@ be created for all combinations of players and seasons.
   # Joe Sakic, regular season 1995/1996
   nhl_url_players_seasons(8451101L, "19951996")
   # Joe Sakic, playoffs 1995/1996 and 1996/1997
-  nhl_url_players_seasons(8451101L, c("19951996", "19961997"), playoffs = TRUE)
+  nhl_url_players_seasons(
+    8451101L,
+    c("19951996", "19961997"),
+    playoffs = TRUE
+   )
 }
 }
