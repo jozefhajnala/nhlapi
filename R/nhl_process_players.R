@@ -1,6 +1,7 @@
 nhl_process_player <- function(x) {
-  x <- util_process_copyright(x)
-  util_flatten_list(x[["people"]])
+  res <- util_process_copyright(x)
+  res_df <- util_flatten_list(res[["people"]])
+  util_attributes_to_cols(res, res_df)
 }
 
 nhl_process_players <- function(x) {

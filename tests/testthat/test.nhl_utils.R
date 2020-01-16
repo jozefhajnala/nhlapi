@@ -61,3 +61,17 @@ testthat::test_that(
     )
   )
 )
+
+
+context("util_attributes_to_cols")
+
+testthat::test_that(
+  "util_attributes_to_cols works as intended",
+  testthat::expect_equal(
+    util_attributes_to_cols(
+      lst = testplayers[[1L]],
+      df = testplayers_processed[1L, ]
+    ),
+    testplayers_processed[1L, ]
+  )
+)

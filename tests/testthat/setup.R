@@ -158,5 +158,15 @@ testplayers_processed <- data.frame(
   primaryPosition.name = c("Center", "Goalie"),
   primaryPosition.type = c("Forward", "Goalie"),
   primaryPosition.abbreviation = c("C", "G"),
+  url = c(
+    "https://statsapi.web.nhl.com/api/v1/people/8451101",
+    "https://statsapi.web.nhl.com/api/v1/people/8451033"
+  ),
+  copyright = rep(paste(
+    "NHL and the NHL Shield are registered trademarks",
+    "of the National Hockey League.",
+    "NHL and NHL team marks are the property of the NHL and its teams.",
+    "© NHL 2020. All Rights Reserved."
+  ), 2),
   stringsAsFactors = FALSE
 )

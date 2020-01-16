@@ -11,10 +11,11 @@
 #' @return `list` with the retrieved data or class `try-error`.
 nhl_get_data <- function(sUrl, silent = FALSE) {
   res <- try(jsonlite::fromJSON(sUrl), silent = silent)
-  attr(res, "url") <- sUrl
   if (inherits(res, "try-error")) {
-   return(list(res))
+    res <- list(res)
+    class(res) <- append(class(res), "nhl_get_data_error")
   }
+  attr(res, "url") <- sUrl
   res
 }
 

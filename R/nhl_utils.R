@@ -31,6 +31,7 @@ nhl_make_seasons <- function(years = 1950L:2019L) {
 #'
 #' @return data.frame with the list flattened and classes preserved.
 util_flatten_list <- function(x) {
+  if (is.null(x)) return(data.frame())
   classes <- rapply(x, class)
   unlisted <- as.list(unlist(x, recursive = TRUE, use.names = TRUE))
   data.frame(
@@ -100,4 +101,34 @@ util_rbindlist <- function(lst, fill = TRUE) {
   }
   filleddfs <- lapply(lst, filldf, allNms = lst_allNms)
   do.call(rbind, filleddfs)
+}
+
+
+#' Add attributes as data frame columns
+#'
+#' @description Take attributes with names specified by `whichAttrs`
+#'   from object `lst` and adds their value into columns with the same
+#'   name in `df`.
+#'
+#' @param lst `list`, with attributes to be added as columns to `df`.
+#' @param df `data.frame`, onto which new columns containing attributes
+#'   of `lst` should be added.
+#' @param whichAttrs `character()`, vector of names of attributes
+#'   of `lst`.
+#'
+#' @return `data.frame` same as `df` with columns added
+util_attributes_to_cols <- function(lst, df, whichAttrs = c("url", "copyright")) {
+  relevantAttrs <- intersect(names(attributes(lst)), whichAttrs)
+  for (i in relevantAttrs) {
+    df[[i]] <- rep(attr(lst, which = i), nrow(df))
+  }
+  df
+}
+
+util_nhl_is_get_data_error <- function(x) {
+  inherits(x, "nhl_get_data_error")
+}
+
+util_remove_get_data_errors <- function(x) {
+  Filter(Negate(util_nhl_is_get_data_error), x)
 }
