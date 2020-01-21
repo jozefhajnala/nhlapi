@@ -19,6 +19,14 @@ testthat::test_that(
   )
 )
 
+testthat::test_that(
+  "util_flatten_list returns a data frame for NULL",
+  testthat::expect_equal(
+    util_flatten_list(NULL),
+    data.frame()
+  )
+)
+
 
 context("util_process_copyright")
 
@@ -62,16 +70,93 @@ testthat::test_that(
   )
 )
 
-
-context("util_attributes_to_cols")
+testthat::test_that(
+  "util_rbindlist works with 0-row data.frames",
+  testthat::expect_equal(
+    util_rbindlist(list(data.frame(one = integer(0)), data.frame(two = 2))),
+    data.frame(two = 2)
+  )
+)
 
 testthat::test_that(
-  "util_attributes_to_cols works as intended",
+  "util_rbindlist works with 0-row 0-col data.frames",
   testthat::expect_equal(
-    util_attributes_to_cols(
-      lst = testplayers[[1L]],
-      df = testplayers_processed[1L, ]
+    util_rbindlist(list(data.frame(), data.frame(two = 2))),
+    data.frame(two = 2)
+  )
+)
+
+context("util_inherit_attributes")
+
+testthat::test_that(
+  "util_inherit_attributes works as intended",
+  testthat::expect_equal(
+    util_inherit_attributes(
+      src = testplayers[[1L]],
+      tgt = testplayers_processed[1L, ]
     ),
     testplayers_processed[1L, ]
+  )
+)
+
+
+context("util_report_get_data_errors")
+
+testthat::test_that(
+  "util_report_get_data_errors returns correctly",
+  testthat::expect_equal(
+    util_report_get_data_errors(testdatawitherrors),
+    c(
+      "https://statsapi.web.nhl.com/api/v1/people/none",
+      "https://statsapi.web.nhl.com/api/v1/people/some"
+    )
+  )
+)
+
+testthat::test_that(
+  "util_report_get_data_errors uses reported message",
+  testthat::expect_message(
+    util_report_get_data_errors(testdatawitherrors, reporter = message),
+    paste(
+      "The following 2 of 3 url retrievals errored:",
+      " https://statsapi.web.nhl.com/api/v1/people/none",
+      " https://statsapi.web.nhl.com/api/v1/people/some",
+      sep = "\n"
+    )
+  )
+)
+
+testthat::test_that(
+  "util_report_get_data_errors uses reported message",
+  testthat::expect_warning(
+    util_report_get_data_errors(testdatawitherrors, reporter = warning),
+    paste(
+      "The following 2 of 3 url retrievals errored:",
+      " https://statsapi.web.nhl.com/api/v1/people/none",
+      " https://statsapi.web.nhl.com/api/v1/people/some",
+      sep = "\n"
+    )
+  )
+)
+
+
+context("util_locate_get_data_errors")
+
+testthat::test_that(
+  "util_locate_get_data_errors works as intended",
+  testthat::expect_equal(
+    util_locate_get_data_errors(testdatawitherrors),
+    c(FALSE, TRUE, TRUE)
+  )
+)
+
+
+context("util_convert_minsonice")
+
+testthat::test_that(
+  "util_convert_minsonice",
+  testthat::expect_equal(
+    util_convert_minsonice(c("20:00", "1500:30", NA)),
+    c(20, 1500.5, NA_real_)
   )
 )

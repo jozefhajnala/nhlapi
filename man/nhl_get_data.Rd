@@ -4,7 +4,7 @@
 \alias{nhl_get_data}
 \title{Get data from the API}
 \usage{
-nhl_get_data(sUrl, silent = FALSE)
+nhl_get_data(sUrl, silent = getOption("nhlapi_try_silent"))
 }
 \arguments{
 \item{sUrl}{\code{character(1)}, the URL to get the data from.}

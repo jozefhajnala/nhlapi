@@ -1,0 +1,36 @@
+---
+title: "Retrieving the source data from the NHL API"
+author: "Jozef Hajnala"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Basic functionality
+
+```{r}
+library(nhlapi)
+playerIds <- c(8451101, 8458554)
+
+# Get information on a specific player
+nhl_retrieve_players(playerIds)
+
+# Get a specific season statistics
+nhl_retrieve_players_seasons(playerIds, "19961997")
+
+# Get a specific season playoff statistics
+nhl_retrieve_players_seasons(playerIds, "19961997", playoffs = TRUE)
+
+# Get all season statistics for a player
+nhl_retrieve_players_allseasons(playerIds)
+```

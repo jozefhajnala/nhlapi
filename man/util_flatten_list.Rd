@@ -13,7 +13,7 @@ util_flatten_list(x)
 data.frame with the list flattened and classes preserved.
 }
 \description{
-Flatten a list into a data frame keeping classes
+DEPRECATED, NOT USED, TO BE REMOVED.
 }
 \examples{
 \dontrun{

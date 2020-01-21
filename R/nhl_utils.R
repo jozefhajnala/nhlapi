@@ -20,6 +20,8 @@ nhl_make_seasons <- function(years = 1950L:2019L) {
 
 #' Flatten a list into a data frame keeping classes
 #'
+#' DEPRECATED, NOT USED, TO BE REMOVED.
+#'
 #' @param x `list()`, note that a `data.frame` is also a `list`.
 #'
 #' @importFrom methods as
@@ -82,6 +84,8 @@ util_process_copyright <- function(x, el = "copyright") {
 #'   util_rbindlist(list(mtcars[1, 2:3], mtcars[2, 4:5]))
 #' }
 util_rbindlist <- function(lst, fill = TRUE) {
+  lst <- Filter(function(x) nrow(x) != 0L, lst)
+
   if (!isTRUE(fill)) {
     return(do.call(rbind, lst))
   }
@@ -97,38 +101,116 @@ util_rbindlist <- function(lst, fill = TRUE) {
       function(thisCol) NA,
       FUN.VALUE = logical(1)
     )
-    data.frame(c(df, filledCols))
+    data.frame(c(df, filledCols), stringsAsFactors = FALSE)
   }
   filleddfs <- lapply(lst, filldf, allNms = lst_allNms)
   do.call(rbind, filleddfs)
 }
 
 
-#' Add attributes as data frame columns
+#' Inherit attributes from another object
 #'
 #' @description Take attributes with names specified by `whichAttrs`
-#'   from object `lst` and adds their value into columns with the same
-#'   name in `df`.
+#'   from object `src` and adds them as the same attributes to `tgt`.
 #'
-#' @param lst `list`, with attributes to be added as columns to `df`.
-#' @param df `data.frame`, onto which new columns containing attributes
-#'   of `lst` should be added.
-#' @param whichAttrs `character()`, vector of names of attributes
-#'   of `lst`.
+#' @param src `object`, with attributes to be inherited by `tgt`.
+#' @param tgt `object`, onto which attributes of `src` should be added.
+#' @param atrs `character()`, vector of names of attributes
+#'   of `src` to be added to `tgt.
 #'
-#' @return `data.frame` same as `df` with columns added
-util_attributes_to_cols <- function(lst, df, whichAttrs = c("url", "copyright")) {
-  relevantAttrs <- intersect(names(attributes(lst)), whichAttrs)
+#' @return `object` same as `tgt` with attributes added
+util_inherit_attributes <- function(src, tgt, atrs = c("url", "copyright")) {
+  relevantAttrs <- intersect(names(attributes(src)), atrs)
   for (i in relevantAttrs) {
-    df[[i]] <- rep(attr(lst, which = i), nrow(df))
+    attr(tgt, which = i) <- attr(src, which = i)
   }
-  df
+  tgt
 }
 
 util_nhl_is_get_data_error <- function(x) {
   inherits(x, "nhl_get_data_error")
 }
 
+util_locate_get_data_errors <- function(x) {
+  vapply(x, util_nhl_is_get_data_error, logical(1))
+}
+
 util_remove_get_data_errors <- function(x) {
   Filter(Negate(util_nhl_is_get_data_error), x)
+}
+
+#' Report errors encountered during `nhl_get_datas`
+#'
+#' @param x `list`, results created by [nhl_get_datas()].
+#' @param reporter `function`, used to report the constructed
+#'   error message, e.g. `message`, `warning`, `writeLines`,
+#'   etc.
+#' @param ... further arguments passed to `reporter`, e.g.
+#'   `con = file("~/log.txt")` in case `writeLines` is the
+#'   `reporter`.
+#'
+#' @examples \dontrun{
+#' c("none", "8451101", "some") %>%
+#'   nhl_url_players() %>%
+#'   nhl_get_datas() %>%
+#'   util_report_get_data_errors(
+#'     reporter = log_file,
+#'     con = file("~/log.txt")
+#'   )
+#' }
+#'
+#' @return `character()`, urls for which the retrieval
+#'   resulted in an error, invisibly.
+util_report_get_data_errors <- function(x, reporter = log_e, ...) {
+  errors <- Filter(util_nhl_is_get_data_error, x)
+  errorUrls <- vapply(errors, attr, which = "url", FUN.VALUE = character(1))
+  errorCount <- length(errorUrls)
+  errorMsg <- if (errorCount > 0L) {
+    paste(
+      "The following", length(errorUrls), "of",
+      length(x), "url retrievals errored:\n",
+      paste(errorUrls, collapse = "\n ")
+    )
+  } else {
+    "No errors encountered"
+  }
+  if (errorCount > 0L) {
+    reporter(errorMsg, ...)
+  }
+  invisible(errorUrls)
+}
+
+
+#' Convert "mins:secs" character to numeric minutes
+#'
+#' @param chr `character()` vector in format `"mins:secs"`.
+#' @param splitter `character(1)`, string that splits
+#' minutes and seconds in elements of `chr`.
+#' @return `numeric()` vector of times in minutes.
+#' @examples \dontrun{
+#'    nhlstats:::MakeMinsOnIce(c("20:00", "1500:30"))
+#' }
+util_convert_minsonice <- function(chr, splitter = ":")  {
+  mins <- strsplit(chr, split = splitter, fixed = TRUE)
+  vapply(mins, function(x) {
+    if (length(x) == 1L && is.na(x)) return(NA_real_)
+    return(as.integer(x[1L]) + as.integer(x[2L])/60)
+  }, FUN.VALUE = numeric(1))
+}
+
+
+#' Convert time columns from "mins:secs" to numeric minutes
+#'
+#' @param df `data.frame`.
+#' @param patt `character(1)`, pattern to match column names that
+#'   contain time information in "mm:ss" format.
+#'
+#' @return `data.frame`, with time columns converted from
+#'   "mm:ss" characters to numeric minutes.
+util_process_minsonice <- function(df, patt = "timeOn|TimeOn") {
+  timeColsToConvert <- grep(patt, names(df), value = TRUE)
+  for (thisCol in timeColsToConvert) {
+    df[[thisCol]] <- util_convert_minsonice(df[[thisCol]])
+  }
+  df
 }

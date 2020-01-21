@@ -9,8 +9,8 @@
 #' @seealso [nhl_url()]
 #'
 #' @return `list` with the retrieved data or class `try-error`.
-nhl_get_data <- function(sUrl, silent = FALSE) {
-  res <- try(jsonlite::fromJSON(sUrl), silent = silent)
+nhl_get_data <- function(sUrl, silent = getOption("nhlapi_try_silent")) {
+  res <- try(jsonlite::fromJSON(sUrl, flatten = TRUE), silent = silent)
   if (inherits(res, "try-error")) {
     res <- list(res)
     class(res) <- append(class(res), "nhl_get_data_error")
@@ -19,6 +19,14 @@ nhl_get_data <- function(sUrl, silent = FALSE) {
   res
 }
 
+#' Get data from the API for multiple urls
+#'
+#' @param urls `character()`, vector of urls to retrieve
+#'   the data from.
+#'
+#' @return `list` of results retrieved using [nhl_get_data()].
 nhl_get_datas <- function(urls) {
-  lapply(urls, nhl_get_data)
+  res <- lapply(urls, nhl_get_data)
+  util_report_get_data_errors(res)
+  res
 }
