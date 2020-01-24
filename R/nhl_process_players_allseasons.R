@@ -5,7 +5,7 @@ nhl_process_player_seasons <- function(x, playerId) {
   if (!is.data.frame(res_df) && length(res_df) == 0L) {
     res_df <- data.frame()
   }
-  res_df <- util_inherit_attributes(res, res_df)
+  res_df <- util_attributes_to_cols(res, res_df)
   res_df[["playerId"]] <- rep(playerId, nrow(res_df))
   res_df[["seasonStart"]] <- as.integer(substr(res_df[["season"]], 1L, 4L))
   res_df <- util_process_minsonice(res_df)

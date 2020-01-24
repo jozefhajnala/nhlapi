@@ -18,6 +18,6 @@ of \code{src} to be added to `tgt.}
 \code{object} same as \code{tgt} with attributes added
 }
 \description{
-Take attributes with names specified by \code{whichAttrs}
+Take attributes with names specified by \code{atrs}
 from object \code{src} and adds them as the same attributes to \code{tgt}.
 }

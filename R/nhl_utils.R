@@ -110,7 +110,7 @@ util_rbindlist <- function(lst, fill = TRUE) {
 
 #' Inherit attributes from another object
 #'
-#' @description Take attributes with names specified by `whichAttrs`
+#' @description Take attributes with names specified by `atrs`
 #'   from object `src` and adds them as the same attributes to `tgt`.
 #'
 #' @param src `object`, with attributes to be inherited by `tgt`.
@@ -211,6 +211,27 @@ util_process_minsonice <- function(df, patt = "timeOn|TimeOn") {
   timeColsToConvert <- grep(patt, names(df), value = TRUE)
   for (thisCol in timeColsToConvert) {
     df[[thisCol]] <- util_convert_minsonice(df[[thisCol]])
+  }
+  df
+}
+
+#' Add attributes as data frame columns
+#'
+#' @description Take attributes with names specified by `atrs`
+#'   from object `lst` and adds their value into columns with the same
+#'   name in `df`.
+#'
+#' @param lst `list`, with attributes to be added as columns to `df`.
+#' @param df `data.frame`, onto which new columns containing attributes
+#'   of `lst` should be added.
+#' @param atrs `character()`, vector of names of attributes
+#'   of `lst`.
+#'
+#' @return `data.frame` same as `df` with columns added
+util_attributes_to_cols <- function(lst, df, atrs = c("url", "copyright")) {
+  relevantAttrs <- intersect(names(attributes(lst)), atrs)
+  for (i in relevantAttrs) {
+    df[[i]] <- rep(attr(lst, which = i), nrow(df))
   }
   df
 }

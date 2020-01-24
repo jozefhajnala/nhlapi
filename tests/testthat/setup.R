@@ -4,6 +4,13 @@ playerIds <- c("some", "8451101", 8451033L, "wrong")
 seasonsPlayerIds <- c(8449231,  "wrong", 8450183, "none")
 seasons <- c("19951996", "19961997")
 
+copyright <- paste(
+  "NHL and the NHL Shield are registered trademarks",
+  "of the National Hockey League.",
+  "NHL and NHL team marks are the property of the NHL and its teams.",
+  "© NHL 2020. All Rights Reserved."
+)
+
 testplayers <- list(
   structure(
     list(
@@ -132,39 +139,39 @@ testplayers <- list(
 )
 
 
-testplayers_processed <- structure(
-  list(
-    id = c(8451101L, 8451033L),
-    fullName = c("Joe Sakic", "Patrick Roy"),
-    link = c("/api/v1/people/8451101", "/api/v1/people/8451033"),
-    firstName = c("Joe", "Patrick"),
-    lastName = c("Sakic", "Roy"),
-    primaryNumber = c("19", "33"),
-    birthDate = c("1969-07-07", "1965-10-05"),
-    birthCity = c("Burnaby", "Quebec"),
-    birthStateProvince = c("BC", "QC"),
-    birthCountry = c("CAN", "CAN"),
-    nationality = c("CAN", "CAN"),
-    height = c("5' 11\"", "6' 2\""),
-    weight = c(195L, 190L),
-    active = c(FALSE, FALSE),
-    rookie = c(FALSE, FALSE),
-    shootsCatches = c("L", "L"),
-    rosterStatus = c("I", "N"),
-    primaryPosition.code = c("C", "G"),
-    primaryPosition.name = c("Center", "Goalie"),
-    primaryPosition.type = c("Forward", "Goalie"),
-    primaryPosition.abbreviation = c("C", "G")
+testplayers_processed <- data.frame(
+  id = c(8451101L, 8451033L),
+  fullName = c("Joe Sakic", "Patrick Roy"),
+  link = c("/api/v1/people/8451101", "/api/v1/people/8451033"),
+  firstName = c("Joe", "Patrick"),
+  lastName = c("Sakic", "Roy"),
+  primaryNumber = c("19", "33"),
+  birthDate = c("1969-07-07", "1965-10-05"),
+  birthCity = c("Burnaby", "Quebec"),
+  birthStateProvince = c("BC", "QC"),
+  birthCountry = c("CAN", "CAN"),
+  nationality = c("CAN", "CAN"),
+  height = c("5' 11\"", "6' 2\""),
+  weight = c(195L, 190L),
+  active = c(FALSE, FALSE),
+  rookie = c(FALSE, FALSE),
+  shootsCatches = c("L", "L"),
+  rosterStatus = c("I", "N"),
+  primaryPosition.code = c("C", "G"),
+  primaryPosition.name = c("Center", "Goalie"),
+  primaryPosition.type = c("Forward", "Goalie"),
+  primaryPosition.abbreviation = c("C", "G"),
+  url = c(
+    "https://statsapi.web.nhl.com/api/v1/people/8451101",
+    "https://statsapi.web.nhl.com/api/v1/people/8451033"
   ),
-  row.names = c(NA, -2L),
-  url = "https://statsapi.web.nhl.com/api/v1/people/8451101",
   copyright = paste(
     "NHL and the NHL Shield are registered trademarks",
     "of the National Hockey League.",
     "NHL and NHL team marks are the property of the NHL and its teams.",
     "© NHL 2020. All Rights Reserved."
   ),
-  class = "data.frame"
+  stringsAsFactors = FALSE
 )
 
 testdatawitherrors <- list(
@@ -338,6 +345,11 @@ retrievedplayersallseasons <- data.frame(
   league.id = c(
     NA, NA, NA, NA, NA, NA, 133L, NA, NA, NA, NA, NA, NA, NA, NA
   ),
+  url = c(
+    rep(paste0(baseurl, "people/8449231/stats?stats=yearByYear"), 7),
+    rep(paste0(baseurl, "people/8450183/stats?stats=yearByYear"), 8)
+  ),
+  copyright = rep(copyright, 15L),
   playerId = c(
     8449231L,
     8449231L,
@@ -413,5 +425,43 @@ retrievedplayersallseasons <- data.frame(
   stat.shifts = c(
     NA, NA, NA, NA, NA, NA, NA, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L
   ),
+  stringsAsFactors = FALSE
+)
+
+
+testpl_processed_wattr <- testplayers_processed[1L, ]
+attr(testpl_processed_wattr, "url") <-
+  "https://statsapi.web.nhl.com/api/v1/people/8451101"
+
+
+retrievedplayerplayoffs <- data.frame(
+  season = "19951996",
+  stat.assists = 16L,
+  stat.goals = 18L,
+  stat.pim = 14L,
+  stat.shots = 98L,
+  stat.games = 22L,
+  stat.powerPlayGoals = 6L,
+  stat.powerPlayPoints = 16L,
+  stat.penaltyMinutes = "14",
+  stat.shotPct = 18.4,
+  stat.gameWinningGoals = 6L,
+  stat.overTimeGoals = 2L,
+  stat.shortHandedGoals = 0L,
+  stat.shortHandedPoints = 0L,
+  stat.plusMinus = 10L,
+  stat.points = 34L,
+  url = paste0(
+    "https://statsapi.web.nhl.com/api/v1/people/",
+    "8451101/stats?stats=statsSingleSeasonPlayoffs&season=19951996"
+  ),
+  copyright = paste(
+    "NHL and the NHL Shield are registered trademarks",
+    "of the National Hockey League.",
+    "NHL and NHL team marks are the property of the NHL and its teams.",
+    "© NHL 2020. All Rights Reserved."
+  ),
+  playerId = 8451101L,
+  seasonStart = 1995L,
   stringsAsFactors = FALSE
 )

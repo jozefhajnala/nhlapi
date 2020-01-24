@@ -95,7 +95,7 @@ testthat::test_that(
       src = testplayers[[1L]],
       tgt = testplayers_processed[1L, ]
     ),
-    testplayers_processed[1L, ]
+    testpl_processed_wattr
   )
 )
 
@@ -158,5 +158,18 @@ testthat::test_that(
   testthat::expect_equal(
     util_convert_minsonice(c("20:00", "1500:30", NA)),
     c(20, 1500.5, NA_real_)
+  )
+)
+
+context("util_attributes_to_cols")
+
+testthat::test_that(
+  "util_attributes_to_cols works as intended",
+  testthat::expect_equal(
+    util_attributes_to_cols(
+      lst = testplayers[[1L]],
+      df = testplayers_processed[1L, ]
+    ),
+    testplayers_processed[1L, ]
   )
 )
