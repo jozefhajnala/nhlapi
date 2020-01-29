@@ -173,3 +173,14 @@ testthat::test_that(
     testplayers_processed[1L, ]
   )
 )
+
+
+context("util_md5sum_str")
+
+testthat::test_that(
+  "util_md5sum_str computes",
+  testthat::expect_equal(
+    util_md5sum_str("test"),
+    "d8e8fca2dc0f896fd7cb4cb0031ba249"
+  )
+)
