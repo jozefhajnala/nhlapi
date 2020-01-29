@@ -20,17 +20,17 @@ nhl_url <- function(
   params = NULL,
   baseUrl = getOption("nhlapi_baseurl")
 ) {
-  sUrl <- baseUrl
+  url <- baseUrl
   if (!is.null(endPoint)) {
-    sUrl <- paste0(sUrl, endPoint)
+    url <- paste0(url, endPoint)
   }
   if (!is.null(suffixes)) {
-    sUrl <- nhl_url_add_suffixes(sUrl, suffixes = suffixes)
+    url <- nhl_url_add_suffixes(url, suffixes = suffixes)
   }
   if (!is.null(params)) {
-    sUrl <- nhl_url_add_params(url = sUrl, params = params)
+    url <- nhl_url_add_params(url = url, params = params)
   }
-  sUrl
+  url
 }
 
 #' Add parameters to urls
