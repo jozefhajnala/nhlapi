@@ -86,6 +86,9 @@ util_process_copyright <- function(x, el = "copyright") {
 util_rbindlist <- function(lst, fill = TRUE) {
   lst <- Filter(function(x) nrow(x) != 0L, lst)
 
+  if (length(lst) == 0L) {
+    return(data.frame())
+  }
   if (!isTRUE(fill)) {
     return(do.call(rbind, lst))
   }
