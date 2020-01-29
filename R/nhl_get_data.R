@@ -10,7 +10,7 @@
 #' @importFrom jsonlite fromJSON
 #' @seealso [nhl_url()]
 #'
-#' @return `list` with the retrieved data or class `try-error`.
+#' @return `list` with the retrieved data or class `nhl_get_data_error`.
 nhl_get_data_worker <- function(
   url,
   flatten = TRUE,

@@ -16,7 +16,7 @@ flattens nested data frames into a single non-nested data frame.}
 \item{silent}{\code{logical(1)}, passed to \code{try()}.}
 }
 \value{
-\code{list} with the retrieved data or class \code{try-error}.
+\code{list} with the retrieved data or class \code{nhl_get_data_error}.
 }
 \description{
 Gets data from the NHL API using \code{jsonlite}.
