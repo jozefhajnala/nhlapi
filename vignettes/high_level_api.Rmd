@@ -1,0 +1,124 @@
+---
+title: "Retrieving the source data from the NHL API"
+author: "Jozef Hajnala"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Retrieving the source data from the NHL API}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# High-level APIs
+
+The high-level APIs intend to provide convenient functionality used by most users. Each function returns a data frame with the requested data processed to serve common purposes.
+
+```{r}
+library(nhlapi)
+```
+
+## Players 
+
+The first endpoint retrieves data on players based on provided player ids. One or more ids can be provided to the function, data on each valid player id will be returned as one row of the resulting data frame:
+
+```{r}
+playerIds <- c(8451101, 8458554)
+
+# Get information on a specific player
+nhl_retrieve_players(playerIds)
+```
+
+Invalid or erroring requests will not return any rows, the errors will be reported:
+
+```{r}
+playerIds <- c(8451101, 8458554, "wrong")
+
+# Get information on a specific player
+nhl_retrieve_players(playerIds)
+```
+
+The functions are designed is such a way that they allow working with the `%>%` operator if the user desires to do so:
+
+```{r eval=FALSE}
+# Requires dplyr attached using library
+nhl_retrieve_players(playerIds) %>% 
+  select(fullName, nationality, shootsCatches, primaryPosition.code)
+```
+
+
+## Players' season statistics
+
+The second endpoint is used to retrieve players' statistics per seasons. The function `nhl_retrieve_players_seasons` accepts multiple `playerIds` and multiple `seasons`. The proper API URLs will be constructed and a flat data frame returned:
+
+```{r}
+# Get a specific season statistics
+nhl_retrieve_players_seasons(
+  playerIds = c(8451101, 8458554),
+  seasons = c("19961997", "19971998")
+)
+```
+
+It also accepts a `playoff` argument in case the users wants playoff statistics returned and not regular season:
+
+```{r}
+# Get a specific season playoff statistics
+nhl_retrieve_players_seasons(
+  playerIds = c(8451101, 8458554), 
+  seasons = "19961997",
+  playoffs = TRUE
+)
+```
+
+A simple wrapper is also provided to get the statistics for all the seasons for the specified players:
+
+```{r}
+# Get all season statistics for a player
+nhl_retrieve_players_allseasons(playerIds = c(8451101, 8458554))
+```
+
+# Combining the endpoints
+
+The package outputs are designed in such a way that they support easy data manipulation and exploration. For instance, using the popular `dplyr` package:
+
+```{r eval=FALSE}
+# Requires dplyr attached using library
+playerIds <- c(8451101, 8458554)
+
+result <- nhl_retrieve_players(playerIds) %>% 
+  left_join(
+    nhl_retrieve_players_allseasons(playerIds),
+    by = c("id" = "playerId")
+  ) %>% 
+  filter(league.name == "National Hockey League") %>% 
+  select(fullName, seasonStart, stat.points)
+
+head(result)
+```
+
+# Plotting the data
+
+The nhlapi package itself does not contain plotting functionality, the output of user-facing functions are however designed to be data frames adhering to principles that make plotting with popular packages very natural.
+
+For instance, using the ggplot2 package to plot the amount of points gathered by multiple players over the seasons:
+
+```{r eval=FALSE}
+# Requires ggplot2 attached using library
+ggplot(result) +
+  geom_line(aes(seasonStart, stat.points, colour = fullName))
+```
+
+Or using the highcharter package to create an interactive version of the same chart:
+
+```{r eval=FALSE}
+# Requires highcharter attached using library
+result %>% 
+  hchart("line", hcaes(seasonStart, stat.points, group = fullName)) %>%
+  hc_add_theme(hc_theme_google())
+```
