@@ -10,7 +10,7 @@
 #' }
 nhl_retrieve_players_allseasons <- function(playerIds) {
   x <- nhl_url_players_allseasons(playerIds)
-  x <- nhl_get_datas(x)
+  x <- nhl_get_data(x)
   playerIds <- playerIds[!util_locate_get_data_errors(x)]
   x <- util_remove_get_data_errors(x)
   x <- nhl_process_players_allseasons(x, playerIds = playerIds)
@@ -29,7 +29,7 @@ nhl_retrieve_players_allseasons <- function(playerIds) {
 #' }
 nhl_retrieve_players_seasons <- function(playerIds, seasons, playoffs = FALSE) {
   x <- nhl_url_players_seasons(playerIds, seasons, playoffs = playoffs)
-  x <- nhl_get_datas(x)
+  x <- nhl_get_data(x)
   playerIds <- rep(playerIds, times = length(seasons))
   playerIds <- playerIds[!util_locate_get_data_errors(x)]
   x <- util_remove_get_data_errors(x)

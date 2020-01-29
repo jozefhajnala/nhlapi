@@ -33,9 +33,10 @@ nhl_get_data_worker <- function(
 #' @param urls `character()`, vector of urls to retrieve
 #'   the data from.
 #' @inheritParams nhl_get_data_worker
+#' @export
 #'
 #' @return `list` of results retrieved using [nhl_get_data_worker()].
-nhl_get_datas <- function(urls, flatten = TRUE) {
+nhl_get_data <- function(urls, flatten = TRUE) {
   res <- lapply(urls, nhl_get_data_worker, flatten = flatten)
   util_report_get_data_errors(res)
   res

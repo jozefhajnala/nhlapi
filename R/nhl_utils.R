@@ -142,9 +142,9 @@ util_remove_get_data_errors <- function(x) {
   Filter(Negate(util_nhl_is_get_data_error), x)
 }
 
-#' Report errors encountered during `nhl_get_datas`
+#' Report errors encountered during `nhl_get_data`
 #'
-#' @param x `list`, results created by [nhl_get_datas()].
+#' @param x `list`, results created by [nhl_get_data()].
 #' @param reporter `function`, used to report the constructed
 #'   error message, e.g. `message`, `warning`, `writeLines`,
 #'   etc.
@@ -155,7 +155,7 @@ util_remove_get_data_errors <- function(x) {
 #' @examples \dontrun{
 #' c("none", "8451101", "some") %>%
 #'   nhl_url_players() %>%
-#'   nhl_get_datas() %>%
+#'   nhl_get_data() %>%
 #'   util_report_get_data_errors(
 #'     reporter = log_file,
 #'     con = file("~/log.txt")

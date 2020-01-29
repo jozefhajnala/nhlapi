@@ -2,12 +2,12 @@
 % Please edit documentation in R/nhl_utils.R
 \name{util_report_get_data_errors}
 \alias{util_report_get_data_errors}
-\title{Report errors encountered during \code{nhl_get_datas}}
+\title{Report errors encountered during \code{nhl_get_data}}
 \usage{
 util_report_get_data_errors(x, reporter = log_e, ...)
 }
 \arguments{
-\item{x}{\code{list}, results created by \code{\link[=nhl_get_datas]{nhl_get_datas()}}.}
+\item{x}{\code{list}, results created by \code{\link[=nhl_get_data]{nhl_get_data()}}.}
 
 \item{reporter}{\code{function}, used to report the constructed
 error message, e.g. \code{message}, \code{warning}, \code{writeLines},
@@ -22,13 +22,13 @@ etc.}
 resulted in an error, invisibly.
 }
 \description{
-Report errors encountered during \code{nhl_get_datas}
+Report errors encountered during \code{nhl_get_data}
 }
 \examples{
 \dontrun{
 c("none", "8451101", "some") \%>\%
   nhl_url_players() \%>\%
-  nhl_get_datas() \%>\%
+  nhl_get_data() \%>\%
   util_report_get_data_errors(
     reporter = log_file,
     con = file("~/log.txt")

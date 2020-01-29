@@ -21,13 +21,13 @@ testthat::test_that(
 )
 
 
-context("nhl_get_datas")
+context("nhl_get_data")
 
 testthat::test_that(
-  "nhl_get_datas retrieves 2 players data", {
+  "nhl_get_data retrieves 2 players data", {
     testthat::skip_if_offline(host = "nhl.com")
     testthat::expect_equal(
-      nhl_get_datas(nhl_url_players(c(8451101L, 8451033L))),
+      nhl_get_data(nhl_url_players(c(8451101L, 8451033L))),
       testplayers
     )
   }
