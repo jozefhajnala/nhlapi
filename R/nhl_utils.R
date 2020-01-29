@@ -262,3 +262,37 @@ util_md5sum_str <- function(x) {
   res <- unname(res)
   res
 }
+
+#' Retrieve a player id from the name
+#'
+#' @description Using a table of hashed names and
+#'   ids, get a player id based on the name.
+#'
+#' @param x `character(1)` a player's name, not case
+#'   sensitive for convenience.
+#' @param map `data.frame`, with 2 columns:
+#'  - `nameMd5`: `character()` of hashed player names
+#'  - `id`: `integer()` of player ids used by the NHL API
+#'
+#' @return `integer(1)`, id of the player or `NA_integer`
+#'   if not found.
+#'
+#' @examples \dontrun{
+#'   util_map_player_id(
+#'    "Joe Sakic",
+#'    data.frame(
+#'      nameMd5 = "bfa8adc1bf05dd7b8a3eeca6556d6930",
+#'      id = 1L,
+#'      stringsAsFactors = FALSE
+#'    )
+#'  )
+#' }
+util_map_player_id <- function(x, map) {
+  md <- util_md5sum_str(tolower(x))
+  res <- map[map[["nameMd5"]] == md, "id"]
+  if (length(res) == 0L) {
+    res <- NA_integer_
+    log_w("Id for player", x, "not found.")
+  }
+  res
+}

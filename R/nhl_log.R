@@ -1,1 +1,1 @@
-log_e <- message
+log_e <- log_w <- message

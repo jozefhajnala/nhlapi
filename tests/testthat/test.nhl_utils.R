@@ -184,3 +184,36 @@ testthat::test_that(
     "d8e8fca2dc0f896fd7cb4cb0031ba249"
   )
 )
+
+
+context("util_map_player_id")
+
+testthat::test_that(
+  "util_map_player_id computes",
+  testthat::expect_equal(
+    util_map_player_id(
+      "Joe Sakic",
+      data.frame(
+        nameMd5 = "bfa8adc1bf05dd7b8a3eeca6556d6930",
+        id = 1L,
+        stringsAsFactors = FALSE
+      )
+    ),
+    1L
+  )
+)
+
+testthat::test_that(
+  "util_map_player_id retuns NA for not found",
+  testthat::expect_equal(
+    util_map_player_id(
+      "Not-exiting name",
+      data.frame(
+        nameMd5 = "bfa8adc1bf05dd7b8a3eeca6556d6930",
+        id = 1L,
+        stringsAsFactors = FALSE
+      )
+    ),
+    NA_integer_
+  )
+)
