@@ -4,14 +4,17 @@
 \alias{nhl_get_datas}
 \title{Get data from the API for multiple urls}
 \usage{
-nhl_get_datas(urls)
+nhl_get_datas(urls, flatten = TRUE)
 }
 \arguments{
 \item{urls}{\code{character()}, vector of urls to retrieve
 the data from.}
+
+\item{flatten}{\code{logical(1)}, if \code{TRUE} (default) automatically
+flattens nested data frames into a single non-nested data frame.}
 }
 \value{
-\code{list} of results retrieved using \code{\link[=nhl_get_data]{nhl_get_data()}}.
+\code{list} of results retrieved using \code{\link[=nhl_get_data_worker]{nhl_get_data_worker()}}.
 }
 \description{
 Get data from the API for multiple urls
