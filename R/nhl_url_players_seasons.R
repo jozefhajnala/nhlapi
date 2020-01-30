@@ -31,7 +31,7 @@ nhl_url_players_seasons <- function(playerIds, seasons, playoffs = FALSE) {
 
 #' Create an NHL API URL for all players' seasons statistics
 #'
-#' @param playerIds `integer()`, ids of the players.
+#' @inheritParams nhl_url_players_seasons
 #' @examples \dontrun{
 #'   # Joe Sakic, all seasons
 #'   nhl_url_players_allseasons(8451101L)

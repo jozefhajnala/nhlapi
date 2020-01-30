@@ -1,6 +1,6 @@
 #' Create an NHL API stats URL for players
 #'
-#' @param playerIds `integer()`, ids of the players.
+#' @inheritParams nhl_url_players
 #'
 #' @examples \dontrun{nhl_url_players_stats(8477474)}
 #'
