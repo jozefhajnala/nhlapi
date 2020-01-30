@@ -2,21 +2,29 @@
 % Please edit documentation in R/nhl_retrieve_players.R
 \name{nhl_retrieve_players}
 \alias{nhl_retrieve_players}
-\title{Retrieve metadata for players}
+\title{Retrieve metadata for players based on names or ids}
 \usage{
-nhl_retrieve_players(playerIds)
+nhl_retrieve_players(playerNames, playerIds = NULL)
 }
 \arguments{
+\item{playerNames}{\code{character()}, player names, not case
+sensitive for convenience.}
+
 \item{playerIds}{\code{integer()}, ids of the players.}
 }
 \value{
 data.frame
 }
 \description{
-Retrieve metadata for players
+Retrieves information on players from the NHL API based on
+\code{playerNames} or \code{playerIds}. If \code{playerNames} are provided,
+they take precedence over \code{playerIds}.
 }
 \examples{
 \dontrun{
- nhl_retrieve_players(c(8451101, 8458554))
+ # With player names
+ nhl_retrieve_players(c("joe SAKIC", "patrick roy"))
+ # With playerIds
+ nhl_retrieve_players(playerIds = c(8451101, 8458554))
 }
 }

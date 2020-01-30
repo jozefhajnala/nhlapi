@@ -32,7 +32,7 @@ The first endpoint retrieves data on players based on provided player ids. One o
 playerIds <- c(8451101, 8458554)
 
 # Get information on a specific player
-nhl_retrieve_players(playerIds)
+nhl_retrieve_players(playerIds = playerIds)
 ```
 
 Invalid or erroring requests will not return any rows, the errors will be reported:
@@ -41,7 +41,7 @@ Invalid or erroring requests will not return any rows, the errors will be report
 playerIds <- c(8451101, 8458554, "wrong")
 
 # Get information on a specific player
-nhl_retrieve_players(playerIds)
+nhl_retrieve_players(playerIds = playerIds)
 ```
 
 The functions are designed is such a way that they allow working with the `%>%` operator if the user desires to do so:

@@ -217,3 +217,39 @@ testthat::test_that(
     NA_integer_
   )
 )
+
+
+context("util_map_player_ids")
+
+testthat::test_that(
+  "util_map_player_ids works",
+  testthat::expect_equal(
+    util_map_player_ids(
+      c("joe sakic", "test", "peter Forsberg")
+    ),
+    c(
+      "joe sakic" = 8451101L,
+      "test" = NA_integer_,
+      "peter Forsberg" = 8458520L
+    )
+  )
+)
+
+
+context("util_prepare_player_ids")
+
+testthat::test_that(
+  "Stop if playerNames not character",
+  testthat::expect_error(
+    util_prepare_player_ids(c(1, 2)),
+    "playerNames must be a character vector."
+  )
+)
+
+testthat::test_that(
+  "Retrieve and skip NAs",
+  testthat::expect_equal(
+    util_prepare_player_ids(c("joe sakic", "fake player")),
+    c("joe sakic" = 8451101L)
+  )
+)

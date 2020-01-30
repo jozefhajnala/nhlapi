@@ -292,7 +292,49 @@ util_map_player_id <- function(x, map = getOption("nhlapi_player_map")) {
   res <- map[map[["nameMd5"]] == md, "id"]
   if (length(res) == 0L) {
     res <- NA_integer_
-    log_w("Id for player", x, "not found.")
+    log_w("Id for player: ", x, " not found.")
   }
   res
+}
+
+#' Retrieve a player ids from their names
+#'
+#' @inheritParams util_map_player_id
+#' @param playerNames `character()`, player names, not case
+#'   sensitive for convenience.
+#'
+#' @return `integer()` named vector of player ids,
+#'   `NA_integer`` for those names where id was not
+#'   found#'
+#'
+#' @examples \dontrun{
+#'   util_map_player_ids(c("Joe SAKIC", "peter Forsberg", "test"))
+#' }
+util_map_player_ids <- function(
+  playerNames,
+  map = getOption("nhlapi_player_map")
+) {
+  vapply(playerNames, util_map_player_id, FUN.VALUE = integer(1), map = map)
+}
+
+
+#' Prepare player ids based on player names
+#'
+#' @inheritParams util_map_player_ids
+#'
+#' @return `integer()` named vector of found valid player
+#'  ids, those not found omitted.
+#' @examples \dontrun{
+#'  util_prepare_player_ids(c("joe sakic", "fake player"))
+#' }
+util_prepare_player_ids <- function(
+  playerNames,
+  map = getOption("nhlapi_player_map")
+) {
+  if (!is.character(playerNames)) {
+    stop("playerNames must be a character vector.")
+  }
+  playerIds <- util_map_player_ids(playerNames, map = map)
+  playerIds <- playerIds[!is.na(playerIds)]
+  playerIds
 }
