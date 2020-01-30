@@ -287,7 +287,7 @@ util_md5sum_str <- function(x) {
 #'    )
 #'  )
 #' }
-util_map_player_id <- function(x, map) {
+util_map_player_id <- function(x, map = getOption("nhlapi_player_map")) {
   md <- util_md5sum_str(tolower(x))
   res <- map[map[["nameMd5"]] == md, "id"]
   if (length(res) == 0L) {

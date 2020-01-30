@@ -4,7 +4,7 @@
 \alias{util_map_player_id}
 \title{Retrieve a player id from the name}
 \usage{
-util_map_player_id(x, map)
+util_map_player_id(x, map = getOption("nhlapi_player_map"))
 }
 \arguments{
 \item{x}{\code{character(1)} a player's name, not case
