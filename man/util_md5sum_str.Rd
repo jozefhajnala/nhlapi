@@ -14,7 +14,7 @@ util_md5sum_str(x)
 }
 \description{
 Writes \code{x} to a temporary file
-using \code{writeLines()} and computes the \code{md5sum()}
+using \code{writeChar()} and computes the \code{md5sum()}
 on that file, removing the file afterwards.
 }
 \examples{

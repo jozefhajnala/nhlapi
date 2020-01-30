@@ -242,7 +242,7 @@ util_attributes_to_cols <- function(lst, df, atrs = c("url", "copyright")) {
 #' Get MD5 hash for a character vector
 #'
 #' @description Writes `x` to a temporary file
-#'   using `writeLines()` and computes the `md5sum()`
+#'   using `writeChar()` and computes the `md5sum()`
 #'   on that file, removing the file afterwards.
 #'
 #' @param x `character()` vector.
@@ -257,7 +257,7 @@ util_md5sum_str <- function(x) {
   stopifnot(is.character(x))
   on.exit(unlink(tmpFile, force = TRUE))
   tmpFile <- tempfile()
-  writeLines(x, tmpFile)
+  writeChar(x, tmpFile)
   res <- tools::md5sum(path.expand(tmpFile))
   res <- unname(res)
   res

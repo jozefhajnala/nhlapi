@@ -181,7 +181,7 @@ testthat::test_that(
   "util_md5sum_str computes",
   testthat::expect_equal(
     util_md5sum_str("test"),
-    "d8e8fca2dc0f896fd7cb4cb0031ba249"
+    "e2a3e68d23ce348b8f68b3079de3d4c9"
   )
 )
 
@@ -194,7 +194,7 @@ testthat::test_that(
     util_map_player_id(
       "Joe Sakic",
       data.frame(
-        nameMd5 = "bfa8adc1bf05dd7b8a3eeca6556d6930",
+        nameMd5 = "9d2a915c8610dbc524c1bc800e010fcc",
         id = 1L,
         stringsAsFactors = FALSE
       )
