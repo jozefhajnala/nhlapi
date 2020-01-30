@@ -16,6 +16,7 @@ nhl_get_data_worker <- function(
   flatten = TRUE,
   silent = getOption("nhlapi_try_silent")
 ) {
+  log_i(url)
   res <- try(
     jsonlite::fromJSON(url, flatten = flatten),
     silent = silent
