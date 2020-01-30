@@ -29,3 +29,28 @@ nhl_retrieve_players <- function(playerNames, playerIds = NULL) {
   x <- nhl_process_players(x)
   x
 }
+
+#' Create an NHL API URL for players
+#'
+#' @param playerIds `integer()`, ids of the players.
+#'
+#' @examples \dontrun{
+#'   nhl_url_players(c(8477474, 8477475))
+#' }
+#'
+#' @return `character()` of same length as `playerIds`
+nhl_url_players <- function(playerIds) {
+  nhl_url(endPoint = "people", suffixes = list(playerIds))
+}
+
+nhl_process_player <- function(x) {
+  res <- util_process_copyright(x)
+  res_df <- res[["people"]]
+  res_df <- util_attributes_to_cols(res, res_df)
+  res_df
+}
+
+nhl_process_players <- function(x) {
+  util_rbindlist(lapply(x, nhl_process_player))
+}
+
