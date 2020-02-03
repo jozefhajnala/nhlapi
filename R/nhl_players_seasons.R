@@ -7,9 +7,9 @@
 #' @export
 #'
 #' @examples \dontrun{
-#'  nhl_retrieve_players_allseasons(c(8451101, 8458554))
+#'  nhl_players_allseasons(c(8451101, 8458554))
 #' }
-nhl_retrieve_players_allseasons <- function(
+nhl_players_allseasons <- function(
   playerNames,
   playerIds = NULL
 ) {
@@ -30,13 +30,13 @@ nhl_retrieve_players_allseasons <- function(
 #' @export
 #'
 #' @examples \dontrun{
-#'  nhl_retrieve_players_seasons(
+#'  nhl_players_seasons(
 #'    playerIds = c(8451101, 8458554),
 #'    seasons = "19951996",
 #'    playoffs = TRUE
 #'  )
 #' }
-nhl_retrieve_players_seasons <- function(
+nhl_players_seasons <- function(
   playerNames,
   seasons,
   playerIds = NULL,

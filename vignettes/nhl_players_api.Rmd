@@ -34,40 +34,40 @@ With names
 
 ```{r}
 # Get information on players by name
-nhl_retrieve_players(c("joe sakic", "PETER forsberg"))
+nhl_players(c("joe sakic", "PETER forsberg"))
 ```
 
 With ids:
 
 ```{r}
 playerIds <- c(8451101, 8458554)
-nhl_retrieve_players(playerIds = playerIds)
+nhl_players(playerIds = playerIds)
 ```
 
 Invalid or erroring requests will not return any rows, the errors will be reported:
 
 ```{r}
-nhl_retrieve_players(c("made up player", "Joe Sakic"))
+nhl_players(c("made up player", "Joe Sakic"))
 
-nhl_retrieve_players(playerIds = c("made up player", 8451101))
+nhl_players(playerIds = c("made up player", 8451101))
 ```
 
 The functions are designed is such a way that they allow working with the `%>%` operator if the user desires to do so:
 
 ```{r eval=FALSE}
 # Requires dplyr attached using library
-nhl_retrieve_players(playerIds) %>% 
+nhl_players(playerIds) %>% 
   select(fullName, nationality, shootsCatches, primaryPosition.code)
 ```
 
 
 ## Players' season statistics
 
-The second endpoint is used to retrieve players' statistics per seasons. The function `nhl_retrieve_players_seasons` accepts multiple `playerIds` and multiple `seasons`. The proper API URLs will be constructed and a flat data frame returned:
+The second endpoint is used to retrieve players' statistics per seasons. The function `nhl_players_seasons` accepts multiple `playerIds` and multiple `seasons`. The proper API URLs will be constructed and a flat data frame returned:
 
 ```{r}
 # Get a specific season statistics using player Ids
-nhl_retrieve_players_seasons(
+nhl_players_seasons(
   playerIds = c(8451101, 8458554),
   seasons = c("19961997", "19971998")
 )
@@ -77,7 +77,7 @@ It also accepts a `playoff` argument in case the users wants playoff statistics 
 
 ```{r}
 # Get a specific season playoff statistics
-nhl_retrieve_players_seasons(
+nhl_players_seasons(
   playerIds = c(8451101, 8458554), 
   seasons = "19961997",
   playoffs = TRUE
@@ -88,7 +88,7 @@ A simple wrapper is also provided to get the statistics for all the seasons for 
 
 ```{r}
 # Get all season statistics for a player
-nhl_retrieve_players_allseasons(playerIds = c(8451101, 8458554))
+nhl_players_allseasons(playerIds = c(8451101, 8458554))
 ```
 
 # Combining the endpoints
@@ -99,9 +99,9 @@ The package outputs are designed in such a way that they support easy data manip
 # Requires dplyr attached using library
 playerIds <- c(8451101, 8458554)
 
-result <- nhl_retrieve_players(playerIds) %>% 
+result <- nhl_players(playerIds) %>% 
   left_join(
-    nhl_retrieve_players_allseasons(playerIds),
+    nhl_players_allseasons(playerIds),
     by = c("id" = "playerId")
   ) %>% 
   filter(league.name == "National Hockey League") %>% 

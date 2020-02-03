@@ -2,9 +2,9 @@
 
 export(nhl_get_data)
 export(nhl_make_seasons)
-export(nhl_retrieve_players)
-export(nhl_retrieve_players_allseasons)
-export(nhl_retrieve_players_seasons)
+export(nhl_players)
+export(nhl_players_allseasons)
+export(nhl_players_seasons)
 export(nhl_url)
 importFrom(jsonlite,fromJSON)
 importFrom(methods,as)
