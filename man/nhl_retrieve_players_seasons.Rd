@@ -4,13 +4,17 @@
 \alias{nhl_retrieve_players_seasons}
 \title{Retrieve selected seasons statistics for players}
 \usage{
-nhl_retrieve_players_seasons(playerIds, seasons, playoffs = FALSE)
+nhl_retrieve_players_seasons(playerNames, seasons, playerIds = NULL,
+  playoffs = FALSE)
 }
 \arguments{
-\item{playerIds}{\code{integer()}, ids of the players.}
+\item{playerNames}{\code{character()}, player names, not case
+sensitive for convenience.}
 
 \item{seasons}{\code{character()}, seasons in the format \code{"YYYYZZZZ"},
 where ZZZZ = YYYY + 1, e.g. \code{"19951996"}.}
+
+\item{playerIds}{\code{integer()}, ids of the players.}
 
 \item{playoffs}{\code{logical(1)} if \code{FALSE} (default) get the regular
 seasons data, if \code{TRUE}, get the data for the playoffs.}
@@ -23,6 +27,10 @@ Retrieve selected seasons statistics for players
 }
 \examples{
 \dontrun{
- nhl_retrieve_players_seasons(c(8451101, 8458554), "19951996", TRUE)
+ nhl_retrieve_players_seasons(
+   playerIds = c(8451101, 8458554),
+   seasons = "19951996",
+   playoffs = TRUE
+ )
 }
 }

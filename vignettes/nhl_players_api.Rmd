@@ -1,10 +1,10 @@
 ---
-title: "Retrieving the source data from the NHL API"
+title: "Retrieving player data from the NHL API"
 author: "Jozef Hajnala"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Retrieving the source data from the NHL API}
+  %\VignetteIndexEntry{Retrieving player data from the NHL API}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -16,32 +16,40 @@ knitr::opts_chunk$set(
 )
 ```
 
-# High-level APIs
+# High-level players APIs
 
-The high-level APIs intend to provide convenient functionality used by most users. Each function returns a data frame with the requested data processed to serve common purposes.
+The high-level APIs intend to provide convenient functionality used by most users. Each function from the players API returns a data frame with the requested data processed to serve common purposes.
 
 ```{r}
 library(nhlapi)
 ```
 
-## Players 
+## Players information
 
-The first endpoint retrieves data on players based on provided player ids. One or more ids can be provided to the function, data on each valid player id will be returned as one row of the resulting data frame:
+The first endpoint retrieves information on players based on provided player names or ids. This information includes data such as names, nationalities, birth dates, etc.
+
+One or more names of one or more ids can be provided to the function, data on each valid player name or id will be returned as one row of the resulting data frame:
+
+With names
+
+```{r}
+# Get information on players by name
+nhl_retrieve_players(c("joe sakic", "PETER forsberg"))
+```
+
+With ids:
 
 ```{r}
 playerIds <- c(8451101, 8458554)
-
-# Get information on a specific player
 nhl_retrieve_players(playerIds = playerIds)
 ```
 
 Invalid or erroring requests will not return any rows, the errors will be reported:
 
 ```{r}
-playerIds <- c(8451101, 8458554, "wrong")
+nhl_retrieve_players(c("made up player", "Joe Sakic"))
 
-# Get information on a specific player
-nhl_retrieve_players(playerIds = playerIds)
+nhl_retrieve_players(playerIds = c("made up player", 8451101))
 ```
 
 The functions are designed is such a way that they allow working with the `%>%` operator if the user desires to do so:
@@ -58,7 +66,7 @@ nhl_retrieve_players(playerIds) %>%
 The second endpoint is used to retrieve players' statistics per seasons. The function `nhl_retrieve_players_seasons` accepts multiple `playerIds` and multiple `seasons`. The proper API URLs will be constructed and a flat data frame returned:
 
 ```{r}
-# Get a specific season statistics
+# Get a specific season statistics using player Ids
 nhl_retrieve_players_seasons(
   playerIds = c(8451101, 8458554),
   seasons = c("19961997", "19971998")

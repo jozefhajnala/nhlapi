@@ -4,9 +4,12 @@
 \alias{nhl_retrieve_players_allseasons}
 \title{Retrieve all seasons statistics for players}
 \usage{
-nhl_retrieve_players_allseasons(playerIds)
+nhl_retrieve_players_allseasons(playerNames, playerIds = NULL)
 }
 \arguments{
+\item{playerNames}{\code{character()}, player names, not case
+sensitive for convenience.}
+
 \item{playerIds}{\code{integer()}, ids of the players.}
 }
 \value{

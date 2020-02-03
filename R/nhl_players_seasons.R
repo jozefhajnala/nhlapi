@@ -1,6 +1,7 @@
 #' Retrieve all seasons statistics for players
 #'
 #' @inheritParams nhl_url_players_allseasons
+#' @inheritParams util_map_player_ids
 #'
 #' @return data.frame
 #' @export
@@ -8,8 +9,11 @@
 #' @examples \dontrun{
 #'  nhl_retrieve_players_allseasons(c(8451101, 8458554))
 #' }
-nhl_retrieve_players_allseasons <- function(playerIds) {
-  x <- nhl_url_players_allseasons(playerIds)
+nhl_retrieve_players_allseasons <- function(
+  playerNames,
+  playerIds = NULL
+) {
+  x <- nhl_url_players_allseasons(playerIds = playerIds)
   x <- nhl_get_data(x)
   playerIds <- playerIds[!util_locate_get_data_errors(x)]
   x <- util_remove_get_data_errors(x)
@@ -20,15 +24,29 @@ nhl_retrieve_players_allseasons <- function(playerIds) {
 #' Retrieve selected seasons statistics for players
 #'
 #' @inheritParams nhl_url_players_seasons
+#' @inheritParams util_map_player_ids
 #'
 #' @return data.frame
 #' @export
 #'
 #' @examples \dontrun{
-#'  nhl_retrieve_players_seasons(c(8451101, 8458554), "19951996", TRUE)
+#'  nhl_retrieve_players_seasons(
+#'    playerIds = c(8451101, 8458554),
+#'    seasons = "19951996",
+#'    playoffs = TRUE
+#'  )
 #' }
-nhl_retrieve_players_seasons <- function(playerIds, seasons, playoffs = FALSE) {
-  x <- nhl_url_players_seasons(playerIds, seasons, playoffs = playoffs)
+nhl_retrieve_players_seasons <- function(
+  playerNames,
+  seasons,
+  playerIds = NULL,
+  playoffs = FALSE
+) {
+  x <- nhl_url_players_seasons(
+    playerIds = playerIds,
+    seasons = seasons,
+    playoffs = playoffs
+  )
   x <- nhl_get_data(x)
   playerIds <- rep(playerIds, times = length(seasons))
   playerIds <- playerIds[!util_locate_get_data_errors(x)]
@@ -77,7 +95,7 @@ nhl_url_players_seasons <- function(playerIds, seasons, playoffs = FALSE) {
 #' }
 nhl_url_players_allseasons <- function(playerIds) {
   nhl_url_add_params(
-    nhl_url_players_stats(playerIds),
+    nhl_url_players_stats(playerIds = playerIds),
     params = c(stats = "yearByYear")
   )
 }
