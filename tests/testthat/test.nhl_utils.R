@@ -253,3 +253,20 @@ testthat::test_that(
     c("joe sakic" = 8451101L)
   )
 )
+
+
+context("util_generate_sysdata")
+
+testthat::test_that(
+  "sysdata.rda generated correctly for a player", {
+    testthat::skip_if_offline(host = "nhl.com")
+    tmpFile <- tempfile()
+    res <- util_generate_sysdata(8444855L, tgtPath = tmpFile)
+    load(tmpFile)
+    testthat::expect_equal(
+      res,
+      hashedPlayers
+    )
+    unlink(tmpFile, force = TRUE)
+  }
+)

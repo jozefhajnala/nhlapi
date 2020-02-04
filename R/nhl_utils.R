@@ -338,3 +338,28 @@ util_prepare_player_ids <- function(
   playerIds <- playerIds[!is.na(playerIds)]
   playerIds
 }
+
+#' Generate the sysdata.rda file
+#'
+#' @param playerIds `integer()`, vector of playerIds.
+#' @param tgtPath `character(1)`, path where to save
+#'   the generated object, `NULL` to not save.
+#'
+#' @return `data.frame` with player name hashes and ids.
+util_generate_sysdata <- function(
+  playerIds = 8444849L:8490000L,
+  tgtPath = "sysdata.rda"
+) {
+  players <- nhl_players(playerIds = playerIds)
+  hashedPlayers <- players[c("id", "fullName")]
+  hashedPlayers[["nameMd5"]] <- vapply(
+    tolower(hashedPlayers[["fullName"]]),
+    FUN = util_md5sum_str,
+    FUN.VALUE = character(1)
+  )
+  hashedPlayers[["fullName"]] <- NULL
+  if (!is.null(tgtPath)) {
+    save(hashedPlayers, file = tgtPath, version = 2, compress = "xz")
+  }
+  hashedPlayers
+}
