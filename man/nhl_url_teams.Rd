@@ -4,12 +4,15 @@
 \alias{nhl_url_teams}
 \title{Create an NHL API URL for teams}
 \usage{
-nhl_url_teams(teamIds = NULL)
+nhl_url_teams(teamIds = NULL, params = NULL)
 }
 \arguments{
 \item{teamIds}{\code{integer()}, ids of the teams or \code{NULL} (default)
 for all teams. As of end of 2019, the valid team ids seem to be
 in the \code{1:54} range.}
+
+\item{params}{\code{named list} of parameters that will be concatenated
+to the end of the url after \code{?}.}
 }
 \value{
 \code{character()} of same length as \code{teamIds} or length \code{1}

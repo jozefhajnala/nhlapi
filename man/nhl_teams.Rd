@@ -4,12 +4,15 @@
 \alias{nhl_teams}
 \title{Retrieve metadata on NHL teams from the API}
 \usage{
-nhl_teams(teamIds = NULL)
+nhl_teams(teamIds = NULL, params = NULL)
 }
 \arguments{
 \item{teamIds}{\code{integer()}, ids of the teams or \code{NULL} (default)
 for all teams. As of end of 2019, the valid team ids seem to be
 in the \code{1:54} range.}
+
+\item{params}{\code{named list()}, further parameters passed to
+\code{nhl_url_teams}.}
 }
 \value{
 \code{data.frame} with data on teams, one row per team.

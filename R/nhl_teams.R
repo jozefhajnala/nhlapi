@@ -3,6 +3,7 @@
 #' @param teamIds `integer()`, ids of the teams or `NULL` (default)
 #'   for all teams. As of end of 2019, the valid team ids seem to be
 #'   in the `1:54` range.
+#' @inheritParams nhl_url
 #'
 #' @examples \dontrun{
 #'   nhl_url_teams()
@@ -11,8 +12,9 @@
 #'
 #' @return `character()` of same length as `teamIds` or length `1`
 #'   if `teamIds` is `NULL`
-nhl_url_teams <- function(teamIds = NULL) {
-  nhl_url(endPoint = "teams", suffixes = if (!is.null(teamIds)) list(teamIds))
+nhl_url_teams <- function(teamIds = NULL, params = NULL) {
+  suffixes <- if (!is.null(teamIds)) list(teamIds)
+  nhl_url(endPoint = "teams", suffixes = suffixes, params = params)
 }
 
 nhl_process_team <- function(x) {
@@ -35,6 +37,8 @@ nhl_process_teams <- function(x) {
 #'   which is achieved by the default `NULL` value for the team id.
 #'
 #' @inheritParams nhl_url_teams
+#' @param params `named list()`, further parameters passed to
+#'   `nhl_url_teams`.
 #'
 #' @examples \dontrun{
 #'   nhl_teams()
@@ -43,10 +47,31 @@ nhl_process_teams <- function(x) {
 #'
 #' @export
 #' @return `data.frame` with data on teams, one row per team.
-nhl_teams <- function(teamIds = NULL) {
-  x <- nhl_url_teams(teamIds = teamIds)
+nhl_teams <- function(teamIds = NULL, params = NULL) {
+  x <- nhl_url_teams(teamIds = teamIds, params = params)
   x <- nhl_get_data(x)
   x <- util_remove_get_data_errors(x)
   x <- nhl_process_teams(x)
   x
 }
+
+nhl_teams_rosters <- function(teamIds = NULL, seasons = NULL) {
+  params <- list(expand = "team.roster")
+  if (!is.null(seasons)) {
+    params <- append(params, list(season = seasons))
+  }
+  nhl_teams(teamIds = teamIds, params = params)
+}
+
+nhl_teams_shedule_next <- function(teamIds = NULL) {
+  nhl_teams(teamIds = teamIds, params = c(expand = "team.schedule.next"))
+}
+
+nhl_teams_shedule_previous <- function(teamIds = NULL) {
+  nhl_teams(teamIds = teamIds, params = c(expand = "team.schedule.previous"))
+}
+
+nhl_teams_stats <- function(teamIds = NULL) {
+  nhl_teams(teamIds = teamIds, params = c(expand = "team.stats"))
+}
+
