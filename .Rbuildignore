@@ -4,3 +4,5 @@
 ^\.Rproj\.user$
 LICENSE
 ^\.github
+^.vscode
+.lintr
