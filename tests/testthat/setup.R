@@ -1,3 +1,4 @@
+mock_return <- function(...) return(list(...))
 baseurl <- getOption("nhlapi_baseurl")
 endpointurls <- paste0(baseurl, c("people", "teams"))
 playerIds <- c("some", "8451101", 8451033L, "wrong")
@@ -14,12 +15,7 @@ copyright <- paste(
 testplayers <- list(
   structure(
     list(
-      copyright = paste(
-        "NHL and the NHL Shield are registered trademarks",
-        "of the National Hockey League.",
-        "NHL and NHL team marks are the property of the NHL and its teams.",
-        "© NHL 2020. All Rights Reserved."
-      ),
+      copyright = copyright,
       people = structure(
         list(
           id = 8451101L,
@@ -76,12 +72,7 @@ testplayers <- list(
   ),
   structure(
     list(
-      copyright = paste(
-        "NHL and the NHL Shield are registered trademarks",
-        "of the National Hockey League.",
-        "NHL and NHL team marks are the property of the NHL and its teams.",
-        "© NHL 2020. All Rights Reserved."
-      ),
+      copyright = copyright,
       people = structure(
         list(
           id = 8451033L,
@@ -455,12 +446,7 @@ retrievedplayerplayoffs <- data.frame(
     "https://statsapi.web.nhl.com/api/v1/people/",
     "8451101/stats?stats=statsSingleSeasonPlayoffs&season=19951996"
   ),
-  copyright = paste(
-    "NHL and the NHL Shield are registered trademarks",
-    "of the National Hockey League.",
-    "NHL and NHL team marks are the property of the NHL and its teams.",
-    "© NHL 2020. All Rights Reserved."
-  ),
+  copyright = copyright,
   playerId = 8451101L,
   seasonStart = 1995L,
   stringsAsFactors = FALSE

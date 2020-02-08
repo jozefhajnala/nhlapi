@@ -55,23 +55,79 @@ nhl_teams <- function(teamIds = NULL, params = NULL) {
   x
 }
 
+#' Get rosters for teams
+#'
+#' @inheritParams nhl_url_teams
+#' @inheritParams nhl_url_players_seasons
+#'
+#' @return data.frame, with an element called `roster.roster`
+#'   that in itself is a data.frame with the roster data.
+#'
+#' @export
+#'
+#' @examples  \dontrun{
+#'   # Current rosters for all teams
+#'   nhl_teams_rosters()
+#'
+#'   # Rosters for all teams for past seasons
+#'   nhl_teams_rosters(seasons = c("19931994", "19931994"))
+#'
+#'   # Roster for Devils and Islanders
+#'   nhl_teams_rosters(
+#'     teamIds = 1:2,
+#'     seasons = c("19931994", "19931994")
+#'   )
+#' }
 nhl_teams_rosters <- function(teamIds = NULL, seasons = NULL) {
   params <- list(expand = "team.roster")
-  if (!is.null(seasons)) {
-    params <- append(params, list(season = seasons))
-  }
+  if (!is.null(seasons)) params <- c(params, list(season = seasons))
   nhl_teams(teamIds = teamIds, params = params)
 }
 
+#' Get details for the teams' upcoming game
+#'
+#' @inheritParams nhl_url_teams
+#'
+#' @return data.frame, with elements with names starting with
+#'   `nextGameSchedule` that contain data on the teams' upcoming
+#'    game. One row per team.
+#'
+#' @export
+#'
+#' @examples  \dontrun{
+#'   # Next game for all teams
+#'   nhl_teams_shedule_next()
+#'
+#'   # Next game for selected teams
+#'   nhl_teams_shedule_next(c(1,3,5))
+#' }
 nhl_teams_shedule_next <- function(teamIds = NULL) {
   nhl_teams(teamIds = teamIds, params = c(expand = "team.schedule.next"))
 }
 
+#' Get details for the teams' previous game
+#'
+#' @inheritParams nhl_url_teams
+#'
+#' @return data.frame, with elements with names starting with
+#'   `previousGameSchedule` that contain data on the teams' previous
+#'    game. One row per team.
+#'
+#' @export
+#'
+#' @examples  \dontrun{
+#'   # Next game for all teams
+#'   nhl_teams_shedule_previous()
+#'
+#'   # Next game for selected teams
+#'   nhl_teams_shedule_previous(c(1,3,5))
+#' }
 nhl_teams_shedule_previous <- function(teamIds = NULL) {
   nhl_teams(teamIds = teamIds, params = c(expand = "team.schedule.previous"))
 }
 
-nhl_teams_stats <- function(teamIds = NULL) {
-  nhl_teams(teamIds = teamIds, params = c(expand = "team.stats"))
+nhl_teams_stats <- function(teamIds = NULL, seasons = NULL) {
+  params <- list(expand = "team.stats")
+  if (!is.null(seasons)) params <- c(params, list(season = seasons))
+  nhl_teams(teamIds = teamIds, params = params)
 }
-

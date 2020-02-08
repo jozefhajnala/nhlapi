@@ -1,0 +1,125 @@
+---
+title: "Retrieving team data from the NHL API"
+author: "Jozef Hajnala"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Retrieving team data from the NHL API}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  eval = FALSE
+)
+```
+
+# High-level team APIs
+
+The high-level team APIs intend to provide convenient functionality used by most users. Each function from the players API returns a data frame with the requested data processed to serve common purposes.
+
+```{r}
+library(nhlapi)
+```
+
+## Team information
+
+```{r}
+# Get meta information on all teams
+nhl_teams()
+```
+
+# Current rosters
+
+```{r}
+# Get current rosters for all teams
+rosters <- nhl_teams_rosters()
+
+# View the current roster for the Devils
+roster_devils <- rosters %>% 
+  filter(name == "New Jersey Devils") %>% 
+  pull(roster.roster) %>% 
+  # This is still a list, extract the first element 
+  first()
+roster_devils
+```
+
+# Rosters for past season
+
+```{r}
+# Get rosters for a specific season, all teams
+rosters_1993 <- nhl_teams_rosters(seasons = "19931994") 
+
+# Select the Quebec Nordiques
+roster_nordiques_1993 <- rosters_1993 %>% 
+  filter(name == "Quebec Nordiques") %>% 
+  pull(roster.roster)
+```
+
+# Multiple seasons rosters
+
+```{r}
+# Works with multiple seasons
+rosters_1993_1994 <- nhl_teams_rosters(
+  seasons = c("19931994", "19941995")
+)
+
+# It is a bit nicer though (for traffic) to get less data
+# and make more specific requests - e.g. only get the Nordiques
+rosters_1993_1994 <- nhl_teams_rosters(
+  teamIds = 32,
+  seasons = c("19931994", "19941995")
+)
+```
+
+# Upcoming and previous games
+
+## Details on previous game for teams
+
+```{r}
+# Previous game for all teams
+nhl_teams_shedule_previous()
+
+# Previous game for selected teams
+nhl_teams_shedule_previous(c(1,3,5))
+```
+
+## Exploring the full game details
+
+There is a lot of information about games in the API, for instance, full details of the previous of the Devils:
+
+```{r}
+# First get the link
+game_url <- nhl_teams_shedule_previous(1) %>% 
+  extract2("previousGameSchedule.dates") %>% first() %>% 
+  extract2("games") %>% first() %>% 
+  extract2("link")
+
+# Now use `nhl_get_data()` to retrieve
+game_data <- file.path("https://statsapi.web.nhl.com", game_url) %>%
+  nhl_get_data()
+
+# This is a very complex endpoint, for instance,
+# look at the recorded events in the game
+game_plays <- game_data %>% first() %>%
+  extract2("liveData") %>%
+  extract2("plays") %>%
+  extract2("allPlays") %>%
+  as_tibble()
+
+game_plays
+```
+
+
+## Details on upcoming game for teams
+
+```{r}
+# Next game for all teams
+nhl_teams_shedule_next()
+
+# Next game for selected teams
+nhl_teams_shedule_next(c(1,3,5))
+```

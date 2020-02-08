@@ -12,7 +12,8 @@ vignette: >
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  eval = FALSE
 )
 ```
 
@@ -54,7 +55,7 @@ nhl_players(playerIds = c("made up player", 8451101))
 
 The functions are designed is such a way that they allow working with the `%>%` operator if the user desires to do so:
 
-```{r eval=FALSE}
+```{r}
 # Requires dplyr attached using library
 nhl_players(playerIds) %>% 
   select(fullName, nationality, shootsCatches, primaryPosition.code)
@@ -95,7 +96,7 @@ nhl_players_allseasons(playerIds = c(8451101, 8458554))
 
 The package outputs are designed in such a way that they support easy data manipulation and exploration. For instance, using the popular `dplyr` package:
 
-```{r eval=FALSE}
+```{r}
 # Requires dplyr attached using library
 playerIds <- c(8451101, 8458554)
 
@@ -116,7 +117,7 @@ The nhlapi package itself does not contain plotting functionality, the output of
 
 For instance, using the ggplot2 package to plot the amount of points gathered by multiple players over the seasons:
 
-```{r eval=FALSE}
+```{r}
 # Requires ggplot2 attached using library
 ggplot(result) +
   geom_line(aes(seasonStart, stat.points, colour = fullName))
@@ -124,7 +125,7 @@ ggplot(result) +
 
 Or using the highcharter package to create an interactive version of the same chart:
 
-```{r eval=FALSE}
+```{r}
 # Requires highcharter attached using library
 result %>% 
   hchart("line", hcaes(seasonStart, stat.points, group = fullName)) %>%
