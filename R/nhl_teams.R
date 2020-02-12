@@ -126,6 +126,22 @@ nhl_teams_shedule_previous <- function(teamIds = NULL) {
   nhl_teams(teamIds = teamIds, params = c(expand = "team.schedule.previous"))
 }
 
+#' Get team statistics per seasons
+#'
+#' @inheritParams nhl_url_teams
+#' @inheritParams nhl_url_players_seasons
+#'
+#' @return data.frame with seasons statistics for the selected team(s),
+#'   one row per each team and season combination
+#' @export
+#'
+#' @examples \dontrun{
+#'   # All teams, current seasons
+#'   nhl_teams_stats()
+#'
+#'   # 2 teams, 3 seasons
+#'   nhl_teams_stats(1:2, c("20052006", "20062007", "20072008"))
+#' }
 nhl_teams_stats <- function(teamIds = NULL, seasons = NULL) {
   params <- list(expand = "team.stats")
   if (!is.null(seasons)) params <- c(params, list(season = seasons))

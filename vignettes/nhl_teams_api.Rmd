@@ -123,3 +123,24 @@ nhl_teams_shedule_next()
 # Next game for selected teams
 nhl_teams_shedule_next(c(1,3,5))
 ```
+
+# Team Stats per season
+
+```{r}
+# All teams, current seasons
+nhl_teams_stats()
+```
+
+## Investigate the returned object
+
+```{r}
+# Get 2 seasons for the Devils:
+devils_stats <- nhl_teams_stats(1, c("20052006", "20062007"))
+
+# Look at the teamStats object for the first of them
+devils_stats %>%
+  extract2("teamStats") %>% first() %>% 
+  extract2("splits") %>% first() %>% 
+  slice(1) %>% 
+  select(stat.gamesPlayed, stat.wins, stat.losses)
+```
