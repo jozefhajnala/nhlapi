@@ -4,7 +4,7 @@
 \alias{nhl_get_data}
 \title{Get data from the API for multiple urls}
 \usage{
-nhl_get_data(urls, flatten = TRUE)
+nhl_get_data(urls, flatten = getOption("nhlapi_flatten"))
 }
 \arguments{
 \item{urls}{\code{character()}, vector of urls to retrieve

@@ -32,3 +32,78 @@ testthat::test_that(
     )
   }
 )
+
+
+context("nhl_from_json work with successes")
+
+testthat::test_that(
+  "nhl_from_json", {
+    testthat::with_mock(
+      "jsonlite::fromJSON" = function(...) TRUE,
+      testthat::expect_true(nhl_from_json("test"))
+    )
+  }
+)
+
+testthat::test_that(
+  "nhl_from_json", {
+    testthat::with_mock(
+      "jsonlite::fromJSON" = function(...) stop("I must fail."),
+      testthat::expect_s3_class(
+        nhl_from_json("test", silent = TRUE, retries = 0, retrySleep = 0),
+        "try-error"
+      )
+    )
+  }
+)
+
+testthat::test_that(
+  "nhl_from_json retries and fails n times", {
+    testthat::with_mock(
+      "jsonlite::fromJSON" = function(...) stop("I failed.", call. = FALSE),
+      expect_equal(
+        capture.output(
+          invisible(
+            nhl_from_json("test", silent = FALSE, retries = 1, retrySleep = 0)
+          ),
+          type = "message"
+        ),
+        rep("Error : I failed.", 2)
+      )
+    )
+  }
+)
+
+testthat::test_that(
+  "nhl_from_json retries then succeeds", {
+    testenv <- new.env()
+    testthat::with_mock(
+      "jsonlite::fromJSON" = function(...) {
+        # Should give TRUE 1st and 2nd time, FALSE 3rd called
+        thisOutcome <- get("outcome", envir = testenv)
+        assign("outcome", thisOutcome[-1L], envir = testenv)
+        if (thisOutcome[1L]) stop("I failed.") else TRUE
+      }, {
+        assign("outcome", c(TRUE, TRUE, FALSE), envir = testenv)
+        expect_true(
+          nhl_from_json("test", silent = TRUE, retries = 2, retrySleep = 0)
+        )
+        assign("outcome", c(TRUE, TRUE, FALSE), envir = testenv)
+        expect_true(
+          nhl_from_json("test", silent = TRUE, retries = 5, retrySleep = 0)
+        )
+        assign("outcome", c(TRUE, TRUE, FALSE), envir = testenv)
+        expect_s3_class(
+          nhl_from_json("test", silent = TRUE, retries = 0, retrySleep = 0),
+          "try-error"
+        )
+        assign("outcome", c(TRUE, TRUE, FALSE), envir = testenv)
+        expect_s3_class(
+          nhl_from_json("test", silent = TRUE, retries = 1, retrySleep = 0),
+          "try-error"
+        )
+      }
+    )
+    rm(testenv)
+  }
+)
