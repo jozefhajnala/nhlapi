@@ -44,6 +44,11 @@ nhl_url <- function(
 #' @return `character()` of the same length as all the
 #'   combinations of `url` and `params`.
 nhl_url_add_params <- function(url, params) {
+  params <- lapply(
+    params,
+    format,
+    scientific = FALSE, trim = TRUE, justify = "none"
+  )
   res <- expand.grid(c(list(url = url), params), stringsAsFactors = FALSE)
   res$sep <- ifelse(grepl("?", res$url, fixed = TRUE), "&", "?")
   apply(res, 1L, function(x) {
@@ -63,6 +68,11 @@ nhl_url_add_params <- function(url, params) {
 #' @return `character()` of the same length as all the
 #'   combinations of `url` and `suffixes`.
 nhl_url_add_suffixes <- function(url, suffixes) {
+  suffixes <- lapply(
+    suffixes,
+    format,
+    scientific = FALSE, trim = TRUE, justify = "none"
+  )
   res <- expand.grid(c(list(url = url), suffixes), stringsAsFactors = FALSE)
   apply(res, 1L, paste, collapse = "/")
 }

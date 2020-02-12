@@ -103,3 +103,22 @@ testthat::test_that(
     )
   )
 )
+
+testthat::test_that(
+  "Add 1 param with multiple large values to 2 urls, 1 having params already",
+  testthat::expect_equal(
+    nhl_url_add_params(
+      c(
+        "https://statsapi.web.nhl.com/api/v1/people/10000?par=1",
+        "https://statsapi.web.nhl.com/api/v1/people/20000"
+      ),
+      params = list(par2 = c(100000000, 200000000))
+    ),
+    c(
+      "https://statsapi.web.nhl.com/api/v1/people/10000?par=1&par2=100000000",
+      "https://statsapi.web.nhl.com/api/v1/people/20000?par2=100000000",
+      "https://statsapi.web.nhl.com/api/v1/people/10000?par=1&par2=200000000",
+      "https://statsapi.web.nhl.com/api/v1/people/20000?par2=200000000"
+    )
+  )
+)
