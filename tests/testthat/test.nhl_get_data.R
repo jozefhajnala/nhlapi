@@ -82,7 +82,7 @@ testthat::test_that(
         # Should give TRUE 1st and 2nd time, FALSE 3rd called
         thisOutcome <- get("outcome", envir = testenv)
         assign("outcome", thisOutcome[-1L], envir = testenv)
-        if (thisOutcome[1L]) stop("I failed.") else TRUE
+        if (thisOutcome[1L]) stop("I failed.", call. = FALSE) else TRUE
       }, {
         assign("outcome", c(TRUE, TRUE, FALSE), envir = testenv)
         expect_true(
@@ -101,6 +101,49 @@ testthat::test_that(
         expect_s3_class(
           nhl_from_json("test", silent = TRUE, retries = 1, retrySleep = 0),
           "try-error"
+        )
+        assign("outcome", c(TRUE, TRUE, FALSE), envir = testenv)
+        expect_equal(
+          capture.output(
+            invisible(
+              nhl_from_json("test", silent = FALSE, retries = 1, retrySleep = 0)
+            ),
+            type = "message"
+          ),
+          rep("Error : I failed.", 2)
+        )
+      }
+    )
+    rm(testenv)
+  }
+)
+
+testthat::test_that(
+  "nhl_from_json no retries for noRetryPatt, only for valid", {
+    noRetryRes <- "HTTP error 400."
+    doRetryRes <- "HTTP error 300."
+    fullOutcome <- c(rep(doRetryRes, 4L), rep(noRetryRes, 6L))
+    testenv <- new.env()
+    testthat::with_mock(
+      "jsonlite::fromJSON" = function(...) {
+        # We want to retry for HTTP error 300, but not for 400
+        thisOutcome <- get("outcome", envir = testenv)
+        assign("outcome", thisOutcome[-1L], envir = testenv)
+        stop(thisOutcome[[1L]], call. = FALSE)
+      }, {
+        assign("outcome", fullOutcome, envir = testenv)
+        expect_equal(
+          capture.output(
+            invisible(
+              nhl_from_json(
+                "test",
+                silent = FALSE, retries = 9, retrySleep = 0,
+                noRetryPatt = "HTTP error 404|HTTP error 400"
+              )
+            ),
+            type = "message"
+          ),
+          c(rep("Error : HTTP error 300.", 4L), "Error : HTTP error 400.")
         )
       }
     )

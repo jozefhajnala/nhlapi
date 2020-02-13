@@ -7,7 +7,8 @@
 nhl_from_json(url, flatten = getOption("nhlapi_flatten"),
   silent = getOption("nhlapi_try_silent"),
   retries = getOption("nhlapi_get_retries"),
-  retrySleep = getOption("nhlapi_get_retry_sleep"))
+  retrySleep = getOption("nhlapi_get_retry_sleep"),
+  noRetryPatt = getOption("nhlapi_get_noretry"))
 }
 \arguments{
 \item{url}{\code{character(1)}, the URL to get the data from.}
@@ -22,6 +23,11 @@ data retrieval (\code{0L} for no no retries).}
 
 \item{retrySleep}{\code{integer(1)}, number of seconds to \code{Sys.sleep()}
 in between retries.}
+
+\item{noRetryPatt}{\code{character(1)}, string pattern. If the error
+condition's message contains this pattern, there will be no
+retries. Useful for e.g. \code{404} returns where retries are likely
+useless.}
 }
 \value{
 retrieved data if succeeded, or a \code{try-error} class object

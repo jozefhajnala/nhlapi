@@ -54,7 +54,10 @@ nhl_get_data <- function(urls, flatten = getOption("nhlapi_flatten")) {
 #'   data retrieval (`0L` for no no retries).
 #' @param retrySleep `integer(1)`, number of seconds to `Sys.sleep()`
 #'   in between retries.
-#'
+#' @param noRetryPatt `character(1)`, string pattern. If the error
+#'   condition's message contains this pattern, there will be no
+#'   retries. Useful for e.g. `404` returns where retries are likely
+#'   useless.
 #' @importFrom jsonlite fromJSON
 #'
 #' @return retrieved data if succeeded, or a `try-error` class object
@@ -64,7 +67,8 @@ nhl_from_json <- function(
   flatten = getOption("nhlapi_flatten"),
   silent = getOption("nhlapi_try_silent"),
   retries = getOption("nhlapi_get_retries"),
-  retrySleep = getOption("nhlapi_get_retry_sleep")
+  retrySleep = getOption("nhlapi_get_retry_sleep"),
+  noRetryPatt = getOption("nhlapi_get_noretry")
 ) {
   attempt <- 0L
   failed <- TRUE
@@ -75,6 +79,13 @@ nhl_from_json <- function(
       silent = silent
     )
     failed <- inherits(res, "try-error")
+    if (failed) {
+      noRetry <- isTRUE(grepl(
+        noRetryPatt,
+        attr(res, "condition")[["message"]]
+      ))
+      if (noRetry) break
+    }
     attempt <- attempt + 1L
   }
   res

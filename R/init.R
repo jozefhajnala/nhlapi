@@ -5,6 +5,7 @@
     nhlapi_player_map = hashedPlayers,
     nhlapi_get_retries = 2L,
     nhlapi_get_retry_sleep = 1,
-    nhlapi_flatten = TRUE
+    nhlapi_flatten = TRUE,
+    nhlapi_get_noretry = "HTTP error 404|HTTP error 400"
   )
 } # nocov end
