@@ -50,7 +50,6 @@ testthat::test_that(
   )
 )
 
-
 testthat::test_that(
   "Add 2 params to 2 urls with no params",
   testthat::expect_equal(
@@ -119,6 +118,59 @@ testthat::test_that(
       "https://statsapi.web.nhl.com/api/v1/people/20000?par2=100000000",
       "https://statsapi.web.nhl.com/api/v1/people/10000?par=1&par2=200000000",
       "https://statsapi.web.nhl.com/api/v1/people/20000?par2=200000000"
+    )
+  )
+)
+
+testthat::test_that(
+  "Add integer seasons param to an URL with no params",
+  testthat::expect_equal(
+    nhl_url_add_params(
+      "https://statsapi.web.nhl.com/api/v1/people/8477474",
+      list(season = 2000)
+    ),
+    "https://statsapi.web.nhl.com/api/v1/people/8477474?season=20002001"
+  )
+)
+
+testthat::test_that(
+  "Add integer seasons param to an URL with no params",
+  testthat::expect_equal(
+    nhl_url_add_params(
+      "https://statsapi.web.nhl.com/api/v1/people/8477474",
+      list(season = 2000:2001)
+    ),
+    paste0(
+      "https://statsapi.web.nhl.com/api/v1/people/8477474?season=",
+      c("20002001", "20012002")
+    )
+  )
+)
+
+testthat::test_that(
+  "Add non-adjacent integer seasons param to an URL with no params",
+  testthat::expect_equal(
+    nhl_url_add_params(
+      "https://statsapi.web.nhl.com/api/v1/people/8477474",
+      list(season = c(2000, 2010))
+    ),
+    paste0(
+      "https://statsapi.web.nhl.com/api/v1/people/8477474?season=",
+      c("20002001", "20102011")
+    )
+  )
+)
+
+testthat::test_that(
+  "Add non-adjacent character seasons param to an URL with no params",
+  testthat::expect_equal(
+    nhl_url_add_params(
+      "https://statsapi.web.nhl.com/api/v1/people/8477474",
+      list(season = c("20002001", "20102011"))
+    ),
+    paste0(
+      "https://statsapi.web.nhl.com/api/v1/people/8477474?season=",
+      c("20002001", "20102011")
     )
   )
 )

@@ -9,8 +9,12 @@ nhl_url_players_seasons(playerIds, seasons, playoffs = FALSE)
 \arguments{
 \item{playerIds}{\code{integer()}, ids of the players.}
 
-\item{seasons}{\code{character()}, seasons in the format \code{"YYYYZZZZ"},
-where ZZZZ = YYYY + 1, e.g. \code{"19951996"}.}
+\item{seasons}{\code{numeric()}, vector of starting years of desired
+seasons, in \code{YYYY} format, e.g. \code{1995} for season 1995-1996.
+Accepts vectors such as \code{c(1995:2000, 2010)}.
+Alternatively, also accepts \code{character()} with seasons in the
+format \code{"YYYYZZZZ"}, where ZZZZ = YYYY + 1, e.g. \code{"19951996"}.
+This is the format that ultimately gets sent to the API.}
 
 \item{playoffs}{\code{logical(1)} if \code{FALSE} (default) get the regular
 seasons data, if \code{TRUE}, get the data for the playoffs.}
@@ -25,11 +29,11 @@ be created for all combinations of players and seasons.
 \examples{
 \dontrun{
   # Joe Sakic, regular season 1995/1996
-  nhl_url_players_seasons(8451101L, "19951996")
-  # Joe Sakic, playoffs 1995/1996 and 1996/1997
+  nhl_url_players_seasons(8451101L, 1995)
+  # Joe Sakic, playoffs 1995/1996, 1996/1997 and 1997/1998
   nhl_url_players_seasons(
     8451101L,
-    c("19951996", "19961997"),
+    1995:1997,
     playoffs = TRUE
    )
 }

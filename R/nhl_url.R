@@ -44,6 +44,9 @@ nhl_url <- function(
 #' @return `character()` of the same length as all the
 #'   combinations of `url` and `params`.
 nhl_url_add_params <- function(url, params) {
+  if ("season" %in% names(params)) {
+    params[["season"]] <- nhl_make_seasons(params[["season"]])
+  }
   params <- lapply(
     params,
     format,
