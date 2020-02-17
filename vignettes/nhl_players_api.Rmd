@@ -57,7 +57,7 @@ The functions are designed is such a way that they allow working with the `%>%` 
 
 ```{r}
 # Requires dplyr attached using library
-nhl_players(playerIds) %>% 
+nhl_players(playerIds = playerIds) %>%
   select(fullName, nationality, shootsCatches, primaryPosition.code)
 ```
 
@@ -70,7 +70,7 @@ The second endpoint is used to retrieve players' statistics per seasons. The fun
 # Get a specific season statistics using player Ids
 nhl_players_seasons(
   playerIds = c(8451101, 8458554),
-  seasons = c("19961997", "19971998")
+  seasons = 1996:1998
 )
 ```
 
@@ -79,8 +79,8 @@ It also accepts a `playoff` argument in case the users wants playoff statistics 
 ```{r}
 # Get a specific season playoff statistics
 nhl_players_seasons(
-  playerIds = c(8451101, 8458554), 
-  seasons = "19961997",
+  playerIds = c(8451101, 8458554),
+  seasons = 1996,
   playoffs = TRUE
 )
 ```
@@ -100,12 +100,12 @@ The package outputs are designed in such a way that they support easy data manip
 # Requires dplyr attached using library
 playerIds <- c(8451101, 8458554)
 
-result <- nhl_players(playerIds) %>% 
+result <- nhl_players(playerIds = playerIds) %>%
   left_join(
-    nhl_players_allseasons(playerIds),
+    nhl_players_allseasons(playerIds = playerIds),
     by = c("id" = "playerId")
-  ) %>% 
-  filter(league.name == "National Hockey League") %>% 
+  ) %>%
+  filter(league.name == "National Hockey League") %>%
   select(fullName, seasonStart, stat.points)
 
 head(result)
@@ -127,7 +127,7 @@ Or using the highcharter package to create an interactive version of the same ch
 
 ```{r}
 # Requires highcharter attached using library
-result %>% 
+result %>%
   hchart("line", hcaes(seasonStart, stat.points, group = fullName)) %>%
   hc_add_theme(hc_theme_google())
 ```

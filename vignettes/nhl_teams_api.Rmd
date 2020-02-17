@@ -39,10 +39,10 @@ nhl_teams()
 rosters <- nhl_teams_rosters()
 
 # View the current roster for the Devils
-roster_devils <- rosters %>% 
-  filter(name == "New Jersey Devils") %>% 
-  pull(roster.roster) %>% 
-  # This is still a list, extract the first element 
+roster_devils <- rosters %>%
+  filter(name == "New Jersey Devils") %>%
+  pull(roster.roster) %>%
+  # This is still a list, extract the first element
   first()
 roster_devils
 ```
@@ -51,11 +51,11 @@ roster_devils
 
 ```{r}
 # Get rosters for a specific season, all teams
-rosters_1993 <- nhl_teams_rosters(seasons = "19931994") 
+rosters_1993 <- nhl_teams_rosters(seasons = 1993)
 
 # Select the Quebec Nordiques
-roster_nordiques_1993 <- rosters_1993 %>% 
-  filter(name == "Quebec Nordiques") %>% 
+roster_nordiques_1993 <- rosters_1993 %>%
+  filter(name == "Quebec Nordiques") %>%
   pull(roster.roster)
 ```
 
@@ -64,14 +64,14 @@ roster_nordiques_1993 <- rosters_1993 %>%
 ```{r}
 # Works with multiple seasons
 rosters_1993_1994 <- nhl_teams_rosters(
-  seasons = c("19931994", "19941995")
+  seasons = c(1993:1995)
 )
 
 # It is a bit nicer though (for traffic) to get less data
 # and make more specific requests - e.g. only get the Nordiques
 rosters_1993_1994 <- nhl_teams_rosters(
   teamIds = 32,
-  seasons = c("19931994", "19941995")
+  seasons = c(1993:1995)
 )
 ```
 
@@ -93,9 +93,9 @@ There is a lot of information about games in the API, for instance, full details
 
 ```{r}
 # First get the link
-game_url <- nhl_teams_shedule_previous(1) %>% 
-  extract2("previousGameSchedule.dates") %>% first() %>% 
-  extract2("games") %>% first() %>% 
+game_url <- nhl_teams_shedule_previous(1) %>%
+  extract2("previousGameSchedule.dates") %>% first() %>%
+  extract2("games") %>% first() %>%
   extract2("link")
 
 # Now use `nhl_get_data()` to retrieve
@@ -139,8 +139,8 @@ devils_stats <- nhl_teams_stats(1, c("20052006", "20062007"))
 
 # Look at the teamStats object for the first of them
 devils_stats %>%
-  extract2("teamStats") %>% first() %>% 
-  extract2("splits") %>% first() %>% 
-  slice(1) %>% 
+  extract2("teamStats") %>% first() %>%
+  extract2("splits") %>% first() %>%
+  slice(1) %>%
   select(stat.gamesPlayed, stat.wins, stat.losses)
 ```
