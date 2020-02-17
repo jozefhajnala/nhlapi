@@ -366,3 +366,14 @@ util_generate_sysdata <- function(
   }
   hashedPlayers
 }
+
+nhl_process_result <- function(x, elName) {
+  res <- util_process_copyright(x)
+  res_df <- res[[elName]]
+  res_df <- util_attributes_to_cols(res, res_df)
+  res_df
+}
+
+nhl_process_results <- function(x, elName) {
+  util_rbindlist(lapply(x, nhl_process_result, elName = elName))
+}

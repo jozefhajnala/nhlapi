@@ -17,17 +17,6 @@ nhl_url_teams <- function(teamIds = NULL, params = NULL) {
   nhl_url(endPoint = "teams", suffixes = suffixes, params = params)
 }
 
-nhl_process_team <- function(x) {
-  res <- util_process_copyright(x)
-  res_df <- res[["teams"]]
-  res_df <- util_attributes_to_cols(res, res_df)
-  res_df
-}
-
-nhl_process_teams <- function(x) {
-  util_rbindlist(lapply(x, nhl_process_team))
-}
-
 #' Retrieve metadata on NHL teams from the API
 #'
 #' @description Retrieves team metadata such as the teams names,
@@ -51,7 +40,7 @@ nhl_teams <- function(teamIds = NULL, params = NULL) {
   x <- nhl_url_teams(teamIds = teamIds, params = params)
   x <- nhl_get_data(x)
   x <- util_remove_get_data_errors(x)
-  x <- nhl_process_teams(x)
+  x <- nhl_process_results(x, elName = "teams")
   x
 }
 

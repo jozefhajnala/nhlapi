@@ -11,17 +11,6 @@ nhl_url_players <- function(playerIds) {
   nhl_url(endPoint = "people", suffixes = list(playerIds))
 }
 
-nhl_process_player <- function(x) {
-  res <- util_process_copyright(x)
-  res_df <- res[["people"]]
-  res_df <- util_attributes_to_cols(res, res_df)
-  res_df
-}
-
-nhl_process_players <- function(x) {
-  util_rbindlist(lapply(x, nhl_process_player))
-}
-
 #' Retrieve metadata for players based on names or ids
 #'
 #' Retrieves information on players from the NHL API based on
@@ -50,6 +39,6 @@ nhl_players <- function(playerNames, playerIds = NULL) {
   x <- nhl_url_players(playerIds)
   x <- nhl_get_data(x)
   x <- util_remove_get_data_errors(x)
-  x <- nhl_process_players(x)
+  x <- nhl_process_results(x, elName = "people")
   x
 }
