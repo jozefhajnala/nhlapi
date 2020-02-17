@@ -642,3 +642,45 @@ teams_processed <- data.frame(
   stringsAsFactors = FALSE,
   row.names = NULL
 )
+
+divisions <- list(
+  structure(
+    list(
+      copyright = copyright,
+      divisions = data.frame(
+          id = 18L,
+          name = "Metropolitan",
+          nameShort = "Metro",
+          link = "/api/v1/divisions/18",
+          abbreviation = "M",
+          active = TRUE,
+          conference.id = 6L,
+          conference.name = "Eastern",
+          conference.link = "/api/v1/conferences/6",
+          stringsAsFactors = FALSE
+        )
+    ),
+    .Names = c("copyright", "divisions"),
+    url = "https://statsapi.web.nhl.com/api/v1/divisions/18"
+  ),
+  structure(
+    list(copyright = copyright, divisions = list()),
+    .Names = c("copyright", "divisions"),
+    url = "https://statsapi.web.nhl.com/api/v1/divisions/19"
+  )
+)
+
+divisions_done <- data.frame(
+  id = 18L,
+  name = "Metropolitan",
+  nameShort = "Metro",
+  link = "/api/v1/divisions/18",
+  abbreviation = "M",
+  active = TRUE,
+  conference.id = 6L,
+  conference.name = "Eastern",
+  conference.link = "/api/v1/conferences/6",
+  url = "https://statsapi.web.nhl.com/api/v1/divisions/18",
+  copyright = copyright,
+  stringsAsFactors = FALSE
+)

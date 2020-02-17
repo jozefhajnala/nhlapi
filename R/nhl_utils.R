@@ -369,6 +369,7 @@ util_generate_sysdata <- function(
 nhl_process_result <- function(x, elName) {
   res <- util_process_copyright(x)
   res_df <- res[[elName]]
+  if (identical(res_df, list())) res_df <- as.data.frame(res_df)
   res_df <- util_attributes_to_cols(res, res_df)
   res_df
 }
