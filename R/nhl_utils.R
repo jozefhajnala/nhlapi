@@ -8,10 +8,9 @@
 #' @param years `integer()`, vector of season starting years,
 #'   e.g.for season 1995-1996 it would be 1995.
 #'
-#' @examples
+#' @examples \dontrun{
 #'   nhl_make_seasons(1995:2000)
-#'
-#' @export
+#' }
 #'
 #' @return `character()`, vector of seasons suited for the NHL API.
 nhl_make_seasons <- function(years = 1950L:2019L) {
