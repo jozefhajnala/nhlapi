@@ -684,3 +684,18 @@ divisions_done <- data.frame(
   copyright = copyright,
   stringsAsFactors = FALSE
 )
+
+conferences_done <- data.frame(
+  id = 1:2,
+  name = c("Eastern", "Western"),
+  link = c("/api/v1/conferences/1", "/api/v1/conferences/2"),
+  abbreviation = c("XVE", "XVW"),
+  shortName = c("East", "West"),
+  active = c(FALSE, FALSE),
+  url = c(
+    "https://statsapi.web.nhl.com/api/v1/conferences/1",
+    "https://statsapi.web.nhl.com/api/v1/conferences/2"
+  ),
+  copyright = rep(copyright, 2L),
+  stringsAsFactors = FALSE
+)
