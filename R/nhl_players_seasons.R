@@ -95,6 +95,12 @@ nhl_players_allseasons <- function(
   playerNames,
   playerIds = NULL
 ) {
+  if (missing(playerNames) && is.null(playerIds)) {
+    stop("Please provide either playerNames or playerIds.")
+  }
+  if (!missing(playerNames)) {
+    playerIds <- util_prepare_player_ids(playerNames)
+  }
   x <- nhl_url_players_allseasons(playerIds = playerIds)
   x <- nhl_get_data(x)
   playerIds <- playerIds[!util_locate_get_data_errors(x)]
