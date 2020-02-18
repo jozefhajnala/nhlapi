@@ -20,6 +20,7 @@ nhl_url <- function(
   params = NULL,
   baseUrl = getOption("nhlapi_baseurl")
 ) {
+  log_d("nhl_url", "start")
   url <- baseUrl
   if (!is.null(endPoint)) {
     url <- paste0(url, endPoint)
@@ -30,6 +31,7 @@ nhl_url <- function(
   if (!is.null(params)) {
     url <- nhl_url_add_params(url = url, params = params)
   }
+  log_d("nhl_url", "returning", url)
   url
 }
 

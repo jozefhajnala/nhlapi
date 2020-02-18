@@ -13,7 +13,7 @@ nhl_get_data_worker <- function(
   retries = getOption("nhlapi_get_retries"),
   retrySleep = getOption("nhlapi_get_retry_sleep")
 ) {
-  log_i(url)
+  log_d("nhl_get_data_worker", "start", url)
   res <- nhl_from_json(
     url = url,
     flatten = flatten,
@@ -26,6 +26,7 @@ nhl_get_data_worker <- function(
     class(res) <- append(class(res), "nhl_get_data_error")
   }
   attr(res, "url") <- url
+  log_d("nhl_get_data_worker", "done", url)
   res
 }
 
@@ -38,8 +39,10 @@ nhl_get_data_worker <- function(
 #'
 #' @return `list` of results retrieved using [nhl_get_data_worker()].
 nhl_get_data <- function(urls, flatten = getOption("nhlapi_flatten")) {
+  log_d("nhl_get_data", "start", toString(urls))
   res <- lapply(urls, nhl_get_data_worker, flatten = flatten)
   util_report_get_data_errors(res)
+  log_d("nhl_get_data", "done")
   res
 }
 
@@ -70,9 +73,11 @@ nhl_from_json <- function(
   retrySleep = getOption("nhlapi_get_retry_sleep"),
   noRetryPatt = getOption("nhlapi_get_noretry")
 ) {
+  log_d("nhl_from_json", "start", url, "retries:", retries)
   attempt <- 0L
   failed <- TRUE
   while (attempt <= retries && isTRUE(failed)) {
+    log_d("nhl_from_json", "attempt no:", attempt)
     if (attempt > 0L) Sys.sleep(retrySleep)
     res <- try(
       jsonlite::fromJSON(url, flatten = flatten),
@@ -80,13 +85,14 @@ nhl_from_json <- function(
     )
     failed <- inherits(res, "try-error")
     if (failed) {
-      noRetry <- isTRUE(grepl(
-        noRetryPatt,
-        attr(res, "condition")[["message"]]
-      ))
+      errMsg <- attr(res, "condition")[["message"]]
+      log_w("nhl_from_json", url, "error for attempt no:", attempt, errMsg)
+      noRetry <- isTRUE(grepl(noRetryPatt, errMsg))
+      log_d("nhl_from_json", "not retrying, error consistent with noRetry")
       if (noRetry) break
     }
     attempt <- attempt + 1L
   }
+  log_d("nhl_from_json", "done", url)
   res
 }
