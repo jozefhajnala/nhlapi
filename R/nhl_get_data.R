@@ -88,8 +88,10 @@ nhl_from_json <- function(
       errMsg <- attr(res, "condition")[["message"]]
       log_w("nhl_from_json", url, "error for attempt no:", attempt, errMsg)
       noRetry <- isTRUE(grepl(noRetryPatt, errMsg))
-      log_d("nhl_from_json", "not retrying, error consistent with noRetry")
-      if (noRetry) break
+      if (noRetry) {
+        log_d("nhl_from_json", "not retrying, error in line with noRetry")
+        break
+      }
     }
     attempt <- attempt + 1L
   }
