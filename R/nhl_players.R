@@ -1,9 +1,12 @@
 #' Create an NHL API URL for players
 #'
-#' @param playerIds `integer()`, ids of the players.
+#' @param playerIds `integer()`, vector of one or more ids of the
+#'   players. The ids correspond to the ids expected by the NHL
+#'   API's people endpoint. For most cases the `playerNames` argument
+#'   can be provided for more convenient usage.
 #'
 #' @examples \dontrun{
-#'   nhl_url_players(c(8477474, 8477475))
+#'   nhl_url_players(playerIds = c(8477474, 8477475))
 #' }
 #'
 #' @return `character()` of same length as `playerIds`
@@ -24,8 +27,10 @@ nhl_url_players <- function(playerIds) {
 #' @export
 #'
 #' @examples \dontrun{
+#'
 #'  # With player names
 #'  nhl_players(c("joe SAKIC", "patrick roy"))
+#'
 #'  # With playerIds
 #'  nhl_players(playerIds = c(8451101, 8458554))
 #' }

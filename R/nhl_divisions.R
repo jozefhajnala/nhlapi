@@ -21,15 +21,15 @@ nhl_url_divisions <- function(divisionIds = NULL) {
 #'
 #' @inheritParams nhl_url_divisions
 #'
-#' @return data.frame, with information on divisions, one line
+#' @return `data.frame`, with information on divisions, one row
 #'   per division.
 #' @export
 #'
 #' @examples \dontrun{
-#'   # All divisions
+#'   # Get information on all divisions
 #'   nhl_divisions()
 #'
-#'  # Only 2 divisions
+#'   # Get information on 2 selected divisions
 #'   nhl_divisions(15:16)
 #' }
 nhl_divisions <- function(divisionIds = NULL) {

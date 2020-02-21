@@ -7,10 +7,13 @@
 nhl_players_allseasons(playerNames, playerIds = NULL)
 }
 \arguments{
-\item{playerNames}{\code{character()}, player names, not case
-sensitive for convenience.}
+\item{playerNames}{\code{character()}, vector of one or more player names.
+Not case sensitive for convenience.}
 
-\item{playerIds}{\code{integer()}, ids of the players.}
+\item{playerIds}{\code{integer()}, vector of one or more ids of the
+players. The ids correspond to the ids expected by the NHL
+API's people endpoint. For most cases the \code{playerNames} argument
+can be provided for more convenient usage.}
 }
 \value{
 data.frame
@@ -20,6 +23,11 @@ Retrieve all seasons statistics for players
 }
 \examples{
 \dontrun{
+
+ # With player names
+ nhl_players_allseasons(c("joe sakic", "Peter Forsberg"))
+
+ # With player ids
  nhl_players_allseasons(c(8451101, 8458554))
 }
 }

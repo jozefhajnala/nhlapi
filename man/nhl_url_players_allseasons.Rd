@@ -7,7 +7,10 @@
 nhl_url_players_allseasons(playerIds)
 }
 \arguments{
-\item{playerIds}{\code{integer()}, ids of the players.}
+\item{playerIds}{\code{integer()}, vector of one or more ids of the
+players. The ids correspond to the ids expected by the NHL
+API's people endpoint. For most cases the \code{playerNames} argument
+can be provided for more convenient usage.}
 }
 \description{
 Create an NHL API URL for all players' seasons statistics

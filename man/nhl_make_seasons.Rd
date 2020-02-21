@@ -4,11 +4,16 @@
 \alias{nhl_make_seasons}
 \title{Make a vector of seasons consumable by the API}
 \usage{
-nhl_make_seasons(years = 1950L:2019L)
+nhl_make_seasons(seasons = 1950L:2019L)
 }
 \arguments{
-\item{years}{\code{integer()}, vector of season starting years,
-e.g.for season 1995-1996 it would be 1995.}
+\item{seasons}{\code{numeric()}, vector of starting years of desired
+seasons in \code{YYYY} format, e.g. \code{1995} for season 1995-1996.
+Accepts vectors such as \code{c(1995:2000, 2010)}.
+
+Alternatively, also accepts \code{character()} with seasons in the
+format \code{"YYYYZZZZ"}, where ZZZZ = YYYY + 1, e.g. \code{"19951996"}.
+This is the format that ultimately gets sent to the NHL API.}
 }
 \value{
 \code{character()}, vector of seasons suited for the NHL API.

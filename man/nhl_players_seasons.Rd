@@ -8,17 +8,21 @@ nhl_players_seasons(playerNames, seasons, playerIds = NULL,
   playoffs = FALSE)
 }
 \arguments{
-\item{playerNames}{\code{character()}, player names, not case
-sensitive for convenience.}
+\item{playerNames}{\code{character()}, vector of one or more player names.
+Not case sensitive for convenience.}
 
 \item{seasons}{\code{numeric()}, vector of starting years of desired
-seasons, in \code{YYYY} format, e.g. \code{1995} for season 1995-1996.
+seasons in \code{YYYY} format, e.g. \code{1995} for season 1995-1996.
 Accepts vectors such as \code{c(1995:2000, 2010)}.
+
 Alternatively, also accepts \code{character()} with seasons in the
 format \code{"YYYYZZZZ"}, where ZZZZ = YYYY + 1, e.g. \code{"19951996"}.
-This is the format that ultimately gets sent to the API.}
+This is the format that ultimately gets sent to the NHL API.}
 
-\item{playerIds}{\code{integer()}, ids of the players.}
+\item{playerIds}{\code{integer()}, vector of one or more ids of the
+players. The ids correspond to the ids expected by the NHL
+API's people endpoint. For most cases the \code{playerNames} argument
+can be provided for more convenient usage.}
 
 \item{playoffs}{\code{logical(1)} if \code{FALSE} (default) get the regular
 seasons data, if \code{TRUE}, get the data for the playoffs.}

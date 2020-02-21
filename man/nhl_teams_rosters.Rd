@@ -12,11 +12,12 @@ for all teams. As of end of 2019, the valid team ids seem to be
 in the \code{1:54} range.}
 
 \item{seasons}{\code{numeric()}, vector of starting years of desired
-seasons, in \code{YYYY} format, e.g. \code{1995} for season 1995-1996.
+seasons in \code{YYYY} format, e.g. \code{1995} for season 1995-1996.
 Accepts vectors such as \code{c(1995:2000, 2010)}.
+
 Alternatively, also accepts \code{character()} with seasons in the
 format \code{"YYYYZZZZ"}, where ZZZZ = YYYY + 1, e.g. \code{"19951996"}.
-This is the format that ultimately gets sent to the API.}
+This is the format that ultimately gets sent to the NHL API.}
 }
 \value{
 data.frame, with an element called \code{roster.roster}

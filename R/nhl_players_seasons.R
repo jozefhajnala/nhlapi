@@ -14,15 +14,11 @@ nhl_url_players_stats <- function(playerIds) {
 #' @details If multiple players and seasons are provided, urls will
 #'   be created for all combinations of players and seasons.
 #'
-#' @param playerIds `integer()`, ids of the players.
-#' @param seasons `numeric()`, vector of starting years of desired
-#'   seasons, in `YYYY` format, e.g. `1995` for season 1995-1996.
-#'   Accepts vectors such as `c(1995:2000, 2010)`.
-#'   Alternatively, also accepts `character()` with seasons in the
-#'   format `"YYYYZZZZ"`, where ZZZZ = YYYY + 1, e.g. `"19951996"`.
-#'   This is the format that ultimately gets sent to the API.
+#' @inheritParams nhl_url_players
+#' @inheritParams nhl_make_seasons
+
 #' @param playoffs `logical(1)` if `FALSE` (default) get the regular
-#' seasons data, if `TRUE`, get the data for the playoffs.
+#'   seasons data, if `TRUE`, get the data for the playoffs.
 #' @examples \dontrun{
 #'   # Joe Sakic, regular season 1995/1996
 #'   nhl_url_players_seasons(8451101L, 1995)
@@ -89,6 +85,11 @@ nhl_process_players_seasons <- function(x, playerIds) {
 #' @export
 #'
 #' @examples \dontrun{
+#'
+#'  # With player names
+#'  nhl_players_allseasons(c("joe sakic", "Peter Forsberg"))
+#'
+#'  # With player ids
 #'  nhl_players_allseasons(c(8451101, 8458554))
 #' }
 nhl_players_allseasons <- function(

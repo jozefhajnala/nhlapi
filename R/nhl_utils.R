@@ -5,19 +5,24 @@
 #'   a vector of years in YYYY format and create a vector of
 #'   such seasons to be used with the API.
 #'
-#' @param years `integer()`, vector of season starting years,
-#'   e.g.for season 1995-1996 it would be 1995.
+#' @param seasons `numeric()`, vector of starting years of desired
+#'   seasons in `YYYY` format, e.g. `1995` for season 1995-1996.
+#'   Accepts vectors such as `c(1995:2000, 2010)`.
+#'
+#'   Alternatively, also accepts `character()` with seasons in the
+#'   format `"YYYYZZZZ"`, where ZZZZ = YYYY + 1, e.g. `"19951996"`.
+#'   This is the format that ultimately gets sent to the NHL API.
 #'
 #' @examples \dontrun{
 #'   nhl_make_seasons(1995:2000)
 #' }
 #'
 #' @return `character()`, vector of seasons suited for the NHL API.
-nhl_make_seasons <- function(years = 1950L:2019L) {
-  if (is.character(years) && all(nchar(years) == 8L)) {
-    return(years)
+nhl_make_seasons <- function(seasons = 1950L:2019L) {
+  if (is.character(seasons) && all(nchar(seasons) == 8L)) {
+    return(seasons)
   }
-  paste0(years, years + 1L)
+  paste0(seasons, seasons + 1L)
 }
 
 #' Flatten a list into a data frame keeping classes
@@ -302,8 +307,8 @@ util_map_player_id <- function(x, map = getOption("nhlapi_player_map")) {
 #' Retrieve a player ids from their names
 #'
 #' @inheritParams util_map_player_id
-#' @param playerNames `character()`, player names, not case
-#'   sensitive for convenience.
+#' @param playerNames `character()`, vector of one or more player names.
+#'   Not case sensitive for convenience.
 #'
 #' @return `integer()` named vector of player ids,
 #'   `NA_integer`` for those names where id was not

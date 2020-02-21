@@ -27,8 +27,8 @@ in between retries.}
 \code{list} with the retrieved data or class \code{nhl_get_data_error}.
 }
 \description{
-Gets data from the NHL API using \code{jsonlite}.
+Gets data from the NHL API using \code{\link[=nhl_from_json]{nhl_from_json()}}.
 }
 \seealso{
-\code{\link[=nhl_url]{nhl_url()}}
+\code{\link[=nhl_from_json]{nhl_from_json()}}, \code{\link[=nhl_url]{nhl_url()}}
 }

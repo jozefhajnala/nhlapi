@@ -12,7 +12,7 @@ for all conferences As of end of 2019, the valid conference ids seem to be
 in the \code{1:7} range.}
 }
 \value{
-data.frame, with information on conferences, one line
+\code{data.frame}, with information on conferences, one row
 per conference.
 }
 \description{
@@ -20,10 +20,10 @@ Retrieve metadata on NHL conferences from the API
 }
 \examples{
 \dontrun{
-  # All conferences
+  # Get information on all conferences
   nhl_conferences()
 
- # Only 2 conferences
+  # Get information on 2 selected conferences
   nhl_conferences(5:6)
 }
 }

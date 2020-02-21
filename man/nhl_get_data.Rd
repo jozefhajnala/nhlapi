@@ -2,7 +2,7 @@
 % Please edit documentation in R/nhl_get_data.R
 \name{nhl_get_data}
 \alias{nhl_get_data}
-\title{Get data from the API for multiple urls}
+\title{Get data from the API for one or more urls}
 \usage{
 nhl_get_data(urls, flatten = getOption("nhlapi_flatten"))
 }
@@ -15,7 +15,27 @@ flattens nested data frames into a single non-nested data frame.}
 }
 \value{
 \code{list} of results retrieved using \code{\link[=nhl_get_data_worker]{nhl_get_data_worker()}}.
+One element per url. The elements contain the retrieved data
+if retrieval succeeded, otherwise an \code{nhl_get_data_error} class
+object.
 }
 \description{
-Get data from the API for multiple urls
+Get data from the API for one or more urls
+}
+\examples{
+\dontrun{
+  nhl_get_data(c(
+    "https://statsapi.web.nhl.com/api/v1/teams/1",
+    "https://statsapi.web.nhl.com/api/v1/people/8477474"
+  ))
+
+  nhl_get_data(
+    "https://statsapi.web.nhl.com/api/v1/teams/1",
+    flatten = FALSE
+  )
+}
+
+}
+\seealso{
+\code{\link[=nhl_get_data_worker]{nhl_get_data_worker()}}
 }

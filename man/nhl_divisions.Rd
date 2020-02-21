@@ -12,7 +12,7 @@ for all divisions As of end of 2019, the valid division ids seem to be
 in the \code{1:25} range.}
 }
 \value{
-data.frame, with information on divisions, one line
+\code{data.frame}, with information on divisions, one row
 per division.
 }
 \description{
@@ -20,10 +20,10 @@ Retrieve metadata on NHL divisions from the API
 }
 \examples{
 \dontrun{
-  # All divisions
+  # Get information on all divisions
   nhl_divisions()
 
- # Only 2 divisions
+  # Get information on 2 selected divisions
   nhl_divisions(15:16)
 }
 }

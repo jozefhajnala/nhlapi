@@ -7,8 +7,8 @@
 util_prepare_player_ids(playerNames, map = getOption("nhlapi_player_map"))
 }
 \arguments{
-\item{playerNames}{\code{character()}, player names, not case
-sensitive for convenience.}
+\item{playerNames}{\code{character()}, vector of one or more player names.
+Not case sensitive for convenience.}
 
 \item{map}{\code{data.frame}, with 2 columns:
 \itemize{

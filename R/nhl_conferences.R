@@ -21,15 +21,15 @@ nhl_url_conferences <- function(conferenceIds = NULL) {
 #'
 #' @inheritParams nhl_url_conferences
 #'
-#' @return data.frame, with information on conferences, one line
+#' @return `data.frame`, with information on conferences, one row
 #'   per conference.
 #' @export
 #'
 #' @examples \dontrun{
-#'   # All conferences
+#'   # Get information on all conferences
 #'   nhl_conferences()
 #'
-#'  # Only 2 conferences
+#'   # Get information on 2 selected conferences
 #'   nhl_conferences(5:6)
 #' }
 nhl_conferences <- function(conferenceIds = NULL) {

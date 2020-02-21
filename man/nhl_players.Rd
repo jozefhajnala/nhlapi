@@ -7,10 +7,13 @@
 nhl_players(playerNames, playerIds = NULL)
 }
 \arguments{
-\item{playerNames}{\code{character()}, player names, not case
-sensitive for convenience.}
+\item{playerNames}{\code{character()}, vector of one or more player names.
+Not case sensitive for convenience.}
 
-\item{playerIds}{\code{integer()}, ids of the players.}
+\item{playerIds}{\code{integer()}, vector of one or more ids of the
+players. The ids correspond to the ids expected by the NHL
+API's people endpoint. For most cases the \code{playerNames} argument
+can be provided for more convenient usage.}
 }
 \value{
 data.frame
@@ -22,8 +25,10 @@ they take precedence over \code{playerIds}.
 }
 \examples{
 \dontrun{
+
  # With player names
  nhl_players(c("joe SAKIC", "patrick roy"))
+
  # With playerIds
  nhl_players(playerIds = c(8451101, 8458554))
 }

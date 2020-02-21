@@ -1,52 +1,3 @@
-#' Get data from the API for 1 URL
-#'
-#' @description Gets data from the NHL API using `jsonlite`.
-#'
-#' @inheritParams nhl_from_json
-#' @seealso [nhl_url()]
-#'
-#' @return `list` with the retrieved data or class `nhl_get_data_error`.
-nhl_get_data_worker <- function(
-  url,
-  flatten = getOption("nhlapi_flatten"),
-  silent = getOption("nhlapi_try_silent"),
-  retries = getOption("nhlapi_get_retries"),
-  retrySleep = getOption("nhlapi_get_retry_sleep")
-) {
-  log_d("nhl_get_data_worker", "start", url)
-  res <- nhl_from_json(
-    url = url,
-    flatten = flatten,
-    silent = silent,
-    retries = retries,
-    retrySleep = retrySleep
-  )
-  if (inherits(res, "try-error")) {
-    res <- list(res)
-    class(res) <- append(class(res), "nhl_get_data_error")
-  }
-  attr(res, "url") <- url
-  log_d("nhl_get_data_worker", "done", url)
-  res
-}
-
-#' Get data from the API for multiple urls
-#'
-#' @param urls `character()`, vector of urls to retrieve
-#'   the data from.
-#' @inheritParams nhl_get_data_worker
-#' @export
-#'
-#' @return `list` of results retrieved using [nhl_get_data_worker()].
-nhl_get_data <- function(urls, flatten = getOption("nhlapi_flatten")) {
-  log_d("nhl_get_data", "start", toString(urls))
-  res <- lapply(urls, nhl_get_data_worker, flatten = flatten)
-  util_report_get_data_errors(res)
-  log_d("nhl_get_data", "done")
-  res
-}
-
-
 #' Get URL using fromJSON
 #'
 #' @param url `character(1)`, the URL to get the data from.
@@ -96,5 +47,73 @@ nhl_from_json <- function(
     attempt <- attempt + 1L
   }
   log_d("nhl_from_json", "done", url)
+  res
+}
+
+
+#' Get data from the API for 1 URL
+#'
+#' @description Gets data from the NHL API using [nhl_from_json()].
+#'
+#' @inheritParams nhl_from_json
+#' @seealso [nhl_from_json()], [nhl_url()]
+#'
+#' @return `list` with the retrieved data or class `nhl_get_data_error`.
+nhl_get_data_worker <- function(
+  url,
+  flatten = getOption("nhlapi_flatten"),
+  silent = getOption("nhlapi_try_silent"),
+  retries = getOption("nhlapi_get_retries"),
+  retrySleep = getOption("nhlapi_get_retry_sleep")
+) {
+  log_d("nhl_get_data_worker", "start", url)
+  res <- nhl_from_json(
+    url = url,
+    flatten = flatten,
+    silent = silent,
+    retries = retries,
+    retrySleep = retrySleep
+  )
+  if (inherits(res, "try-error")) {
+    res <- list(res)
+    class(res) <- append(class(res), "nhl_get_data_error")
+  }
+  attr(res, "url") <- url
+  log_d("nhl_get_data_worker", "done", url)
+  res
+}
+
+
+#' Get data from the API for one or more urls
+#'
+#' @param urls `character()`, vector of urls to retrieve
+#'   the data from.
+#'
+#' @inheritParams nhl_get_data_worker
+#' @export
+#'
+#' @seealso [nhl_get_data_worker()]
+#'
+#' @examples \dontrun{
+#'   nhl_get_data(c(
+#'     "https://statsapi.web.nhl.com/api/v1/teams/1",
+#'     "https://statsapi.web.nhl.com/api/v1/people/8477474"
+#'   ))
+#'
+#'   nhl_get_data(
+#'     "https://statsapi.web.nhl.com/api/v1/teams/1",
+#'     flatten = FALSE
+#'   )
+#' }
+#'
+#' @return `list` of results retrieved using [nhl_get_data_worker()].
+#'   One element per url. The elements contain the retrieved data
+#'   if retrieval succeeded, otherwise an `nhl_get_data_error` class
+#'   object.
+nhl_get_data <- function(urls, flatten = getOption("nhlapi_flatten")) {
+  log_d("nhl_get_data", "start", toString(urls))
+  res <- lapply(urls, nhl_get_data_worker, flatten = flatten)
+  util_report_get_data_errors(res)
+  log_d("nhl_get_data", "done")
   res
 }
