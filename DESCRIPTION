@@ -14,8 +14,7 @@ Roxygen: list(markdown = TRUE)
 Suggests: 
     testthat,
     roxygen2,
-    knitr,
-    rmarkdown
+    knitr
 License: AGPL-3
 URL: https://github.com/jozefhajnala/nhlapi
 BugReports: https://github.com/jozefhajnala/nhlapi/issues
