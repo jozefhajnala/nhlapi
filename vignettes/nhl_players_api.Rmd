@@ -21,6 +21,8 @@ knitr::opts_chunk$set(
 
 The high-level APIs intend to provide convenient functionality used by most users. Each function from the players API returns a data frame with the requested data processed to serve common purposes.
 
+Note that while some of the showcased examples use the dplyr package to manipulate the data, the `nhlapi` package itself does not import it and the user is free to use whichever methods to manipulate the data.
+
 ```{r}
 library(nhlapi)
 ```
@@ -31,14 +33,14 @@ The first endpoint retrieves information on players based on provided player nam
 
 One or more names of one or more ids can be provided to the function, data on each valid player name or id will be returned as one row of the resulting data frame:
 
-With names
+Example with player names, note that they are not case sensitive:
 
 ```{r}
 # Get information on players by name
 nhl_players(c("joe sakic", "PETER forsberg"))
 ```
 
-With ids:
+With player ids:
 
 ```{r}
 playerIds <- c(8451101, 8458554)
@@ -56,7 +58,7 @@ nhl_players(playerIds = c("made up player", 8451101))
 The functions are designed is such a way that they allow working with the `%>%` operator if the user desires to do so:
 
 ```{r}
-# Requires dplyr attached using library
+# Requires dplyr attached using library("dplyr")
 nhl_players(playerIds = playerIds) %>%
   select(fullName, nationality, shootsCatches, primaryPosition.code)
 ```
@@ -64,17 +66,28 @@ nhl_players(playerIds = playerIds) %>%
 
 ## Players' season statistics
 
-The second endpoint is used to retrieve players' statistics per seasons. The function `nhl_players_seasons` accepts multiple `playerIds` and multiple `seasons`. The proper API URLs will be constructed and a flat data frame returned:
+The second endpoint is used to retrieve players' statistics per seasons. The function `nhl_players_seasons()` accepts multiple `playerNames` or  `playerIds` and multiple `seasons`. The proper API URLs will be constructed and a flat data frame returned:
 
 ```{r}
-# Get a specific season statistics using player Ids
+# Get a specific season statistics using player names
 nhl_players_seasons(
-  playerIds = c(8451101, 8458554),
+  c("Joe SAKIC", "Peter Forsberg"),
   seasons = 1996:1998
 )
 ```
 
 It also accepts a `playoff` argument in case the users wants playoff statistics returned and not regular season:
+
+```{r}
+# Get a specific season playoff statistics
+nhl_players_seasons(
+  c("Joe SAKIC", "Peter Forsberg"),
+  seasons = 1996,
+  playoffs = TRUE
+)
+```
+
+Player ids can also be used instead of player names:
 
 ```{r}
 # Get a specific season playoff statistics
@@ -85,10 +98,11 @@ nhl_players_seasons(
 )
 ```
 
-A simple wrapper is also provided to get the statistics for all the seasons for the specified players:
+
+A simple wrapper `nhl_players_allseasons()` is also provided to get the statistics for all the seasons for the specified players:
 
 ```{r}
-# Get all season statistics for a player
+# Get all season statistics for players
 nhl_players_allseasons(playerIds = c(8451101, 8458554))
 ```
 
@@ -98,11 +112,11 @@ The package outputs are designed in such a way that they support easy data manip
 
 ```{r}
 # Requires dplyr attached using library
-playerIds <- c(8451101, 8458554)
+playerNames <- c("Joe Sakic", "Peter Forsberg")
 
-result <- nhl_players(playerIds = playerIds) %>%
+result <- nhl_players(playerNames) %>%
   left_join(
-    nhl_players_allseasons(playerIds = playerIds),
+    nhl_players_allseasons(playerNames),
     by = c("id" = "playerId")
   ) %>%
   filter(league.name == "National Hockey League") %>%

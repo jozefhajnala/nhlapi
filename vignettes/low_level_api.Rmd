@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 # Low Level NHL API
 
-If you would like to interact with the API directly without any helpers, `nhl_get_data()` function is made for this purpose. It takes as input one or more urls (a character vector) and returns a list of the same length, each element containing the raw results returned from the API for the corresponding URL.
+If you would like to interact with the API directly without any helpers, the `nhl_get_data()` function is made for this purpose. It takes as input one or more urls (a character vector) and returns a list of the same length, each element containing the raw results returned from the API for the corresponding URL.
 
 For example:
 
@@ -32,7 +32,7 @@ urls <- c(
 nhl_get_data(urls)
 ```
 
-Since it is helpful for work with R to get data in a flat data frame format, the function will by default flatten nested data frame columns and return a flat data frame. If you really want raw data returned, you can set the flatten argument to `FALSE`:
+Since it is helpful for work with R to get data in a flat data frame format, the function will by default attempt to flatten nested data frame columns and return flat data frames where possible. If you really want raw data returned, you can set the flatten argument to `FALSE`:
 
 ```{r}
 nhl_get_data(urls, flatten = FALSE)

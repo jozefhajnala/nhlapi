@@ -19,7 +19,9 @@ knitr::opts_chunk$set(
 
 # High-level team APIs
 
-The high-level team APIs intend to provide convenient functionality used by most users. Each function from the players API returns a data frame with the requested data processed to serve common purposes.
+The high-level team APIs intend to provide convenient functionality used by most users. Each function from the teams API returns a data frame with the requested data processed to serve common purposes.
+
+Note that while some of the showcased examples use the dplyr package to manipulate the data, the `nhlapi` package itself does not import it and the user is free to use whichever methods to manipulate the data. 
 
 ```{r}
 library(nhlapi)
@@ -47,7 +49,7 @@ roster_devils <- rosters %>%
 roster_devils
 ```
 
-# Rosters for past season
+# Rosters for past seasons
 
 ```{r}
 # Get rosters for a specific season, all teams
@@ -92,17 +94,17 @@ nhl_teams_shedule_previous(c(1,3,5))
 There is a lot of information about games in the API, for instance, full details of the previous of the Devils:
 
 ```{r}
-# First get the link
+# First get the API URL for the relevant game
 game_url <- nhl_teams_shedule_previous(1) %>%
   extract2("previousGameSchedule.dates") %>% first() %>%
   extract2("games") %>% first() %>%
   extract2("link")
 
-# Now use `nhl_get_data()` to retrieve
+# Now use `nhl_get_data()` to retrieve the data
 game_data <- file.path("https://statsapi.web.nhl.com", game_url) %>%
   nhl_get_data()
 
-# This is a very complex endpoint, for instance,
+# This is a very complex nested endpoint, for instance,
 # look at the recorded events in the game
 game_plays <- game_data %>% first() %>%
   extract2("liveData") %>%
@@ -127,15 +129,20 @@ nhl_teams_shedule_next(c(1,3,5))
 # Team Stats per season
 
 ```{r}
-# All teams, current seasons
+# All teams, current season
 nhl_teams_stats()
+```
+
+```{r}
+# Selected teams, selected seasons
+nhl_teams_stats(1, 2005:2006)
 ```
 
 ## Investigate the returned object
 
 ```{r}
 # Get 2 seasons for the Devils:
-devils_stats <- nhl_teams_stats(1, c("20052006", "20062007"))
+devils_stats <- nhl_teams_stats(1, 2005:2006)
 
 # Look at the teamStats object for the first of them
 devils_stats %>%
