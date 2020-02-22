@@ -20,7 +20,7 @@ make_log <- function(
   msg, ..., type = "I", dtFormat = getOption("nhlapi_log_datetime"),
   newLine = FALSE, sep = " | ", collapse = " ", lineBreak = "$",
   endNewLine = FALSE
-){
+) {
   msg <- paste(
     msg, paste(list(...), collapse = collapse),
     collapse = collapse

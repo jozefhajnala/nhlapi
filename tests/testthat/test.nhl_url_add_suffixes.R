@@ -29,7 +29,7 @@ testthat::test_that(
   testthat::expect_equal(
     nhl_url_add_suffixes(
       endpointurls[1L],
-      suffixes = list(c(1,2), c("stats", "some"))
+      suffixes = list(c(1, 2), c("stats", "some"))
     ),
     paste0(
       baseurl,
@@ -46,7 +46,7 @@ testthat::test_that(
   testthat::expect_equal(
     nhl_url_add_suffixes(
       endpointurls,
-      suffixes = list(c(1,2), c("stats", "some"))
+      suffixes = list(c(1, 2), c("stats", "some"))
     ),
     paste0(baseurl, c(
       "people/1/stats", "teams/1/stats",

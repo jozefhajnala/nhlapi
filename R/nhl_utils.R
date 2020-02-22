@@ -204,7 +204,7 @@ util_convert_minsonice <- function(chr, splitter = ":")  {
   mins <- strsplit(chr, split = splitter, fixed = TRUE)
   vapply(mins, function(x) {
     if (length(x) == 1L && is.na(x)) return(NA_real_)
-    return(as.integer(x[1L]) + as.integer(x[2L])/60)
+    return(as.integer(x[1L]) + as.integer(x[2L]) / 60)
   }, FUN.VALUE = numeric(1))
 }
 

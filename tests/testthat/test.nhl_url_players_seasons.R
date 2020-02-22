@@ -13,7 +13,7 @@ testthat::test_that(
 
 testthat::test_that(
   "nhl_url_players_seasons generates 1 playoffs url for 1 player",
-  testthat::expect_equal( # Patrick Roy, playoffs 95-96
+  testthat::expect_equal(# Patrick Roy, playoffs 95-96
     nhl_url_players_seasons(8451033L, "19951996", playoffs = TRUE),
     paste0(
       baseurl,
