@@ -8,11 +8,9 @@
 #'   to the end of the url after `?`.
 #' @param baseUrl `character(1)`, base location of the NHL API.
 #'
-#' @export
-#'
-#' @examples
+#' @examples \dontrun{
 #'   nhl_url("people", "8477474")
-#'
+#' }
 #' @return `character()`, the created URLs.
 nhl_url <- function(
   endPoint = NULL,

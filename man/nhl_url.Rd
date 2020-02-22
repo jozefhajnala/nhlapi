@@ -26,6 +26,7 @@ to the end of the url after \code{?}.}
 Create an NHL API URL
 }
 \examples{
+\dontrun{
   nhl_url("people", "8477474")
-
+}
 }
