@@ -78,6 +78,19 @@ testthat::test_that(
 )
 
 testthat::test_that(
+  "util_rbindlist works on data frames with subset of columns",
+  testthat::expect_equal(
+    util_rbindlist(list(mtcars[1, 2:5], mtcars[2, 4:5])),
+    data.frame(
+      cyl = c(6, NA),
+      disp = c(160, NA),
+      hp = c(110,  110),
+      drat = c(3.9, 3.9)
+    )
+  )
+)
+
+testthat::test_that(
   "util_rbindlist works with 0-row data.frames",
   testthat::expect_equal(
     util_rbindlist(list(data.frame(one = integer(0)), data.frame(two = 2))),

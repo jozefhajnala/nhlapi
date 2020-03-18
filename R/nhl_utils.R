@@ -106,6 +106,9 @@ util_rbindlist <- function(lst, fill = TRUE) {
   }
   lst_allNms <- unique(unlist(lst_nms))
   filldf <- function(df, allNms) {
+    if (identical(names(df), allNms)) {
+      return(data.frame(df, row.names = NULL))
+    }
     filledCols <- vapply(
       setdiff(allNms, names(df)),
       function(thisCol) NA,
@@ -380,5 +383,12 @@ nhl_process_result <- function(x, elName) {
 }
 
 nhl_process_results <- function(x, elName) {
-  util_rbindlist(lapply(x, nhl_process_result, elName = elName))
+  res <- lapply(x, nhl_process_result, elName = elName)
+  bindedRes <- try(util_rbindlist(res), silent = TRUE)
+  if (inherits(bindedRes, "try-error")) {
+    warning("util_rbindlist failed, returning unbinded data.")
+    res
+  } else {
+    bindedRes
+  }
 }

@@ -23,3 +23,15 @@ testthat::test_that(
     testplayers_processed
   )
 )
+
+testthat::test_that(
+  "Warn but return if failed rbindlist", {
+    testthat::expect_warning(
+      testthat::with_mock(
+        "nhlapi:::util_rbindlist" = mock_error,
+        nhl_process_results(testplayers, elName = "people")
+      ),
+      "util_rbindlist failed, returning unbinded data."
+    )
+  }
+)
