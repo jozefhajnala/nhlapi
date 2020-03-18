@@ -1,4 +1,5 @@
 mock_return <- function(...) return(list(...))
+mock_identity <- function(x) return(x)
 baseurl <- getOption("nhlapi_baseurl")
 endpointurls <- paste0(baseurl, c("people", "teams"))
 playerIds <- c("some", "8451101", 8451033L, "wrong")

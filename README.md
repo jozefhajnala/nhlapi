@@ -36,10 +36,10 @@ R interface to the NHL API
 
 ### Metadata endpoints
 
-- [ ] Game Types
-- [ ] Game Statuses
-- [ ] Play Types
-- [ ] Tournament Types
-- [ ] Standings Types
-- [ ] Stats Types
-- [ ] Event Types
+- [x] Game Types `nhl_md_game_types()`
+- [x] Game Statuses `nhl_md_game_statuses()`
+- [x] Play Types `nhl_md_play_types()`
+- [x] Tournament Types `nhl_md_tournament_types()`
+- [x] Standings Types `nhl_md_standings_types()`
+- [x] Stats Types `nhl_md_stat_types()`
+- [x] Event Types `nhl_md_event_types()`
