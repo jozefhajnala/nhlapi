@@ -28,10 +28,10 @@ R interface to the NHL API
 
 - [x] Divisions `nhl_divisions()`
 - [x] Conferences `nhl_conferences()`
+- [x] Drafts `nhl_drafts()`
 - [ ] Seasons
 - [ ] Awards
 - [ ] Venues
-- [ ] Draft (per Year)
 - [ ] Draft prospects
 
 ### Metadata endpoints
