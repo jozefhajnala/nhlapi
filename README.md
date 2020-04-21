@@ -31,7 +31,7 @@ R interface to the NHL API
 - [x] Drafts `nhl_drafts()`
 - [x] Seasons `nhl_seasons()`
 - [x] Awards `nhl_awards()`
-- [ ] Venues
+- [x] Venues `nhl_venues()`
 - [ ] Draft prospects
 
 ### Metadata endpoints
