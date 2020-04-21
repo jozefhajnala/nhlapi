@@ -30,7 +30,7 @@ R interface to the NHL API
 - [x] Conferences `nhl_conferences()`
 - [x] Drafts `nhl_drafts()`
 - [x] Seasons `nhl_seasons()`
-- [ ] Awards
+- [x] Awards `nhl_awards()`
 - [ ] Venues
 - [ ] Draft prospects
 
