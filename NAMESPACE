@@ -3,6 +3,7 @@
 export(nhl_awards)
 export(nhl_conferences)
 export(nhl_divisions)
+export(nhl_draft_prospects)
 export(nhl_drafts)
 export(nhl_get_data)
 export(nhl_md_event_types)
