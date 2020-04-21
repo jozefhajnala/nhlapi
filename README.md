@@ -1,4 +1,5 @@
 # nhlapi
+
 R interface to the NHL API
 
 ![MSWin](https://github.com/jozefhajnala/nhlapi/workflows/check_win/badge.svg)
@@ -19,7 +20,12 @@ R interface to the NHL API
     - [x] Players season/playoff stats `nhl_players_seasons()`
     - [x] Players all season stats `nhl_players_allseasons()`
 
-- [ ] Game-IDs
+- [x] Games
+    - [x] Games content `nhl_games_content()`
+    - [x] Games full live feed `nhl_games_feed()`
+    - [x] Games box score info `nhl_games_boxscore()`
+    - [x] Games line score info`nhl_games_linescore()`
+
 - [ ] Tournaments
 - [ ] Schedule
 - [ ] Standings
@@ -43,3 +49,8 @@ R interface to the NHL API
 - [x] Standings Types `nhl_md_standings_types()`
 - [x] Stats Types `nhl_md_stat_types()`
 - [x] Event Types `nhl_md_event_types()`
+
+
+## Acknowledgments
+
+Thanks go to Drew Hynes for documenting this so well in [gitlab.com/dword4/nhlapi](https://gitlab.com/dword4/nhlapi/blob/master/stats-api.md)
