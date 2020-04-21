@@ -17,7 +17,10 @@ Accepts vectors such as \code{c(1995:2000, 2010)}.
 
 Alternatively, also accepts \code{character()} with seasons in the
 format \code{"YYYYZZZZ"}, where ZZZZ = YYYY + 1, e.g. \code{"19951996"}.
-This is the format that ultimately gets sent to the NHL API.}
+This is the format that ultimately gets sent to the NHL API.
+
+Some API endpoints, notably \code{seasons} exposed via \code{nhl_seasons()}
+also allow the value \code{"current"} to passed.}
 }
 \value{
 data.frame, with an element called \code{roster.roster}

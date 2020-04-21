@@ -13,6 +13,9 @@
 #'   format `"YYYYZZZZ"`, where ZZZZ = YYYY + 1, e.g. `"19951996"`.
 #'   This is the format that ultimately gets sent to the NHL API.
 #'
+#'   Some API endpoints, notably `seasons` exposed via `nhl_seasons()`
+#'   also allow the value `"current"` to passed.
+#'
 #' @examples \dontrun{
 #'   nhl_make_seasons(1995:2000)
 #' }
@@ -20,6 +23,10 @@
 #' @return `character()`, vector of seasons suited for the NHL API.
 nhl_make_seasons <- function(seasons = 1950L:2019L) {
   if (is.character(seasons) && all(nchar(seasons) == 8L)) {
+    return(seasons)
+  }
+  reservedValues <- c("current")
+  if (length(seasons) == 1L && seasons %in% reservedValues) {
     return(seasons)
   }
   paste0(seasons, seasons + 1L)

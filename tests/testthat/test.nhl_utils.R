@@ -16,6 +16,14 @@ testthat::test_that(
   )
 )
 
+testthat::test_that(
+  "nhl_make_seasons keeps 'current' as-is",
+  testthat::expect_equal(
+    nhl_make_seasons("current"),
+    "current"
+  )
+)
+
 context("util_flatten_list")
 
 testthat::test_that(
