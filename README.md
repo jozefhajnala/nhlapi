@@ -31,7 +31,12 @@ R interface to the NHL API
     - [x] Olympics `nhl_tournaments_olympics()`
     - [x] World Cups `nhl_tournaments_worldcups()`
     
-- [ ] Schedule
+- [x] Schedule
+    - [x] Gerenic API with all parameters `nhl_schedule()`
+    - [x] Today `nhl_schedule_today()`
+    - [x] Custom seasons `nhl_schedule_seasons()`
+    - [x] Custom date ranges `nhl_schedule_date_range()`
+
 - [ ] Standings
 
 ### Minor endpoints
