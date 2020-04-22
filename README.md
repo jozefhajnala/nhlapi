@@ -26,7 +26,11 @@ R interface to the NHL API
     - [x] Games box score info `nhl_games_boxscore()`
     - [x] Games line score info`nhl_games_linescore()`
 
-- [ ] Tournaments
+- [x] Tournaments
+    - [x] Playoffs `nhl_tournaments_playoffs()`
+    - [x] Olympics `nhl_tournaments_olympics()`
+    - [x] World Cups `nhl_tournaments_worldcups()`
+    
 - [ ] Schedule
 - [ ] Standings
 

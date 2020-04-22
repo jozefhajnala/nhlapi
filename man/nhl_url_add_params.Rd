@@ -4,7 +4,7 @@
 \alias{nhl_url_add_params}
 \title{Add parameters to urls}
 \usage{
-nhl_url_add_params(url, params)
+nhl_url_add_params(url, params = NULL)
 }
 \arguments{
 \item{url}{\code{character()} vector of urls.}

@@ -174,3 +174,25 @@ testthat::test_that(
     )
   )
 )
+
+testthat::test_that(
+  "When params not provided, unchanged URL is returned",
+  testthat::expect_equal(
+    nhl_url_add_params(
+      "https://statsapi.web.nhl.com/api/v1/people/8477474"
+    ),
+    "https://statsapi.web.nhl.com/api/v1/people/8477474"
+  )
+)
+
+
+testthat::test_that(
+  "When NULL is passed as params, unchanged URL is returned",
+  testthat::expect_equal(
+    nhl_url_add_params(
+      "https://statsapi.web.nhl.com/api/v1/people/8477474",
+      NULL
+    ),
+    "https://statsapi.web.nhl.com/api/v1/people/8477474"
+  )
+)

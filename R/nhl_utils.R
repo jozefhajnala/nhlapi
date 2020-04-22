@@ -399,3 +399,11 @@ nhl_process_results <- function(x, elName) {
     bindedRes
   }
 }
+
+util_all_null <- function(x) {
+  length(x) == 0L || is.null(x) || vapply(x, is.null, FUN.VALUE = logical(1))
+}
+
+util_drop_nulls <- function(x) {
+  Filter(Negate(is.null), x)
+}

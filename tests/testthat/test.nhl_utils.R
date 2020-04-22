@@ -298,3 +298,50 @@ testthat::test_that(
     unlink(tmpFile, force = TRUE)
   }
 )
+
+
+context("util_all_null")
+
+testthat::test_that(
+  "util_all_null is TRUE for NULL", {
+    testthat::expect_true(util_all_null(NULL))
+  }
+)
+
+testthat::test_that(
+  "util_all_null is TRUE for list of NULL", {
+    testthat::expect_true(util_all_null(list(NULL)))
+  }
+)
+
+testthat::test_that(
+  "util_all_null is TRUE for list of NULLs", {
+    testthat::expect_true(util_all_null(list(NULL, NULL)))
+  }
+)
+
+testthat::test_that(
+  "util_all_null is TRUE for named list of NULLs", {
+    testthat::expect_true(util_all_null(list(a = NULL, b = NULL)))
+  }
+)
+
+
+context("util_drop_nulls")
+
+testthat::test_that(
+  "util_drop_nulls drops NULLs",
+  expect_equal(
+    util_drop_nulls(list(b = NULL, a = NULL)),
+    structure(list(), .Names = character(0))
+  )
+)
+
+testthat::test_that(
+  "util_drop_nulls drops NULLs",
+  expect_equal(
+    util_drop_nulls(list(b = NULL, a = 1)),
+    list(a = 1)
+  )
+)
+
