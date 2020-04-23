@@ -34,10 +34,7 @@ nhl_url_tournaments <- function(
 ) {
   suffixes <- list(tournamentTypes)
   params <- list(season = seasons, expand = expand)
-  nhl_url_add_params(
-    nhl_url(endPoint = "tournaments", suffixes = suffixes),
-    params = params
-  )
+  nhl_url(endPoint = "tournaments", suffixes = suffixes, params = params)
 }
 
 #' Retrieve data on tournaments from the API

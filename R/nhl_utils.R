@@ -22,6 +22,9 @@
 #'
 #' @return `character()`, vector of seasons suited for the NHL API.
 nhl_make_seasons <- function(seasons = 1950L:2019L) {
+  if (is.null(seasons)) {
+    return(seasons)
+  }
   if (is.character(seasons) && all(nchar(seasons) == 8L)) {
     return(seasons)
   }

@@ -12,8 +12,7 @@
 #' @return `character()` of same length as `draftYears` or length `1`
 #'   if `draftYears` is `NULL`
 nhl_url_drafts <- function(draftYears = NULL) {
-  suffixes <- if (!is.null(draftYears)) list(draftYears)
-  nhl_url(endPoint = "draft", suffixes = suffixes)
+  nhl_url(endPoint = "draft", suffixes = list(draftYears))
 }
 
 

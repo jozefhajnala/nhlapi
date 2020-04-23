@@ -23,12 +23,8 @@ nhl_url <- function(
   if (!is.null(endPoint)) {
     url <- paste0(url, endPoint)
   }
-  if (!is.null(suffixes)) {
-    url <- nhl_url_add_suffixes(url, suffixes = suffixes)
-  }
-  if (!is.null(params)) {
-    url <- nhl_url_add_params(url = url, params = params)
-  }
+  url <- nhl_url_add_suffixes(url, suffixes = suffixes)
+  url <- nhl_url_add_params(url = url, params = params)
   log_d("nhl_url", "returning", url)
   url
 }
@@ -73,6 +69,8 @@ nhl_url_add_params <- function(url, params = NULL) {
 #' @return `character()` of the same length as all the
 #'   combinations of `url` and `suffixes`.
 nhl_url_add_suffixes <- function(url, suffixes) {
+  suffixes <- util_drop_nulls(suffixes)
+  if (util_all_null(suffixes)) return(url)
   suffixes <- lapply(
     suffixes,
     format,

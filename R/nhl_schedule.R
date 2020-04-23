@@ -44,10 +44,7 @@ nhl_url_schedule <- function(
     gameTypes = gameTypes,
     expand = expand
   )
-  nhl_url_add_params(
-    nhl_url(endPoint = "schedule"),
-    params = params
-  )
+  nhl_url(endPoint = "schedule", params = params)
 }
 
 #' Retrieve metadata on NHL schedule from the API

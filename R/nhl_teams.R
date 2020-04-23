@@ -13,7 +13,7 @@
 #' @return `character()` of same length as `teamIds` or length `1`
 #'   if `teamIds` is `NULL`
 nhl_url_teams <- function(teamIds = NULL, params = NULL) {
-  suffixes <- if (!is.null(teamIds)) list(teamIds)
+  suffixes <- list(teamIds)
   nhl_url(endPoint = "teams", suffixes = suffixes, params = params)
 }
 
@@ -68,8 +68,7 @@ nhl_teams <- function(teamIds = NULL, params = NULL) {
 #'   )
 #' }
 nhl_teams_rosters <- function(teamIds = NULL, seasons = NULL) {
-  params <- list(expand = "team.roster")
-  if (!is.null(seasons)) params <- c(params, list(season = seasons))
+  params <- list(expand = "team.roster", season = seasons)
   nhl_teams(teamIds = teamIds, params = params)
 }
 
@@ -132,7 +131,6 @@ nhl_teams_shedule_previous <- function(teamIds = NULL) {
 #'   nhl_teams_stats(1:2, c("20052006", "20062007", "20072008"))
 #' }
 nhl_teams_stats <- function(teamIds = NULL, seasons = NULL) {
-  params <- list(expand = "team.stats")
-  if (!is.null(seasons)) params <- c(params, list(season = seasons))
+  params <- list(expand = "team.stats", season = seasons)
   nhl_teams(teamIds = teamIds, params = params)
 }

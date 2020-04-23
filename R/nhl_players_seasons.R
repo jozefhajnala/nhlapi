@@ -1,12 +1,17 @@
 #' Create an NHL API stats URL for players
 #'
 #' @inheritParams nhl_url_players
+#' @inheritParams nhl_url
 #'
 #' @examples \dontrun{nhl_url_players_stats(8477474)}
 #'
 #' @return `character()` of same length as `playerIds`
-nhl_url_players_stats <- function(playerIds) {
-  nhl_url(endPoint = "people", suffixes = list(playerIds, "stats"))
+nhl_url_players_stats <- function(playerIds, params = NULL) {
+  nhl_url(
+    endPoint = "people",
+    suffixes = list(playerIds, "stats"),
+    params = params
+  )
 }
 
 #' Create an NHL API URL for  players' seasons statistics
@@ -34,8 +39,8 @@ nhl_url_players_seasons <- function(playerIds, seasons, playoffs = FALSE) {
     "statsSingleSeasonPlayoffs"
   else
     "statsSingleSeason"
-  nhl_url_add_params(
-    nhl_url_players_stats(playerIds),
+  nhl_url_players_stats(
+    playerIds,
     params = list(stats = statsString, season = seasons)
   )
 }
@@ -48,8 +53,8 @@ nhl_url_players_seasons <- function(playerIds, seasons, playoffs = FALSE) {
 #'   nhl_url_players_allseasons(8451101L)
 #' }
 nhl_url_players_allseasons <- function(playerIds) {
-  nhl_url_add_params(
-    nhl_url_players_stats(playerIds = playerIds),
+  nhl_url_players_stats(
+    playerIds = playerIds,
     params = c(stats = "yearByYear")
   )
 }

@@ -4,13 +4,16 @@
 \alias{nhl_url_players_stats}
 \title{Create an NHL API stats URL for players}
 \usage{
-nhl_url_players_stats(playerIds)
+nhl_url_players_stats(playerIds, params = NULL)
 }
 \arguments{
 \item{playerIds}{\code{integer()}, vector of one or more ids of the
 players. The ids correspond to the ids expected by the NHL
 API's people endpoint. For most cases the \code{playerNames} argument
 can be provided for more convenient usage.}
+
+\item{params}{\code{named list} of parameters that will be concatenated
+to the end of the url after \code{?}.}
 }
 \value{
 \code{character()} of same length as \code{playerIds}

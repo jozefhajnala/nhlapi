@@ -28,10 +28,7 @@ nhl_url_standings <- function(
     standingsType = standingsTypes,
     expand = expand
   )
-  nhl_url_add_params(
-    nhl_url(endPoint = "standings"),
-    params = params
-  )
+  nhl_url(endPoint = "standings", params = params)
 }
 
 #' Retrieve metadata on NHL standings from the API

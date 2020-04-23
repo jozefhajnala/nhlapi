@@ -11,8 +11,7 @@
 #' @return `character()` of same length as `seasons` or length `1`
 #'   if `seasons` is `NULL`.
 nhl_url_seasons <- function(seasons = NULL) {
-  suffixes <- if (!is.null(seasons)) list(nhl_make_seasons(seasons))
-  nhl_url(endPoint = "seasons", suffixes = suffixes)
+  nhl_url(endPoint = "seasons", suffixes = list(nhl_make_seasons(seasons)))
 }
 
 

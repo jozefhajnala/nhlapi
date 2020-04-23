@@ -10,8 +10,7 @@
 #' @return `character()` of same length as `prospectIds` or length `1`
 #'   if `prospectIds` is `NULL`.
 nhl_url_draft_prospects <- function(prospectIds = NULL) {
-  suffixes <- if (!is.null(prospectIds)) list(prospectIds)
-  nhl_url(endPoint = "draft/prospects", suffixes = suffixes)
+  nhl_url(endPoint = "draft/prospects", suffixes = list(prospectIds))
 }
 
 

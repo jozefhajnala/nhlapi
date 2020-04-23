@@ -32,7 +32,7 @@
 #'
 #' @return `character()` of same length as `gameIds`
 nhl_url_games <- function(gameIds, element) {
-  suffixes <- c(if (!is.null(gameIds)) list(gameIds), list(element))
+  suffixes <- list(gameIds, element)
   nhl_url(endPoint = "game", suffixes = suffixes)
 }
 

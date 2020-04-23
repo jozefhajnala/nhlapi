@@ -13,8 +13,7 @@
 #' @return `character()` of same length as `venueIds` or length `1`
 #'   if `venueIds` is `NULL`.
 nhl_url_venues <- function(venueIds = NULL) {
-  suffixes <- if (!is.null(venueIds)) list(venueIds)
-  nhl_url(endPoint = "venues", suffixes = suffixes)
+  nhl_url(endPoint = "venues", suffixes = list(venueIds))
 }
 
 
