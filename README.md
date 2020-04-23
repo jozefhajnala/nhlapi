@@ -37,7 +37,7 @@ R interface to the NHL API
     - [x] Custom seasons `nhl_schedule_seasons()`
     - [x] Custom date ranges `nhl_schedule_date_range()`
 
-- [ ] Standings
+- [x] Standings `nhl_standings()`
 
 ### Minor endpoints
 
