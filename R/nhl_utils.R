@@ -5,35 +5,52 @@
 #'   a vector of years in YYYY format and create a vector of
 #'   such seasons to be used with the API.
 #'
-#' @param seasons `numeric()`, vector of starting years of desired
-#'   seasons in `YYYY` format, e.g. `1995` for season 1995-1996.
-#'   Accepts vectors such as `c(1995:2000, 2010)`.
+#' @param seasons `numeric()`, `integer()` or `character()`,
+#'   vector of starting years of desired seasons in `YYYY`
+#'   format, e.g. `1995` or `"1995"` for season 1995-1996.
+#'   Accepts vectors such as `c(1995:2000, 2010)` to generate
+#'   multiple seasons.
 #'
 #'   Alternatively, also accepts `character()` with seasons in the
-#'   format `"YYYYZZZZ"`, where ZZZZ = YYYY + 1, e.g. `"19951996"`.
-#'   This is the format that ultimately gets sent to the NHL API.
+#'     format `"YYYYZZZZ"`, where ZZZZ = YYYY + 1, e.g. `"19951996"`.
+#'     This is the format that ultimately gets sent to the NHL API.
 #'
 #'   Some API endpoints, notably `seasons` exposed via `nhl_seasons()`
-#'   also allow the value `"current"` to passed.
+#'     also allow the value `"current"` to passed. This value will be
+#'     returned unchanged.
 #'
 #' @examples \dontrun{
+#'   nhl_make_seasons()
 #'   nhl_make_seasons(1995:2000)
+#'   nhl_make_seasons(c(1995, 2015))
+#'   nhl_make_seasons(c("1995", "2015"))
 #' }
 #'
 #' @return `character()`, vector of seasons suited for the NHL API.
-nhl_make_seasons <- function(seasons = 1950L:2019L) {
-  if (is.null(seasons)) {
-    return(seasons)
-  }
-  if (is.character(seasons) && all(nchar(seasons) == 8L)) {
-    return(seasons)
-  }
-  reservedValues <- c("current")
+nhl_make_seasons <- function(seasons = 1950:2019) {
+  UseMethod("nhl_make_seasons", seasons)
+}
+nhl_make_seasons.default <- function(seasons) seasons
+
+nhl_make_seasons.numeric <- function(seasons = 1950:2019) {
+  paste0(seasons, seasons + 1L)
+}
+
+nhl_make_seasons.character <- function(seasons){
+  reservedValues <- c("current", NA_character_)
   if (length(seasons) == 1L && seasons %in% reservedValues) {
     return(seasons)
   }
-  paste0(seasons, seasons + 1L)
+  if (all(nchar(seasons) == 8L)) return(seasons)
+  if (all(nchar(seasons) == 4L)) {
+    seasons <- tryCatch(
+      expr = nhl_make_seasons(as.integer(seasons)),
+      warning = function(w) return(seasons)
+    )
+  }
+  seasons
 }
+
 
 #' Flatten a list into a data frame keeping classes
 #'

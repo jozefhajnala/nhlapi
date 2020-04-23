@@ -7,16 +7,19 @@
 nhl_url_standings(seasons = NULL, standingsTypes = NULL, expand = NULL)
 }
 \arguments{
-\item{seasons}{\code{numeric()}, vector of starting years of desired
-seasons in \code{YYYY} format, e.g. \code{1995} for season 1995-1996.
-Accepts vectors such as \code{c(1995:2000, 2010)}.
+\item{seasons}{\code{numeric()}, \code{integer()} or \code{character()},
+vector of starting years of desired seasons in \code{YYYY}
+format, e.g. \code{1995} or \code{"1995"} for season 1995-1996.
+Accepts vectors such as \code{c(1995:2000, 2010)} to generate
+multiple seasons.
 
 Alternatively, also accepts \code{character()} with seasons in the
 format \code{"YYYYZZZZ"}, where ZZZZ = YYYY + 1, e.g. \code{"19951996"}.
 This is the format that ultimately gets sent to the NHL API.
 
 Some API endpoints, notably \code{seasons} exposed via \code{nhl_seasons()}
-also allow the value \code{"current"} to passed.}
+also allow the value \code{"current"} to passed. This value will be
+returned unchanged.}
 
 \item{standingsTypes}{\code{character()}, defining the standings types
 to retrieve. Valid standings types are for example \code{"regularSeason"}

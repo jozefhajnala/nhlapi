@@ -9,6 +9,22 @@ testthat::test_that(
 )
 
 testthat::test_that(
+  "nhl_make_seasons generates seasons correctly for numeric",
+  testthat::expect_equal(
+    nhl_make_seasons(c(1995.0, 1996.0, 1997.0)),
+    c("19951996", "19961997", "19971998")
+  )
+)
+
+testthat::test_that(
+  "nhl_make_seasons generates seasons correctly for string years",
+  testthat::expect_equal(
+    nhl_make_seasons(c("1995", "1996", "1997")),
+    c("19951996", "19961997", "19971998")
+  )
+)
+
+testthat::test_that(
   "nhl_make_seasons keeps seasons already in correct format",
   testthat::expect_equal(
     nhl_make_seasons(c("19951996", "19961997", "19971998")),
@@ -21,6 +37,14 @@ testthat::test_that(
   testthat::expect_equal(
     nhl_make_seasons("current"),
     "current"
+  )
+)
+
+testthat::test_that(
+  "nhl_make_seasons keeps NULL as-is",
+  testthat::expect_equal(
+    nhl_make_seasons(NULL),
+    NULL
   )
 )
 
