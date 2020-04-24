@@ -2,7 +2,7 @@
 % Please edit documentation in R/nhl_get_data.R
 \name{nhl_from_json}
 \alias{nhl_from_json}
-\title{Get URL using fromJSON}
+\title{Get URL using \code{fromJSON}}
 \usage{
 nhl_from_json(url, flatten = getOption("nhlapi_flatten"),
   silent = getOption("nhlapi_try_silent"),
@@ -34,5 +34,5 @@ retrieved data if succeeded, or a \code{try-error} class object
 otherwise.
 }
 \description{
-Get URL using fromJSON
+Get URL using \code{fromJSON}
 }

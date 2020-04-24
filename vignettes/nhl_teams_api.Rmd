@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 
 The high-level team APIs intend to provide convenient functionality used by most users. Each function from the teams API returns a data frame with the requested data processed to serve common purposes.
 
-Note that while some of the showcased examples use the dplyr package to manipulate the data, the `nhlapi` package itself does not import it and the user is free to use whichever methods to manipulate the data. 
+Note that while some of the showcased examples use the `dplyr` package to manipulate the data, the `nhlapi` package itself does not import it and the user is free to use whichever methods to manipulate the data. 
 
 ```{r}
 library(nhlapi)

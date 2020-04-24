@@ -38,9 +38,9 @@ game id is a 10 digit number where the
 seasons with 31 teams and 1230 for seasons with 30 teams.
 \item for playoff games, the
 \itemize{
-\item 2nd digit gives the round of the playoffs
-\item 3rd digit specifies the match-up
-\item 4th digit specifies the game (out of 7)
+\item second digit gives the round of the playoffs
+\item third digit specifies the match-up
+\item fourth digit specifies the game (out of 7)
 }
 }
 }}
@@ -73,9 +73,9 @@ details like first, second and third stars and details about
 shootouts. Note that the data returned is sizable, often over
 30 000 lines.
 
-\item \code{nhl_games_boxscore}: Returns far less detail than nhl_games_feed()
+\item \code{nhl_games_boxscore}: Returns far less detail than \code{nhl_games_feed()}
 and may be more suitable for analyzing post-game statistics
-including goals, shots, PIMs, blocked, takeaways, etc.
+including goals, shots, penalty minutes, blocked, takeaways, etc.
 
 \item \code{nhl_games_linescore}: Returns even fewer details than
 \code{nhl_games_boxscore()}. Has goals, shots on goal, power-play
@@ -104,8 +104,4 @@ information if applicable.
 \dontrun{
   nhl_games_linescore(2017010001)
 }
-}
-\references{
-Thanks go to Drew Hynes for documenting this so well in
-\url{https://gitlab.com/dword4/nhlapi/blob/master/stats-api.md}
 }

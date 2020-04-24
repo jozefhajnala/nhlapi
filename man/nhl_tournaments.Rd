@@ -38,7 +38,7 @@ Accepts vectors such as \code{c(1995:2000, 2010)} to generate
 multiple seasons.
 
 Alternatively, also accepts \code{character()} with seasons in the
-format \code{"YYYYZZZZ"}, where ZZZZ = YYYY + 1, e.g. \code{"19951996"}.
+format \code{"YYYYZZZZ"}, where \code{ZZZZ = YYYY + 1}, e.g. \code{"19951996"}.
 This is the format that ultimately gets sent to the NHL API.
 
 Some API endpoints, notably \code{seasons} exposed via \code{nhl_seasons()}
@@ -62,7 +62,7 @@ Retrieve data on tournaments from the API
 \itemize{
 \item \code{nhl_tournaments_playoffs}: Shortcut to get information on playoffs.
 
-\item \code{nhl_tournaments_olympics}: Shortcut to get information on olympics.
+\item \code{nhl_tournaments_olympics}: Shortcut to get information on Olympics.
 
 \item \code{nhl_tournaments_worldcups}: Shortcut to get information on world cups.
 }}
@@ -85,8 +85,4 @@ Retrieve data on tournaments from the API
 \dontrun{
   nhl_tournaments_worldcups(2003)
 }
-}
-\references{
-Thanks go to Drew Hynes for documenting this so well in
-\url{https://gitlab.com/dword4/nhlapi/blob/master/stats-api.md}
 }

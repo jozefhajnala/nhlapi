@@ -12,7 +12,7 @@ Not case sensitive for convenience.}
 
 \item{playerIds}{\code{integer()}, vector of one or more ids of the
 players. The ids correspond to the ids expected by the NHL
-API's people endpoint. For most cases the \code{playerNames} argument
+API people endpoint. For most cases the \code{playerNames} argument
 can be provided for more convenient usage.}
 }
 \value{

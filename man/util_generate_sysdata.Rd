@@ -2,13 +2,13 @@
 % Please edit documentation in R/nhl_utils.R
 \name{util_generate_sysdata}
 \alias{util_generate_sysdata}
-\title{Generate the sysdata.rda file}
+\title{Generate the \code{sysdata.rda} file}
 \usage{
 util_generate_sysdata(playerIds = 8444849L:8490000L,
   tgtPath = "sysdata.rda")
 }
 \arguments{
-\item{playerIds}{\code{integer()}, vector of playerIds.}
+\item{playerIds}{\code{integer()}, vector of \code{playerIds}.}
 
 \item{tgtPath}{\code{character(1)}, path where to save
 the generated object, \code{NULL} to not save.}
@@ -17,5 +17,5 @@ the generated object, \code{NULL} to not save.}
 \code{data.frame} with player name hashes and ids.
 }
 \description{
-Generate the sysdata.rda file
+Generate the \code{sysdata.rda} file
 }

@@ -32,7 +32,7 @@ R interface to the NHL API
     - [x] World Cups `nhl_tournaments_worldcups()`
     
 - [x] Schedule
-    - [x] Gerenic API with all parameters `nhl_schedule()`
+    - [x] Generic API with all parameters `nhl_schedule()`
     - [x] Today `nhl_schedule_today()`
     - [x] Custom seasons `nhl_schedule_seasons()`
     - [x] Custom date ranges `nhl_schedule_date_range()`
@@ -62,4 +62,4 @@ R interface to the NHL API
 
 ## Acknowledgments
 
-Thanks go to Drew Hynes for documenting this so well in [gitlab.com/dword4/nhlapi](https://gitlab.com/dword4/nhlapi/blob/master/stats-api.md)
+Thanks go to Drew Hynes for documenting this so well in [https://gitlab.com/dword4/nhlapi/blob/master/stats-api.md](https://gitlab.com/dword4/nhlapi/blob/master/stats-api.md)

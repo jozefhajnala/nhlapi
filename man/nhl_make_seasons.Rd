@@ -14,7 +14,7 @@ Accepts vectors such as \code{c(1995:2000, 2010)} to generate
 multiple seasons.
 
 Alternatively, also accepts \code{character()} with seasons in the
-format \code{"YYYYZZZZ"}, where ZZZZ = YYYY + 1, e.g. \code{"19951996"}.
+format \code{"YYYYZZZZ"}, where \code{ZZZZ = YYYY + 1}, e.g. \code{"19951996"}.
 This is the format that ultimately gets sent to the NHL API.
 
 Some API endpoints, notably \code{seasons} exposed via \code{nhl_seasons()}
@@ -26,8 +26,8 @@ returned unchanged.}
 }
 \description{
 The NHL API wants seasons defined in format
-YYYYZZZZ where ZZZZ = YYYY + 1. This is a helper to take
-a vector of years in YYYY format and create a vector of
+\code{"YYYYZZZZ"} where \code{ZZZZ = YYYY + 1}. This is a helper to take
+a vector of years in \code{"YYYY"} format and create a vector of
 such seasons to be used with the API.
 }
 \examples{

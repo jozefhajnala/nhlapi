@@ -12,7 +12,7 @@ util_inherit_attributes(src, tgt, atrs = c("url", "copyright"))
 \item{tgt}{\code{object}, onto which attributes of \code{src} should be added.}
 
 \item{atrs}{\code{character()}, vector of names of attributes
-of \code{src} to be added to `tgt.}
+of \code{src} to be added to \code{tgt}.}
 }
 \value{
 \code{object} same as \code{tgt} with attributes added

@@ -2,7 +2,7 @@
 % Please edit documentation in R/nhl_utils.R
 \name{util_process_minsonice}
 \alias{util_process_minsonice}
-\title{Convert time columns from "mins:secs" to numeric minutes}
+\title{Convert time columns from \code{"mm:ss"} to numeric minutes}
 \usage{
 util_process_minsonice(df, patt = "timeOn|TimeOn")
 }
@@ -10,12 +10,12 @@ util_process_minsonice(df, patt = "timeOn|TimeOn")
 \item{df}{\code{data.frame}.}
 
 \item{patt}{\code{character(1)}, pattern to match column names that
-contain time information in "mm:ss" format.}
+contain time information in \code{"mm:ss"} format.}
 }
 \value{
 \code{data.frame}, with time columns converted from
-"mm:ss" characters to numeric minutes.
+\code{"mm:ss"} characters to numeric minutes.
 }
 \description{
-Convert time columns from "mins:secs" to numeric minutes
+Convert time columns from \code{"mm:ss"} to numeric minutes
 }

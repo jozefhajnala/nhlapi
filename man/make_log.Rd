@@ -16,9 +16,9 @@ make_log(msg, ..., type = "I", dtFormat = getOption("nhlapi_log_datetime"),
 
 \item{type}{\code{character(1)} ideally 1 uppercase letter}
 
-\item{dtFormat}{\code{character(1)} passed to format for Sys.time}
+\item{dtFormat}{\code{character(1)} passed to format for \code{[Sys.time()]}}
 
-\item{newLine}{\code{logical(1)} if \code{TRUE}, newLine will be pasted
+\item{newLine}{\code{logical(1)} if \code{TRUE}, new line will be pasted
 to the beginning of the message}
 
 \item{sep}{\code{character(1)} string to separate parts of the message}
@@ -29,8 +29,8 @@ to the beginning of the message}
 \item{lineBreak}{\code{character(1)} string to replace line breaks in
 \code{msg}}
 
-\item{endNewLine}{\code{logical(1)} if \code{TRUE}, newLine will be pasted
-to the end of the message}
+\item{endNewLine}{\code{logical(1)} if \code{TRUE}, new line will be
+pasted to the end of the message}
 }
 \value{
 \code{character(1)} constructed log message

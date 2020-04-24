@@ -4,16 +4,16 @@
 #' @param ... additional character strings to be logged (will be pasted to
 #' \code{msg} and collapsed using the \code{collapse} argument)
 #' @param type \code{character(1)} ideally 1 uppercase letter
-#' @param dtFormat \code{character(1)} passed to format for Sys.time
-#' @param newLine \code{logical(1)} if \code{TRUE}, newLine will be pasted
+#' @param dtFormat \code{character(1)} passed to format for `[Sys.time()]`
+#' @param newLine \code{logical(1)} if \code{TRUE}, new line will be pasted
 #' to the beginning of the message
 #' @param sep \code{character(1)} string to separate parts of the message
 #' @param collapse \code{character(1)} string to collapse \code{msg} and
 #' \code{...}
 #' @param lineBreak \code{character(1)} string to replace line breaks in
 #' \code{msg}
-#' @param endNewLine \code{logical(1)} if \code{TRUE}, newLine will be pasted
-#' to the end of the message
+#' @param endNewLine \code{logical(1)} if \code{TRUE}, new line will be
+#' pasted to the end of the message
 #' @return \code{character(1)} constructed log message
 #' @examples \dontrun{make_log("Dummy warning", type = "W")}
 make_log <- function(

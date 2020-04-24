@@ -83,9 +83,6 @@ nhl_url_schedule <- function(
 #' }
 #'
 #' @export
-#' @references Thanks go to Drew Hynes for documenting this so well in
-#'   \url{https://gitlab.com/dword4/nhlapi/blob/master/stats-api.md}
-#'
 nhl_schedule <- function(
   seasons = NULL,
   teamIds = NULL,
@@ -137,7 +134,7 @@ nhl_schedule_seasons <- function(seasons, ...) {
 }
 
 #' @describeIn nhl_schedule Shortcut to get information on schedule
-#'   for a range of dates in "YYYY-MM-DD" format.
+#'   for a range of dates in `"YYYY-MM-DD"` format.
 #' @export
 #' @examples \dontrun{
 #'   # Schedule for October and November 2015

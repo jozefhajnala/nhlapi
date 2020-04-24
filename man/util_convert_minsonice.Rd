@@ -2,7 +2,7 @@
 % Please edit documentation in R/nhl_utils.R
 \name{util_convert_minsonice}
 \alias{util_convert_minsonice}
-\title{Convert "mins:secs" character to numeric minutes}
+\title{Convert "minutes:seconds" character to numeric minutes}
 \usage{
 util_convert_minsonice(chr, splitter = ":")
 }
@@ -16,7 +16,7 @@ minutes and seconds in elements of \code{chr}.}
 \code{numeric()} vector of times in minutes.
 }
 \description{
-Convert "mins:secs" character to numeric minutes
+Convert "minutes:seconds" character to numeric minutes
 }
 \examples{
 \dontrun{

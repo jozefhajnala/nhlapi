@@ -54,9 +54,6 @@ nhl_url_standings <- function(
 #' }
 #'
 #' @export
-#' @references Thanks go to Drew Hynes for documenting this so well in
-#'   \url{https://gitlab.com/dword4/nhlapi/blob/master/stats-api.md}
-#'
 nhl_standings <- function(
   seasons = NULL,
   standingsTypes = NULL,

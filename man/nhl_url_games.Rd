@@ -26,9 +26,9 @@ game id is a 10 digit number where the
 seasons with 31 teams and 1230 for seasons with 30 teams.
 \item for playoff games, the
 \itemize{
-\item 2nd digit gives the round of the playoffs
-\item 3rd digit specifies the match-up
-\item 4th digit specifies the game (out of 7)
+\item second digit gives the round of the playoffs
+\item third digit specifies the match-up
+\item fourth digit specifies the game (out of 7)
 }
 }
 }}

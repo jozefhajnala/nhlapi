@@ -1,8 +1,8 @@
 #' Make a vector of seasons consumable by the API
 #'
 #' @description The NHL API wants seasons defined in format
-#'   YYYYZZZZ where ZZZZ = YYYY + 1. This is a helper to take
-#'   a vector of years in YYYY format and create a vector of
+#'   `"YYYYZZZZ"` where `ZZZZ = YYYY + 1`. This is a helper to take
+#'   a vector of years in `"YYYY"` format and create a vector of
 #'   such seasons to be used with the API.
 #'
 #' @param seasons `numeric()`, `integer()` or `character()`,
@@ -12,7 +12,7 @@
 #'   multiple seasons.
 #'
 #'   Alternatively, also accepts `character()` with seasons in the
-#'     format `"YYYYZZZZ"`, where ZZZZ = YYYY + 1, e.g. `"19951996"`.
+#'     format `"YYYYZZZZ"`, where `ZZZZ = YYYY + 1`, e.g. `"19951996"`.
 #'     This is the format that ultimately gets sent to the NHL API.
 #'
 #'   Some API endpoints, notably `seasons` exposed via `nhl_seasons()`
@@ -102,14 +102,14 @@ util_process_copyright <- function(x, el = "copyright") {
   invisible(x)
 }
 
-#' Safely rbind multiple data.frames
+#' Safely `rbind` multiple data.frames
 #'
 #' @description Attempts to replace `do.call(rbind, lst)`
 #'   taking into consideration that some data frames in
 #'   `lst` can have missing columns. Those are filled by
 #'   `NA` values.
 #'
-#' @param lst `list()` of data frames to be rbinded into one
+#' @param lst `list()` of data frames to be `rbind`-ed into one
 #' @param fill `logical(1)` if `FALSE`, just returns
 #'   `do.call(rbind, lst)`
 #'
@@ -156,7 +156,7 @@ util_rbindlist <- function(lst, fill = TRUE) {
 #' @param src `object`, with attributes to be inherited by `tgt`.
 #' @param tgt `object`, onto which attributes of `src` should be added.
 #' @param atrs `character()`, vector of names of attributes
-#'   of `src` to be added to `tgt.
+#'   of `src` to be added to `tgt`.
 #'
 #' @return `object` same as `tgt` with attributes added
 util_inherit_attributes <- function(src, tgt, atrs = c("url", "copyright")) {
@@ -221,7 +221,7 @@ util_report_get_data_errors <- function(x, reporter = log_e, ...) {
 }
 
 
-#' Convert "mins:secs" character to numeric minutes
+#' Convert "minutes:seconds" character to numeric minutes
 #'
 #' @param chr `character()` vector in format `"mins:secs"`.
 #' @param splitter `character(1)`, string that splits
@@ -239,14 +239,14 @@ util_convert_minsonice <- function(chr, splitter = ":")  {
 }
 
 
-#' Convert time columns from "mins:secs" to numeric minutes
+#' Convert time columns from `"mm:ss"` to numeric minutes
 #'
 #' @param df `data.frame`.
 #' @param patt `character(1)`, pattern to match column names that
-#'   contain time information in "mm:ss" format.
+#'   contain time information in `"mm:ss"` format.
 #'
 #' @return `data.frame`, with time columns converted from
-#'   "mm:ss" characters to numeric minutes.
+#'   `"mm:ss"` characters to numeric minutes.
 util_process_minsonice <- function(df, patt = "timeOn|TimeOn") {
   timeColsToConvert <- grep(patt, names(df), value = TRUE)
   for (thisCol in timeColsToConvert) {
@@ -376,9 +376,9 @@ util_prepare_player_ids <- function(
   playerIds
 }
 
-#' Generate the sysdata.rda file
+#' Generate the `sysdata.rda` file
 #'
-#' @param playerIds `integer()`, vector of playerIds.
+#' @param playerIds `integer()`, vector of `playerIds`.
 #' @param tgtPath `character(1)`, path where to save
 #'   the generated object, `NULL` to not save.
 #'

@@ -54,9 +54,6 @@ nhl_url_tournaments <- function(
 #' }
 #'
 #' @export
-#' @references Thanks go to Drew Hynes for documenting this so well in
-#'   \url{https://gitlab.com/dword4/nhlapi/blob/master/stats-api.md}
-#'
 nhl_tournaments <- function(
   tournamentTypes,
   seasons = NULL,
@@ -81,7 +78,7 @@ nhl_tournaments_playoffs <- function(seasons = NULL, expand = NULL) {
   nhl_tournaments("playoffs", seasons = seasons, expand = expand)
 }
 
-#' @describeIn nhl_tournaments Shortcut to get information on olympics.
+#' @describeIn nhl_tournaments Shortcut to get information on Olympics.
 #' @export
 #' @examples \dontrun{
 #'   nhl_tournaments_olympics(2009, "round.series")

@@ -2,12 +2,12 @@
 % Please edit documentation in R/nhl_utils.R
 \name{util_rbindlist}
 \alias{util_rbindlist}
-\title{Safely rbind multiple data.frames}
+\title{Safely \code{rbind} multiple data.frames}
 \usage{
 util_rbindlist(lst, fill = TRUE)
 }
 \arguments{
-\item{lst}{\code{list()} of data frames to be rbinded into one}
+\item{lst}{\code{list()} of data frames to be \code{rbind}-ed into one}
 
 \item{fill}{\code{logical(1)} if \code{FALSE}, just returns
 \code{do.call(rbind, lst)}}

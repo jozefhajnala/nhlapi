@@ -1,4 +1,4 @@
-#' Get URL using fromJSON
+#' Get URL using `fromJSON`
 #'
 #' @param url `character(1)`, the URL to get the data from.
 #' @param flatten `logical(1)`, if `TRUE` (default) automatically

@@ -16,6 +16,7 @@ Suggests:
     roxygen2,
     knitr
 License: AGPL-3
+Language: en-US
 URL: https://github.com/jozefhajnala/nhlapi
 BugReports: https://github.com/jozefhajnala/nhlapi/issues
 VignetteBuilder: knitr

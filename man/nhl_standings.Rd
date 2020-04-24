@@ -14,7 +14,7 @@ Accepts vectors such as \code{c(1995:2000, 2010)} to generate
 multiple seasons.
 
 Alternatively, also accepts \code{character()} with seasons in the
-format \code{"YYYYZZZZ"}, where ZZZZ = YYYY + 1, e.g. \code{"19951996"}.
+format \code{"YYYYZZZZ"}, where \code{ZZZZ = YYYY + 1}, e.g. \code{"19951996"}.
 This is the format that ultimately gets sent to the NHL API.
 
 Some API endpoints, notably \code{seasons} exposed via \code{nhl_seasons()}
@@ -53,8 +53,4 @@ Retrieve metadata on NHL standings from the API
  )
 }
 
-}
-\references{
-Thanks go to Drew Hynes for documenting this so well in
-\url{https://gitlab.com/dword4/nhlapi/blob/master/stats-api.md}
 }

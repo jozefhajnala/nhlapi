@@ -14,9 +14,9 @@
 #'         0001 to the number of games played. That is 1271 for
 #'         seasons with 31 teams and 1230 for seasons with 30 teams.
 #'       * for playoff games, the
-#'           * 2nd digit gives the round of the playoffs
-#'           * 3rd digit specifies the match-up
-#'           * 4th digit specifies the game (out of 7)
+#'           * second digit gives the round of the playoffs
+#'           * third digit specifies the match-up
+#'           * fourth digit specifies the game (out of 7)
 #'
 #' @param element `character()` vector of one or more valid elements.
 #'   Currently the valid elements seem to be:
@@ -53,9 +53,6 @@ nhl_url_games <- function(gameIds, element) {
 #' }
 #'
 #' @export
-#' @references Thanks go to Drew Hynes for documenting this so well in
-#'   \url{https://gitlab.com/dword4/nhlapi/blob/master/stats-api.md}
-#'
 nhl_games <- function(gameIds, element) {
   x <- nhl_url_games(gameIds = gameIds, element = element)
   x <- nhl_get_data(x)
@@ -88,9 +85,9 @@ nhl_games_feed <- function(gameIds) {
   nhl_games(gameIds = gameIds, element = "feed/live")
 }
 
-#' @describeIn nhl_games Returns far less detail than nhl_games_feed()
+#' @describeIn nhl_games Returns far less detail than `nhl_games_feed()`
 #'   and may be more suitable for analyzing post-game statistics
-#'   including goals, shots, PIMs, blocked, takeaways, etc.
+#'   including goals, shots, penalty minutes, blocked, takeaways, etc.
 #' @export
 #' @examples \dontrun{
 #'   nhl_games_boxscore(2017010001)
