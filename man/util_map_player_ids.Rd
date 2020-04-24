@@ -17,9 +17,9 @@ Not case sensitive for convenience.}
 }}
 }
 \value{
-\code{integer()} named vector of player ids,
+\code{integer()}, named vector of player ids,
 `NA_integer`` for those names where id was not
-found#'
+found.
 }
 \description{
 Retrieve a player ids from their names

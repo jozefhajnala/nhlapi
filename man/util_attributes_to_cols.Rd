@@ -16,7 +16,7 @@ of \code{lst} should be added.}
 of \code{lst}.}
 }
 \value{
-\code{data.frame} same as \code{df} with columns added
+\code{data.frame}, \code{df} with added columns.
 }
 \description{
 Take attributes with names specified by \code{atrs}

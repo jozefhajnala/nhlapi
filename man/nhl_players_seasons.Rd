@@ -21,7 +21,7 @@ Alternatively, also accepts \code{character()} with seasons in the
 format \code{"YYYYZZZZ"}, where \code{ZZZZ = YYYY + 1}, e.g. \code{"19951996"}.
 This is the format that ultimately gets sent to the NHL API.
 
-Some API endpoints, notably \code{seasons} exposed via \code{nhl_seasons()}
+Some API endpoints, notably \code{seasons} exposed via \code{\link[=nhl_seasons]{nhl_seasons()}}
 also allow the value \code{"current"} to passed. This value will be
 returned unchanged.}
 
@@ -30,11 +30,12 @@ players. The ids correspond to the ids expected by the NHL
 API people endpoint. For most cases the \code{playerNames} argument
 can be provided for more convenient usage.}
 
-\item{playoffs}{\code{logical(1)} if \code{FALSE} (default) get the regular
+\item{playoffs}{\code{logical(1)}, if \code{FALSE} (default) get the regular
 seasons data, if \code{TRUE}, get the data for the playoffs.}
 }
 \value{
-data.frame
+\code{data.frame}, with selected season statistics
+for selected players.
 }
 \description{
 Retrieve selected seasons statistics for players

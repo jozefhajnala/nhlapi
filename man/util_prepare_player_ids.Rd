@@ -17,7 +17,7 @@ Not case sensitive for convenience.}
 }}
 }
 \value{
-\code{integer()} named vector of found valid player
+\code{integer()}, named vector of found valid player
 ids, those not found omitted.
 }
 \description{
@@ -25,6 +25,6 @@ Prepare player ids based on player names
 }
 \examples{
 \dontrun{
- util_prepare_player_ids(c("joe sakic", "fake player"))
+  util_prepare_player_ids(c("joe sakic", "fake player"))
 }
 }

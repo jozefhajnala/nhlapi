@@ -1,7 +1,7 @@
 #' Create an NHL API URL for tournaments
 #'
-#' @param tournamentTypes `character()`, vector of one or more tournament
-#'   types. Currently supported types seem to be.
+#' @param tournamentTypes `character()`, vector of one or more
+#'   tournament types. Currently supported types seem to be
 #'   * `"playoffs"`
 #'   * `"olympics"`
 #'   * `"worldCup"`
@@ -12,6 +12,7 @@
 #'  * [nhl_tournaments_worldcups()]
 #'
 #' @inheritParams nhl_make_seasons
+#'
 #' @param expand `character()`, of parameters passed as `expand`
 #'   to the API URL. Two valid examples seem to be `"round.series"`
 #'   and `"schedule.game.seriesSummary"`. `NULL` for no expand
@@ -25,7 +26,7 @@
 #'
 #' @seealso [nhl_md_tournament_types()]
 #'
-#' @return `character()` of same length as combinations of
+#' @return `character()`, API URLs, same length as combinations of
 #'   `tournamentTypes`, `seasons` and `expand`.
 nhl_url_tournaments <- function(
   tournamentTypes,

@@ -13,7 +13,7 @@ API people endpoint. For most cases the \code{playerNames} argument
 can be provided for more convenient usage.}
 }
 \value{
-\code{character()} of same length as \code{playerIds}
+\code{character()}, API URLs, same length as \code{playerIds}.
 }
 \description{
 Create an NHL API URL for players

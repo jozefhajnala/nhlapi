@@ -145,6 +145,7 @@ nhl_teams_stats(1, 2005:2006)
 devils_stats <- nhl_teams_stats(1, 2005:2006)
 
 # Look at the teamStats object for the first of them
+# Requires `dplyr` attached using library
 devils_stats %>%
   extract2("teamStats") %>% first() %>%
   extract2("splits") %>% first() %>%

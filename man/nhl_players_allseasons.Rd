@@ -16,14 +16,14 @@ API people endpoint. For most cases the \code{playerNames} argument
 can be provided for more convenient usage.}
 }
 \value{
-data.frame
+\code{data.frame}, with all season statistics for
+selected players.
 }
 \description{
 Retrieve all seasons statistics for players
 }
 \examples{
 \dontrun{
-
  # With player names
  nhl_players_allseasons(c("joe sakic", "Peter Forsberg"))
 

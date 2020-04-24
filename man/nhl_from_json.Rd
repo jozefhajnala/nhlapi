@@ -16,13 +16,13 @@ nhl_from_json(url, flatten = getOption("nhlapi_flatten"),
 \item{flatten}{\code{logical(1)}, if \code{TRUE} (default) automatically
 flattens nested data frames into a single non-nested data frame.}
 
-\item{silent}{\code{logical(1)}, passed to \code{try()}.}
+\item{silent}{\code{logical(1)}, passed to \code{[try()]}.}
 
 \item{retries}{\code{integer(1)}, number of retries in case of failed
 data retrieval (\code{0L} for no no retries).}
 
-\item{retrySleep}{\code{integer(1)}, number of seconds to \code{Sys.sleep()}
-in between retries.}
+\item{retrySleep}{\code{integer(1)}, number of seconds to
+\code{[Sys.sleep()]} in between retries.}
 
 \item{noRetryPatt}{\code{character(1)}, string pattern. If the error
 condition's message contains this pattern, there will be no
@@ -30,8 +30,8 @@ retries. Useful for e.g. \code{404} returns where retries are likely
 useless.}
 }
 \value{
-retrieved data if succeeded, or a \code{try-error} class object
-otherwise.
+\code{list}, retrieved data if succeeded, a \code{try-error} class
+object otherwise.
 }
 \description{
 Get URL using \code{fromJSON}

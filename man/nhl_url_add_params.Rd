@@ -2,22 +2,22 @@
 % Please edit documentation in R/nhl_url.R
 \name{nhl_url_add_params}
 \alias{nhl_url_add_params}
-\title{Add parameters to urls}
+\title{Add parameters to URLs}
 \usage{
 nhl_url_add_params(url, params = NULL)
 }
 \arguments{
-\item{url}{\code{character()} vector of urls.}
+\item{url}{\code{character()}, vector of URLs.}
 
 \item{params}{\code{named list()} of parameters that will be
-concatenated to the end of the urls after \code{?}. Parameters
-can have multiple values, in which case multiple urls
-are created.}
+concatenated to the end of the URLs after \code{?}. Parameters
+can have multiple values, in which case multiple URLs
+are created. Multiple parameters are separated by \code{&}.}
 }
 \value{
-\code{character()} of the same length as all the
-combinations of \code{url} and \code{params}.
+\code{character()}, URLs with parameters added. Same
+length as all the combinations of \code{url} and \code{params}.
 }
 \description{
-Add parameters to urls
+Add parameters to URLs
 }

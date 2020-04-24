@@ -18,8 +18,8 @@ etc.}
 \code{reporter}.}
 }
 \value{
-\code{character()}, urls for which the retrieval
-resulted in an error, invisibly.
+\code{character()}, URLs for which the retrieval
+resulted in an error, invisibly. Optional side-effects.
 }
 \description{
 Report errors encountered during \code{nhl_get_data}

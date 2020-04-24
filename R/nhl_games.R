@@ -30,7 +30,7 @@
 #'   nhl_url_games(c(2017010001, 2017010002), c("content", "boxscore"))
 #' }
 #'
-#' @return `character()` of same length as `gameIds`
+#' @return `character()`, of same length as `gameIds`.
 nhl_url_games <- function(gameIds, element) {
   suffixes <- list(gameIds, element)
   nhl_url(endPoint = "game", suffixes = suffixes)

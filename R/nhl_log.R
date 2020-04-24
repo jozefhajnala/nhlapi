@@ -1,21 +1,23 @@
 #' Create a log message
-#' @description Construct a nice log message
-#' @param msg \code{character(1)} string to be logged
-#' @param ... additional character strings to be logged (will be pasted to
-#' \code{msg} and collapsed using the \code{collapse} argument)
-#' @param type \code{character(1)} ideally 1 uppercase letter
-#' @param dtFormat \code{character(1)} passed to format for `[Sys.time()]`
-#' @param newLine \code{logical(1)} if \code{TRUE}, new line will be pasted
-#' to the beginning of the message
-#' @param sep \code{character(1)} string to separate parts of the message
-#' @param collapse \code{character(1)} string to collapse \code{msg} and
-#' \code{...}
-#' @param lineBreak \code{character(1)} string to replace line breaks in
-#' \code{msg}
-#' @param endNewLine \code{logical(1)} if \code{TRUE}, new line will be
-#' pasted to the end of the message
-#' @return \code{character(1)} constructed log message
-#' @examples \dontrun{make_log("Dummy warning", type = "W")}
+#'
+#' @param msg `character(1)`, to be logged.
+#' @param ... additional `character()` strings to be logged. Will be
+#'   pasted to `msg` and collapsed using the `collapse` argument.
+#' @param type `character(1)` ideally 1 uppercase letter.
+#' @param dtFormat `character(1)`, passed to format for `[Sys.time()]`
+#' @param newLine `logical(1)`, if `TRUE`, new line will be pasted.
+#'   to the beginning of the message.
+#' @param sep `character(1) string`, to separate parts of the message.
+#' @param collapse `character(1)`, to collapse `msg` and `...`.
+#' @param lineBreak `character(1)`, replacing line breaks in `msg`.
+#' @param endNewLine `logical(1)`, if `TRUE`, new line will be
+#'   pasted to the end of the message.
+#'
+#' @return `character(1)`, constructed log message.
+#'
+#' @examples \dontrun{
+#'   make_log("Dummy warning", type = "W")
+#' }
 make_log <- function(
   msg, ..., type = "I", dtFormat = getOption("nhlapi_log_datetime"),
   newLine = FALSE, sep = " | ", collapse = " ", lineBreak = "$",

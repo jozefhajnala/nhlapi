@@ -48,25 +48,6 @@ testthat::test_that(
   )
 )
 
-context("util_flatten_list")
-
-testthat::test_that(
-  "util_flatten_list works on simple list",
-  testthat::expect_equal(
-    util_flatten_list(list(a = 1L, b = list(1, list(2L, TRUE)))),
-    data.frame(a = 1L, b1 = 1, b2 = 2L, b3 = TRUE)
-  )
-)
-
-testthat::test_that(
-  "util_flatten_list returns a data frame for NULL",
-  testthat::expect_equal(
-    util_flatten_list(NULL),
-    data.frame()
-  )
-)
-
-
 context("util_process_copyright")
 
 testthat::test_that(

@@ -132,7 +132,7 @@ The `nhlapi` package itself does not contain plotting functionality, the output 
 For instance, using the `ggplot2` package to plot the amount of points gathered by multiple players over the seasons:
 
 ```{r}
-# Requires ggplot2 attached using library
+# Requires `ggplot2` attached using library
 ggplot(result) +
   geom_line(aes(seasonStart, stat.points, colour = fullName))
 ```

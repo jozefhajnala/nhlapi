@@ -1,12 +1,9 @@
 #' Create an NHL API URL
 #'
-#' @param endPoint `character(1)` the endpoint.
-#' @param suffixes `list` of suffixes that will be
-#'   concatenated to the end of the urls, separated by
-#'   `/`.
-#' @param params `named list` of parameters that will be concatenated
-#'   to the end of the url after `?`.
-#' @param baseUrl `character(1)`, base location of the NHL API.
+#' @param endPoint `character(1)`, the API endpoint.
+#' @inheritParams nhl_url_add_suffixes
+#' @inheritParams nhl_url_add_params
+#' @param baseUrl `character(1)`, URL of the NHL API base location.
 #'
 #' @examples \dontrun{
 #'   nhl_url("people", "8477474")
@@ -29,16 +26,16 @@ nhl_url <- function(
   url
 }
 
-#' Add parameters to urls
+#' Add parameters to URLs
 #'
-#' @param url `character()` vector of urls.
+#' @param url `character()`, vector of URLs.
 #' @param params `named list()` of parameters that will be
-#'   concatenated to the end of the urls after `?`. Parameters
-#'   can have multiple values, in which case multiple urls
-#'   are created.
+#'   concatenated to the end of the URLs after `?`. Parameters
+#'   can have multiple values, in which case multiple URLs
+#'   are created. Multiple parameters are separated by `&`.
 #'
-#' @return `character()` of the same length as all the
-#'   combinations of `url` and `params`.
+#' @return `character()`, URLs with parameters added. Same
+#'   length as all the combinations of `url` and `params`.
 nhl_url_add_params <- function(url, params = NULL) {
   params <- util_drop_nulls(params)
   if (util_all_null(params)) return(url)
@@ -59,15 +56,14 @@ nhl_url_add_params <- function(url, params = NULL) {
   })
 }
 
-#' Add suffixes to urls
+#' Add suffixes to URLs
 #'
-#' @param url `character()` vector of urls.
-#' @param suffixes `list()` of suffixes that will be
-#'   concatenated to the end of the urls, separated by
-#'   `/`.
+#' @inheritParams nhl_url_add_params
+#' @param suffixes `list()`, of suffixes that will be
+#'   concatenated to the end of the URLs, separated by `/`.
 #'
-#' @return `character()` of the same length as all the
-#'   combinations of `url` and `suffixes`.
+#' @return `character()`, URLs with suffixes added. Same
+#'   length as all the combinations of `url` and `suffixes`.
 nhl_url_add_suffixes <- function(url, suffixes) {
   suffixes <- util_drop_nulls(suffixes)
   if (util_all_null(suffixes)) return(url)

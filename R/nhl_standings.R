@@ -1,10 +1,11 @@
 #' Create an NHL API URL for standings
 #'
 #' @inheritParams nhl_make_seasons
-#' @param standingsTypes `character()`, defining the standings types
-#'   to retrieve. Valid standings types are for example `"regularSeason"`
-#'   or `"byDivision"`. See [nhl_md_standings_types()] for all values
-#'   and their descriptions.
+#' @param standingsTypes `character()`, defining the standings
+#'   types to retrieve. Valid standings types are for example
+#'   `"regularSeason"` or `"byDivision"`. See
+#'   [nhl_md_standings_types()] for all values and their
+#'   descriptions.
 #' @param expand `character()`, of parameters passed as `expand`
 #'   to the API URL. A valid example seems to be `"standings.record"`.
 #'   `NULL` for no expand parameter.
@@ -17,7 +18,7 @@
 #'  )
 #' }
 #'
-#' @return `character()` vector of URLs.
+#' @return `character()`, vector of URLs.
 nhl_url_standings <- function(
   seasons = NULL,
   standingsTypes = NULL,
@@ -35,8 +36,8 @@ nhl_url_standings <- function(
 #'
 #' @inheritParams nhl_url_standings
 #'
-#' @return `list`, with information on standings, depending on
-#'   provided arguments.
+#' @return `list`, with information on standings
+#'   depending on provided arguments.
 #'
 #' @examples \dontrun{
 #'  # Get current standings

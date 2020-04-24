@@ -13,8 +13,8 @@ exported values seem incomplete, so it may be worth it to
 investigate other ids.}
 }
 \value{
-\code{character()} of same length as \code{venueIds} or length \code{1}
-if \code{venueIds} is \code{NULL}.
+\code{character()}, API URLs, same length as \code{venueIds} or
+length \code{1} if \code{venueIds} is \code{NULL}.
 }
 \description{
 Create an NHL API URL for venues

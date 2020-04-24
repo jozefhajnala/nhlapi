@@ -14,7 +14,7 @@ util_generate_sysdata(playerIds = 8444849L:8490000L,
 the generated object, \code{NULL} to not save.}
 }
 \value{
-\code{data.frame} with player name hashes and ids.
+\code{data.frame}, with player name hashes and ids.
 }
 \description{
 Generate the \code{sysdata.rda} file

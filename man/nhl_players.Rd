@@ -16,7 +16,7 @@ API people endpoint. For most cases the \code{playerNames} argument
 can be provided for more convenient usage.}
 }
 \value{
-data.frame
+\code{data.frame}, with information on selected players.
 }
 \description{
 Retrieves information on players from the NHL API based on

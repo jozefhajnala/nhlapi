@@ -7,8 +7,8 @@
 nhl_draft_prospects(prospectIds = NULL)
 }
 \arguments{
-\item{prospectIds}{\code{integer()}, vector of one or more ids of draft
-prospects or \code{NULL} (default) for all exposed prospects.}
+\item{prospectIds}{\code{integer()}, vector of one or more ids of
+draft prospects or \code{NULL} (default) for all exposed prospects.}
 }
 \value{
 \code{data.frame}, with information on draft prospects, one row

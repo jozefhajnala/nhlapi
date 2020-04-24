@@ -17,13 +17,13 @@ Alternatively, also accepts \code{character()} with seasons in the
 format \code{"YYYYZZZZ"}, where \code{ZZZZ = YYYY + 1}, e.g. \code{"19951996"}.
 This is the format that ultimately gets sent to the NHL API.
 
-Some API endpoints, notably \code{seasons} exposed via \code{nhl_seasons()}
+Some API endpoints, notably \code{seasons} exposed via \code{\link[=nhl_seasons]{nhl_seasons()}}
 also allow the value \code{"current"} to passed. This value will be
 returned unchanged.}
 }
 \value{
-\code{character()} of same length as \code{seasons} or length \code{1}
-if \code{seasons} is \code{NULL}.
+\code{character()}, of API URLs, same length as \code{seasons}
+or length \code{1} if \code{seasons} is \code{NULL}.
 }
 \description{
 Create an NHL API URL for seasons

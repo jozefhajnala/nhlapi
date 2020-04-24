@@ -7,12 +7,12 @@
 nhl_url_draft_prospects(prospectIds = NULL)
 }
 \arguments{
-\item{prospectIds}{\code{integer()}, vector of one or more ids of draft
-prospects or \code{NULL} (default) for all exposed prospects.}
+\item{prospectIds}{\code{integer()}, vector of one or more ids of
+draft prospects or \code{NULL} (default) for all exposed prospects.}
 }
 \value{
-\code{character()} of same length as \code{prospectIds} or length \code{1}
-if \code{prospectIds} is \code{NULL}.
+\code{character()}, API URLs, same length as \code{prospectIds} or
+length \code{1} if \code{prospectIds} is \code{NULL}.
 }
 \description{
 Create an NHL API URL for draft prospects

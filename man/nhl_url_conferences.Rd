@@ -7,13 +7,13 @@
 nhl_url_conferences(conferenceIds = NULL)
 }
 \arguments{
-\item{conferenceIds}{\code{integer()}, ids of the conferences or \code{NULL} (default)
-for all conferences As of end of 2019, the valid conference ids seem to be
-in the \code{1:7} range.}
+\item{conferenceIds}{\code{integer()}, ids of the conferences or \code{NULL}
+(default) for all conferences As of end of 2019, the valid
+conference ids seem to be in the \code{1:7} range.}
 }
 \value{
-\code{character()} of same length as \code{teamIds} or length \code{1}
-if \code{teamIds} is \code{NULL}
+\code{character()}, API URLs, same length as \code{teamIds} or
+length \code{1} if \code{teamIds} is \code{NULL}.
 }
 \description{
 Create an NHL API URL for conferences

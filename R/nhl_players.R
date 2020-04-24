@@ -9,7 +9,7 @@
 #'   nhl_url_players(playerIds = c(8477474, 8477475))
 #' }
 #'
-#' @return `character()` of same length as `playerIds`
+#' @return `character()`, API URLs, same length as `playerIds`.
 nhl_url_players <- function(playerIds) {
   nhl_url(endPoint = "people", suffixes = list(playerIds))
 }
@@ -23,7 +23,7 @@ nhl_url_players <- function(playerIds) {
 #' @inheritParams nhl_url_players
 #' @inheritParams util_map_player_ids
 #'
-#' @return data.frame
+#' @return `data.frame`, with information on selected players.
 #' @export
 #'
 #' @examples \dontrun{

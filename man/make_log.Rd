@@ -9,35 +9,35 @@ make_log(msg, ..., type = "I", dtFormat = getOption("nhlapi_log_datetime"),
   endNewLine = FALSE)
 }
 \arguments{
-\item{msg}{\code{character(1)} string to be logged}
+\item{msg}{\code{character(1)}, to be logged.}
 
-\item{...}{additional character strings to be logged (will be pasted to
-\code{msg} and collapsed using the \code{collapse} argument)}
+\item{...}{additional \code{character()} strings to be logged. Will be
+pasted to \code{msg} and collapsed using the \code{collapse} argument.}
 
-\item{type}{\code{character(1)} ideally 1 uppercase letter}
+\item{type}{\code{character(1)} ideally 1 uppercase letter.}
 
-\item{dtFormat}{\code{character(1)} passed to format for \code{[Sys.time()]}}
+\item{dtFormat}{\code{character(1)}, passed to format for \code{[Sys.time()]}}
 
-\item{newLine}{\code{logical(1)} if \code{TRUE}, new line will be pasted
-to the beginning of the message}
+\item{newLine}{\code{logical(1)}, if \code{TRUE}, new line will be pasted.
+to the beginning of the message.}
 
-\item{sep}{\code{character(1)} string to separate parts of the message}
+\item{sep}{\code{character(1) string}, to separate parts of the message.}
 
-\item{collapse}{\code{character(1)} string to collapse \code{msg} and
-\code{...}}
+\item{collapse}{\code{character(1)}, to collapse \code{msg} and \code{...}.}
 
-\item{lineBreak}{\code{character(1)} string to replace line breaks in
-\code{msg}}
+\item{lineBreak}{\code{character(1)}, replacing line breaks in \code{msg}.}
 
-\item{endNewLine}{\code{logical(1)} if \code{TRUE}, new line will be
-pasted to the end of the message}
+\item{endNewLine}{\code{logical(1)}, if \code{TRUE}, new line will be
+pasted to the end of the message.}
 }
 \value{
-\code{character(1)} constructed log message
+\code{character(1)}, constructed log message.
 }
 \description{
-Construct a nice log message
+Create a log message
 }
 \examples{
-\dontrun{make_log("Dummy warning", type = "W")}
+\dontrun{
+  make_log("Dummy warning", type = "W")
+}
 }

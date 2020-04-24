@@ -7,10 +7,11 @@
 util_md5sum_str(x)
 }
 \arguments{
-\item{x}{\code{character()} vector.}
+\item{x}{\code{character()}, vector to compute the MD5 for.}
 }
 \value{
-\code{character(1)}, the MD5 hash.
+\code{character(1)}, MD5 hash of a text file
+created from \code{x} using \code{\link[=writeChar]{writeChar()}}.
 }
 \description{
 Writes \code{x} to a temporary file

@@ -12,8 +12,8 @@ or \code{NULL} (default) for all awards. The current set of valid
 ids seems to be \code{1:24}.}
 }
 \value{
-\code{character()} of same length as \code{awardIds} or length \code{1}
-if \code{awardIds} is \code{NULL}.
+\code{character()}, API URLs, same length as \code{awardIds} or
+length \code{1} if \code{awardIds} is \code{NULL}.
 }
 \description{
 Create an NHL API URL for awards

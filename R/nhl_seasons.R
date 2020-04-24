@@ -8,8 +8,8 @@
 #'   nhl_url_seasons("20152016")
 #' }
 #'
-#' @return `character()` of same length as `seasons` or length `1`
-#'   if `seasons` is `NULL`.
+#' @return `character()`, of API URLs, same length as `seasons`
+#'   or length `1` if `seasons` is `NULL`.
 nhl_url_seasons <- function(seasons = NULL) {
   nhl_url(endPoint = "seasons", suffixes = list(nhl_make_seasons(seasons)))
 }

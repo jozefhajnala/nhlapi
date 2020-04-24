@@ -27,7 +27,7 @@ Alternatively, also accepts \code{character()} with seasons in the
 format \code{"YYYYZZZZ"}, where \code{ZZZZ = YYYY + 1}, e.g. \code{"19951996"}.
 This is the format that ultimately gets sent to the NHL API.
 
-Some API endpoints, notably \code{seasons} exposed via \code{nhl_seasons()}
+Some API endpoints, notably \code{seasons} exposed via \code{\link[=nhl_seasons]{nhl_seasons()}}
 also allow the value \code{"current"} to passed. This value will be
 returned unchanged.}
 
@@ -53,11 +53,11 @@ to the API URL. Some valid examples seem to be \code{"round.series"}
 and \code{"schedule.broadcasts"}, \code{"schedule.linescore"},
 \code{"schedule.ticket"}. \code{NULL} for no expand parameter.}
 
-\item{...}{other named parameters passed to \code{\link[=nhl_schedule]{nhl_schedule()}}}
+\item{...}{other named parameters passed to \code{\link[=nhl_schedule]{nhl_schedule()}}.}
 }
 \value{
-\code{list}, with information on schedule, depending on provided
-arguments.
+\code{list}, with information on schedule, depending on
+provided arguments.
 }
 \description{
 The general-purpose \code{nhl_schedule()} exposes many parameters,
@@ -72,13 +72,14 @@ named via \code{...}.
 }
 \section{Functions}{
 \itemize{
-\item \code{nhl_schedule_today}: Shortcut to get information on today's schedule.
+\item \code{nhl_schedule_today}: Shortcut to get information on
+today's schedule.
 
 \item \code{nhl_schedule_seasons}: Shortcut to get information on schedule for
 one or more seasons.
 
-\item \code{nhl_schedule_date_range}: Shortcut to get information on schedule
-for a range of dates in \code{"YYYY-MM-DD"} format.
+\item \code{nhl_schedule_date_range}: Shortcut to get information on
+schedule for a range of dates in \code{"YYYY-MM-DD"} format.
 }}
 
 \examples{

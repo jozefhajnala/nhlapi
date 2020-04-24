@@ -1,16 +1,16 @@
 #' Create an NHL API URL for divisions
 #'
-#' @param divisionIds `integer()`, ids of the divisions or `NULL` (default)
-#'   for all divisions As of end of 2019, the valid division ids seem to be
-#'   in the `1:25` range.
+#' @param divisionIds `integer()`, ids of the divisions or `NULL`
+#'   (default) for all divisions. As of end of 2019, the valid
+#'   division ids seem to be in the `1:25` range.
 #'
 #' @examples \dontrun{
 #'   nhl_url_divisions()
 #'   nhl_url_divisions(1:3)
 #' }
 #'
-#' @return `character()` of same length as `teamIds` or length `1`
-#'   if `teamIds` is `NULL`
+#' @return `character()`, of same length as `teamIds` or length
+#'   `1` if `teamIds` is `NULL`.
 nhl_url_divisions <- function(divisionIds = NULL) {
   nhl_url(endPoint = "divisions", suffixes = list(divisionIds))
 }

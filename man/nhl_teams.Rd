@@ -15,7 +15,7 @@ in the \code{1:54} range.}
 \code{nhl_url_teams}.}
 }
 \value{
-\code{data.frame} with data on teams, one row per team.
+\code{data.frame}, with data on teams, one row per team.
 }
 \description{
 Retrieves team metadata such as the teams names,

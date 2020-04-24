@@ -2,21 +2,22 @@
 % Please edit documentation in R/nhl_utils.R
 \name{util_convert_minsonice}
 \alias{util_convert_minsonice}
-\title{Convert "minutes:seconds" character to numeric minutes}
+\title{Convert \code{"mm:ss"} character to numeric minutes}
 \usage{
 util_convert_minsonice(chr, splitter = ":")
 }
 \arguments{
-\item{chr}{\code{character()} vector in format \code{"mins:secs"}.}
+\item{chr}{\code{character()}, vector in format \code{"mins:secs"}.}
 
-\item{splitter}{\code{character(1)}, string that splits
+\item{splitter}{\code{character(1)}, that splits
 minutes and seconds in elements of \code{chr}.}
 }
 \value{
-\code{numeric()} vector of times in minutes.
+\code{numeric()}, vector of times in minutes. Same length
+as \code{chr}.
 }
 \description{
-Convert "minutes:seconds" character to numeric minutes
+Convert \code{"mm:ss"} character to numeric minutes
 }
 \examples{
 \dontrun{

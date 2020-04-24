@@ -7,13 +7,13 @@
 nhl_url_drafts(draftYears = NULL)
 }
 \arguments{
-\item{draftYears}{\code{integer()}, vector of one or more years in \code{YYYY}
-format or \code{NULL} (default) for the current year's draft. Also
-accepts a character vector of years in \code{YYYY} format.}
+\item{draftYears}{\code{integer()}, vector of one or more years in
+\code{YYYY} format or \code{NULL} (default) for the current year's draft.
+Also accepts a character vector of years in \code{YYYY} format.}
 }
 \value{
-\code{character()} of same length as \code{draftYears} or length \code{1}
-if \code{draftYears} is \code{NULL}
+\code{character()}, API URLs, same length as \code{draftYears} or
+length \code{1} if \code{draftYears} is \code{NULL}.
 }
 \description{
 Create an NHL API URL for drafts

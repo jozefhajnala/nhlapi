@@ -9,8 +9,8 @@
 #'   nhl_url_awards(1:3)
 #' }
 #'
-#' @return `character()` of same length as `awardIds` or length `1`
-#'   if `awardIds` is `NULL`.
+#' @return `character()`, API URLs, same length as `awardIds` or
+#'   length `1` if `awardIds` is `NULL`.
 nhl_url_awards <- function(awardIds = NULL) {
   nhl_url(endPoint = "awards", suffixes = list(awardIds))
 }

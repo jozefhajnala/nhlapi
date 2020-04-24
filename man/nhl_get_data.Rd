@@ -2,25 +2,25 @@
 % Please edit documentation in R/nhl_get_data.R
 \name{nhl_get_data}
 \alias{nhl_get_data}
-\title{Get data from the API for one or more urls}
+\title{Get data from the API for one or more URLs}
 \usage{
 nhl_get_data(urls, flatten = getOption("nhlapi_flatten"))
 }
 \arguments{
-\item{urls}{\code{character()}, vector of urls to retrieve
+\item{urls}{\code{character()}, vector of URLs to retrieve
 the data from.}
 
 \item{flatten}{\code{logical(1)}, if \code{TRUE} (default) automatically
 flattens nested data frames into a single non-nested data frame.}
 }
 \value{
-\code{list} of results retrieved using \code{\link[=nhl_get_data_worker]{nhl_get_data_worker()}}.
+\code{list}, results retrieved using \code{\link[=nhl_get_data_worker]{nhl_get_data_worker()}}.
 One element per url. The elements contain the retrieved data
 if retrieval succeeded, otherwise an \code{nhl_get_data_error} class
 object.
 }
 \description{
-Get data from the API for one or more urls
+Get data from the API for one or more URLs
 }
 \examples{
 \dontrun{

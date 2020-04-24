@@ -7,13 +7,13 @@
 nhl_drafts(draftYears = NULL)
 }
 \arguments{
-\item{draftYears}{\code{integer()}, vector of one or more years in \code{YYYY}
-format or \code{NULL} (default) for the current year's draft. Also
-accepts a character vector of years in \code{YYYY} format.}
+\item{draftYears}{\code{integer()}, vector of one or more years in
+\code{YYYY} format or \code{NULL} (default) for the current year's draft.
+Also accepts a character vector of years in \code{YYYY} format.}
 }
 \value{
 \code{data.frame}, with information on drafts, one row
-year.
+per draft year.
 }
 \description{
 Retrieve metadata on NHL drafts from the API

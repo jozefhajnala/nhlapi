@@ -1,14 +1,14 @@
 #' Create an NHL API URL for draft prospects
 #'
-#' @param prospectIds `integer()`, vector of one or more ids of draft
-#'   prospects or `NULL` (default) for all exposed prospects.
+#' @param prospectIds `integer()`, vector of one or more ids of
+#'   draft prospects or `NULL` (default) for all exposed prospects.
 #'
 #' @examples \dontrun{
 #'   nhl_url_draft_prospects()
 #' }
 #'
-#' @return `character()` of same length as `prospectIds` or length `1`
-#'   if `prospectIds` is `NULL`.
+#' @return `character()`, API URLs, same length as `prospectIds` or
+#'   length `1` if `prospectIds` is `NULL`.
 nhl_url_draft_prospects <- function(prospectIds = NULL) {
   nhl_url(endPoint = "draft/prospects", suffixes = list(prospectIds))
 }

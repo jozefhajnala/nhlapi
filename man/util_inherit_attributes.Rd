@@ -15,9 +15,9 @@ util_inherit_attributes(src, tgt, atrs = c("url", "copyright"))
 of \code{src} to be added to \code{tgt}.}
 }
 \value{
-\code{object} same as \code{tgt} with attributes added
+\code{object}, same as \code{tgt} with attributes added.
 }
 \description{
 Take attributes with names specified by \code{atrs}
-from object \code{src} and adds them as the same attributes to \code{tgt}.
+from object \code{src} and add them as the same attributes to \code{tgt}.
 }

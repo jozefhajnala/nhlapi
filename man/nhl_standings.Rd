@@ -17,22 +17,23 @@ Alternatively, also accepts \code{character()} with seasons in the
 format \code{"YYYYZZZZ"}, where \code{ZZZZ = YYYY + 1}, e.g. \code{"19951996"}.
 This is the format that ultimately gets sent to the NHL API.
 
-Some API endpoints, notably \code{seasons} exposed via \code{nhl_seasons()}
+Some API endpoints, notably \code{seasons} exposed via \code{\link[=nhl_seasons]{nhl_seasons()}}
 also allow the value \code{"current"} to passed. This value will be
 returned unchanged.}
 
-\item{standingsTypes}{\code{character()}, defining the standings types
-to retrieve. Valid standings types are for example \code{"regularSeason"}
-or \code{"byDivision"}. See \code{\link[=nhl_md_standings_types]{nhl_md_standings_types()}} for all values
-and their descriptions.}
+\item{standingsTypes}{\code{character()}, defining the standings
+types to retrieve. Valid standings types are for example
+\code{"regularSeason"} or \code{"byDivision"}. See
+\code{\link[=nhl_md_standings_types]{nhl_md_standings_types()}} for all values and their
+descriptions.}
 
 \item{expand}{\code{character()}, of parameters passed as \code{expand}
 to the API URL. A valid example seems to be \code{"standings.record"}.
 \code{NULL} for no expand parameter.}
 }
 \value{
-\code{list}, with information on standings, depending on
-provided arguments.
+\code{list}, with information on standings
+depending on provided arguments.
 }
 \description{
 Retrieve metadata on NHL standings from the API

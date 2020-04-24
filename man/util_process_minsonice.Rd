@@ -7,10 +7,10 @@
 util_process_minsonice(df, patt = "timeOn|TimeOn")
 }
 \arguments{
-\item{df}{\code{data.frame}.}
+\item{df}{\code{data.frame}, data to examine.}
 
-\item{patt}{\code{character(1)}, pattern to match column names that
-contain time information in \code{"mm:ss"} format.}
+\item{patt}{\code{character(1)}, pattern to match column names
+that contain time information in \code{"mm:ss"} format.}
 }
 \value{
 \code{data.frame}, with time columns converted from

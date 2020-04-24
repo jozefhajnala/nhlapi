@@ -11,12 +11,14 @@ nhl_url_teams(teamIds = NULL, params = NULL)
 for all teams. As of end of 2019, the valid team ids seem to be
 in the \code{1:54} range.}
 
-\item{params}{\code{named list} of parameters that will be concatenated
-to the end of the url after \code{?}.}
+\item{params}{\code{named list()} of parameters that will be
+concatenated to the end of the URLs after \code{?}. Parameters
+can have multiple values, in which case multiple URLs
+are created. Multiple parameters are separated by \code{&}.}
 }
 \value{
-\code{character()} of same length as \code{teamIds} or length \code{1}
-if \code{teamIds} is \code{NULL}
+\code{character()}, API URLs, same length as \code{teamIds} or
+length \code{1} if \code{teamIds} is \code{NULL}.
 }
 \description{
 Create an NHL API URL for teams

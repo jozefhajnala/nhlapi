@@ -10,8 +10,8 @@
 #'   nhl_url_teams(1:3)
 #' }
 #'
-#' @return `character()` of same length as `teamIds` or length `1`
-#'   if `teamIds` is `NULL`
+#' @return `character()`, API URLs, same length as `teamIds` or
+#'   length `1` if `teamIds` is `NULL`.
 nhl_url_teams <- function(teamIds = NULL, params = NULL) {
   suffixes <- list(teamIds)
   nhl_url(endPoint = "teams", suffixes = suffixes, params = params)
@@ -35,7 +35,7 @@ nhl_url_teams <- function(teamIds = NULL, params = NULL) {
 #' }
 #'
 #' @export
-#' @return `data.frame` with data on teams, one row per team.
+#' @return `data.frame`, with data on teams, one row per team.
 nhl_teams <- function(teamIds = NULL, params = NULL) {
   x <- nhl_url_teams(teamIds = teamIds, params = params)
   x <- nhl_get_data(x)
@@ -49,8 +49,8 @@ nhl_teams <- function(teamIds = NULL, params = NULL) {
 #' @inheritParams nhl_url_teams
 #' @inheritParams nhl_url_players_seasons
 #'
-#' @return data.frame, with an element called `roster.roster`
-#'   that in itself is a data.frame with the roster data.
+#' @return `data.frame`, with an element called `roster.roster`
+#'   that in itself is a `data.frame` with the roster data.
 #'
 #' @export
 #'
@@ -76,7 +76,7 @@ nhl_teams_rosters <- function(teamIds = NULL, seasons = NULL) {
 #'
 #' @inheritParams nhl_url_teams
 #'
-#' @return data.frame, with elements with names starting with
+#' @return `data.frame`, with elements with names starting with
 #'   `nextGameSchedule` that contain data on the teams' upcoming
 #'    game. One row per team.
 #'
@@ -97,9 +97,9 @@ nhl_teams_shedule_next <- function(teamIds = NULL) {
 #'
 #' @inheritParams nhl_url_teams
 #'
-#' @return data.frame, with elements with names starting with
-#'   `previousGameSchedule` that contain data on the teams' previous
-#'    game. One row per team.
+#' @return `data.frame`, with elements with names starting with
+#'   `previousGameSchedule` that contain data on the teams'
+#'   previous game. One row per team.
 #'
 #' @export
 #'
@@ -119,8 +119,8 @@ nhl_teams_shedule_previous <- function(teamIds = NULL) {
 #' @inheritParams nhl_url_teams
 #' @inheritParams nhl_url_players_seasons
 #'
-#' @return data.frame with seasons statistics for the selected team(s),
-#'   one row per each team and season combination
+#' @return `data.frame`, with seasons statistics for the selected
+#'   team(s), one row per each team and season combination.
 #' @export
 #'
 #' @examples \dontrun{

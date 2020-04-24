@@ -2,21 +2,20 @@
 % Please edit documentation in R/nhl_url.R
 \name{nhl_url_add_suffixes}
 \alias{nhl_url_add_suffixes}
-\title{Add suffixes to urls}
+\title{Add suffixes to URLs}
 \usage{
 nhl_url_add_suffixes(url, suffixes)
 }
 \arguments{
-\item{url}{\code{character()} vector of urls.}
+\item{url}{\code{character()}, vector of URLs.}
 
-\item{suffixes}{\code{list()} of suffixes that will be
-concatenated to the end of the urls, separated by
-\code{/}.}
+\item{suffixes}{\code{list()}, of suffixes that will be
+concatenated to the end of the URLs, separated by \code{/}.}
 }
 \value{
-\code{character()} of the same length as all the
-combinations of \code{url} and \code{suffixes}.
+\code{character()}, URLs with suffixes added. Same
+length as all the combinations of \code{url} and \code{suffixes}.
 }
 \description{
-Add suffixes to urls
+Add suffixes to URLs
 }

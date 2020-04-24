@@ -7,13 +7,13 @@
 util_rbindlist(lst, fill = TRUE)
 }
 \arguments{
-\item{lst}{\code{list()} of data frames to be \code{rbind}-ed into one}
+\item{lst}{\code{list()}, of data frames to be \code{rbind}-ed into one.}
 
-\item{fill}{\code{logical(1)} if \code{FALSE}, just returns
-\code{do.call(rbind, lst)}}
+\item{fill}{\code{logical(1)}, if \code{FALSE}, this function just
+returns \code{do.call(rbind, lst)}.}
 }
 \value{
-data.frame
+\code{data.frame}, the elements of \code{lst}, \code{rbind}-ed into one.
 }
 \description{
 Attempts to replace \code{do.call(rbind, lst)}

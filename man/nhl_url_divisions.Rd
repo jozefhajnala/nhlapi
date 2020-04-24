@@ -7,13 +7,13 @@
 nhl_url_divisions(divisionIds = NULL)
 }
 \arguments{
-\item{divisionIds}{\code{integer()}, ids of the divisions or \code{NULL} (default)
-for all divisions As of end of 2019, the valid division ids seem to be
-in the \code{1:25} range.}
+\item{divisionIds}{\code{integer()}, ids of the divisions or \code{NULL}
+(default) for all divisions. As of end of 2019, the valid
+division ids seem to be in the \code{1:25} range.}
 }
 \value{
-\code{character()} of same length as \code{teamIds} or length \code{1}
-if \code{teamIds} is \code{NULL}
+\code{character()}, of same length as \code{teamIds} or length
+\code{1} if \code{teamIds} is \code{NULL}.
 }
 \description{
 Create an NHL API URL for divisions

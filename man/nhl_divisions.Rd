@@ -7,9 +7,9 @@
 nhl_divisions(divisionIds = NULL)
 }
 \arguments{
-\item{divisionIds}{\code{integer()}, ids of the divisions or \code{NULL} (default)
-for all divisions As of end of 2019, the valid division ids seem to be
-in the \code{1:25} range.}
+\item{divisionIds}{\code{integer()}, ids of the divisions or \code{NULL}
+(default) for all divisions. As of end of 2019, the valid
+division ids seem to be in the \code{1:25} range.}
 }
 \value{
 \code{data.frame}, with information on divisions, one row

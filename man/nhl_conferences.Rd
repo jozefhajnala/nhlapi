@@ -7,9 +7,9 @@
 nhl_conferences(conferenceIds = NULL)
 }
 \arguments{
-\item{conferenceIds}{\code{integer()}, ids of the conferences or \code{NULL} (default)
-for all conferences As of end of 2019, the valid conference ids seem to be
-in the \code{1:7} range.}
+\item{conferenceIds}{\code{integer()}, ids of the conferences or \code{NULL}
+(default) for all conferences As of end of 2019, the valid
+conference ids seem to be in the \code{1:7} range.}
 }
 \value{
 \code{data.frame}, with information on conferences, one row

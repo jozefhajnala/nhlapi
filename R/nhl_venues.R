@@ -10,8 +10,8 @@
 #'   nhl_url_venues(5000:5006)
 #' }
 #'
-#' @return `character()` of same length as `venueIds` or length `1`
-#'   if `venueIds` is `NULL`.
+#' @return `character()`, API URLs, same length as `venueIds` or
+#'   length `1` if `venueIds` is `NULL`.
 nhl_url_venues <- function(venueIds = NULL) {
   nhl_url(endPoint = "venues", suffixes = list(venueIds))
 }

@@ -5,7 +5,7 @@
 #'
 #' @examples \dontrun{nhl_url_players_stats(8477474)}
 #'
-#' @return `character()` of same length as `playerIds`
+#' @return `character()`, of API URLs, same length as `playerIds`.
 nhl_url_players_stats <- function(playerIds, params = NULL) {
   nhl_url(
     endPoint = "people",
@@ -16,13 +16,13 @@ nhl_url_players_stats <- function(playerIds, params = NULL) {
 
 #' Create an NHL API URL for  players' seasons statistics
 #'
-#' @details If multiple players and seasons are provided, urls will
+#' @details If multiple players and seasons are provided, URLs will
 #'   be created for all combinations of players and seasons.
 #'
 #' @inheritParams nhl_url_players
 #' @inheritParams nhl_make_seasons
 
-#' @param playoffs `logical(1)` if `FALSE` (default) get the regular
+#' @param playoffs `logical(1)`, if `FALSE` (default) get the regular
 #'   seasons data, if `TRUE`, get the data for the playoffs.
 #' @examples \dontrun{
 #'   # Joe Sakic, regular season 1995/1996
@@ -62,15 +62,15 @@ nhl_url_players_allseasons <- function(playerIds) {
 nhl_process_player_seasons <- function(x, playerId) {
   playerId <- as.integer(playerId)
   res <- util_process_copyright(x)
-  res_df <- res[["stats"]][["splits"]][[1L]]
-  if (!is.data.frame(res_df) && length(res_df) == 0L) {
-    res_df <- data.frame()
+  resDf <- res[["stats"]][["splits"]][[1L]]
+  if (!is.data.frame(resDf) && length(resDf) == 0L) {
+    resDf <- data.frame()
   }
-  res_df <- util_attributes_to_cols(res, res_df)
-  res_df[["playerId"]] <- rep(playerId, nrow(res_df))
-  res_df[["seasonStart"]] <- as.integer(substr(res_df[["season"]], 1L, 4L))
-  res_df <- util_process_minsonice(res_df)
-  res_df
+  resDf <- util_attributes_to_cols(res, resDf)
+  resDf[["playerId"]] <- rep(playerId, nrow(resDf))
+  resDf[["seasonStart"]] <- as.integer(substr(resDf[["season"]], 1L, 4L))
+  resDf <- util_process_minsonice(resDf)
+  resDf
 }
 
 nhl_process_players_allseasons <- function(x, playerIds) {
@@ -86,11 +86,11 @@ nhl_process_players_seasons <- function(x, playerIds) {
 #' @inheritParams nhl_url_players_allseasons
 #' @inheritParams util_map_player_ids
 #'
-#' @return data.frame
+#' @return `data.frame`, with all season statistics for
+#'   selected players.
 #' @export
 #'
 #' @examples \dontrun{
-#'
 #'  # With player names
 #'  nhl_players_allseasons(c("joe sakic", "Peter Forsberg"))
 #'
@@ -120,7 +120,9 @@ nhl_players_allseasons <- function(
 #' @inheritParams nhl_url_players_seasons
 #' @inheritParams util_map_player_ids
 #'
-#' @return data.frame
+#' @return `data.frame`, with selected season statistics
+#'   for selected players.
+
 #' @export
 #'
 #' @examples \dontrun{

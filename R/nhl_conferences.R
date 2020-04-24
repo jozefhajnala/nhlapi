@@ -1,16 +1,16 @@
 #' Create an NHL API URL for conferences
 #'
-#' @param conferenceIds `integer()`, ids of the conferences or `NULL` (default)
-#'   for all conferences As of end of 2019, the valid conference ids seem to be
-#'   in the `1:7` range.
+#' @param conferenceIds `integer()`, ids of the conferences or `NULL`
+#'   (default) for all conferences As of end of 2019, the valid
+#'   conference ids seem to be in the `1:7` range.
 #'
 #' @examples \dontrun{
 #'   nhl_url_conferences()
 #'   nhl_url_conferences(1:3)
 #' }
 #'
-#' @return `character()` of same length as `teamIds` or length `1`
-#'   if `teamIds` is `NULL`
+#' @return `character()`, API URLs, same length as `teamIds` or
+#'   length `1` if `teamIds` is `NULL`.
 nhl_url_conferences <- function(conferenceIds = NULL) {
   nhl_url(endPoint = "conferences", suffixes = list(conferenceIds))
 }

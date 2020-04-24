@@ -15,7 +15,7 @@
 #'     format `"YYYYZZZZ"`, where `ZZZZ = YYYY + 1`, e.g. `"19951996"`.
 #'     This is the format that ultimately gets sent to the NHL API.
 #'
-#'   Some API endpoints, notably `seasons` exposed via `nhl_seasons()`
+#'   Some API endpoints, notably `seasons` exposed via [nhl_seasons()]
 #'     also allow the value `"current"` to passed. This value will be
 #'     returned unchanged.
 #'
@@ -52,30 +52,6 @@ nhl_make_seasons.character <- function(seasons){
 }
 
 
-#' Flatten a list into a data frame keeping classes
-#'
-#' DEPRECATED, NOT USED, TO BE REMOVED.
-#'
-#' @param x `list()`, note that a `data.frame` is also a `list`.
-#'
-#' @importFrom methods as
-#'
-#' @examples \dontrun{
-#'   x <- list(a = 1L, b = list(1, list(2L, TRUE)))
-#'   nhl_util_flatten_list(x)
-#'  }
-#'
-#' @return data.frame with the list flattened and classes preserved.
-util_flatten_list <- function(x) {
-  if (is.null(x)) return(data.frame())
-  classes <- rapply(x, class)
-  unlisted <- as.list(unlist(x, recursive = TRUE, use.names = TRUE))
-  data.frame(
-    Map(methods::as, unlisted, classes),
-    stringsAsFactors = FALSE
-  )
-}
-
 #' Move copyright information to attribute
 #'
 #' @description Removes the element named `el` from `x` if
@@ -87,7 +63,7 @@ util_flatten_list <- function(x) {
 #'   Defaults to `"copyright"` as this is the intended use
 #'   of the function.
 #'
-#' @return `list` with the `el` element removed and added
+#' @return `list`, with the `el` element removed and added
 #'   as attribute, if it is present in `x`. Unchanged `x`
 #'   otherwise.
 util_process_copyright <- function(x, el = "copyright") {
@@ -109,11 +85,11 @@ util_process_copyright <- function(x, el = "copyright") {
 #'   `lst` can have missing columns. Those are filled by
 #'   `NA` values.
 #'
-#' @param lst `list()` of data frames to be `rbind`-ed into one
-#' @param fill `logical(1)` if `FALSE`, just returns
-#'   `do.call(rbind, lst)`
+#' @param lst `list()`, of data frames to be `rbind`-ed into one.
+#' @param fill `logical(1)`, if `FALSE`, this function just
+#'   returns `do.call(rbind, lst)`.
 #'
-#' @return data.frame
+#' @return `data.frame`, the elements of `lst`, `rbind`-ed into one.
 #' @examples \dontrun{
 #'   util_rbindlist(list(mtcars[1, 2:3], mtcars[2, 4:5]))
 #' }
@@ -126,13 +102,13 @@ util_rbindlist <- function(lst, fill = TRUE) {
   if (!isTRUE(fill)) {
     return(do.call(rbind, lst))
   }
-  lst_nms <- lapply(lst, names)
-  if (length(unique(lst_nms)) == 1L) {
+  lstNames <- lapply(lst, names)
+  if (length(unique(lstNames)) == 1L) {
     # all names equal, use default rbind
     return(do.call(rbind, lst))
   }
-  lst_allNms <- unique(unlist(lst_nms))
-  filldf <- function(df, allNms) {
+  lstAllNames <- unique(unlist(lstNames))
+  fill_df <- function(df, allNms) {
     if (identical(names(df), allNms)) {
       return(data.frame(df, row.names = NULL))
     }
@@ -143,22 +119,22 @@ util_rbindlist <- function(lst, fill = TRUE) {
     )
     data.frame(c(df, filledCols), stringsAsFactors = FALSE)
   }
-  filleddfs <- lapply(lst, filldf, allNms = lst_allNms)
-  do.call(rbind, filleddfs)
+  filledDfs <- lapply(lst, fill_df, allNms = lstAllNames)
+  do.call(rbind, filledDfs)
 }
 
 
 #' Inherit attributes from another object
 #'
 #' @description Take attributes with names specified by `atrs`
-#'   from object `src` and adds them as the same attributes to `tgt`.
+#'   from object `src` and add them as the same attributes to `tgt`.
 #'
 #' @param src `object`, with attributes to be inherited by `tgt`.
 #' @param tgt `object`, onto which attributes of `src` should be added.
 #' @param atrs `character()`, vector of names of attributes
 #'   of `src` to be added to `tgt`.
 #'
-#' @return `object` same as `tgt` with attributes added
+#' @return `object`, same as `tgt` with attributes added.
 util_inherit_attributes <- function(src, tgt, atrs = c("url", "copyright")) {
   relevantAttrs <- intersect(names(attributes(src)), atrs)
   for (i in relevantAttrs) {
@@ -199,8 +175,8 @@ util_remove_get_data_errors <- function(x) {
 #'   )
 #' }
 #'
-#' @return `character()`, urls for which the retrieval
-#'   resulted in an error, invisibly.
+#' @return `character()`, URLs for which the retrieval
+#'   resulted in an error, invisibly. Optional side-effects.
 util_report_get_data_errors <- function(x, reporter = log_e, ...) {
   errors <- Filter(util_nhl_is_get_data_error, x)
   errorUrls <- vapply(errors, attr, which = "url", FUN.VALUE = character(1))
@@ -221,12 +197,13 @@ util_report_get_data_errors <- function(x, reporter = log_e, ...) {
 }
 
 
-#' Convert "minutes:seconds" character to numeric minutes
+#' Convert `"mm:ss"` character to numeric minutes
 #'
-#' @param chr `character()` vector in format `"mins:secs"`.
-#' @param splitter `character(1)`, string that splits
-#' minutes and seconds in elements of `chr`.
-#' @return `numeric()` vector of times in minutes.
+#' @param chr `character()`, vector in format `"mins:secs"`.
+#' @param splitter `character(1)`, that splits
+#'   minutes and seconds in elements of `chr`.
+#' @return `numeric()`, vector of times in minutes. Same length
+#'   as `chr`.
 #' @examples \dontrun{
 #'    nhlstats:::MakeMinsOnIce(c("20:00", "1500:30"))
 #' }
@@ -241,9 +218,9 @@ util_convert_minsonice <- function(chr, splitter = ":")  {
 
 #' Convert time columns from `"mm:ss"` to numeric minutes
 #'
-#' @param df `data.frame`.
-#' @param patt `character(1)`, pattern to match column names that
-#'   contain time information in `"mm:ss"` format.
+#' @param df `data.frame`, data to examine.
+#' @param patt `character(1)`, pattern to match column names
+#'   that contain time information in `"mm:ss"` format.
 #'
 #' @return `data.frame`, with time columns converted from
 #'   `"mm:ss"` characters to numeric minutes.
@@ -267,7 +244,7 @@ util_process_minsonice <- function(df, patt = "timeOn|TimeOn") {
 #' @param atrs `character()`, vector of names of attributes
 #'   of `lst`.
 #'
-#' @return `data.frame` same as `df` with columns added
+#' @return `data.frame`, `df` with added columns.
 util_attributes_to_cols <- function(lst, df, atrs = c("url", "copyright")) {
   relevantAttrs <- intersect(names(attributes(lst)), atrs)
   for (i in relevantAttrs) {
@@ -282,10 +259,11 @@ util_attributes_to_cols <- function(lst, df, atrs = c("url", "copyright")) {
 #'   using `writeChar()` and computes the `md5sum()`
 #'   on that file, removing the file afterwards.
 #'
-#' @param x `character()` vector.
+#' @param x `character()`, vector to compute the MD5 for.
 #'
 #' @importFrom tools md5sum
-#' @return `character(1)`, the MD5 hash.
+#' @return `character(1)`, MD5 hash of a text file
+#'   created from `x` using [writeChar()].
 #'
 #' @examples \dontrun{
 #'   util_md5sum_str("test")
@@ -340,9 +318,9 @@ util_map_player_id <- function(x, map = getOption("nhlapi_player_map")) {
 #' @param playerNames `character()`, vector of one or more player names.
 #'   Not case sensitive for convenience.
 #'
-#' @return `integer()` named vector of player ids,
+#' @return `integer()`, named vector of player ids,
 #'   `NA_integer`` for those names where id was not
-#'   found#'
+#'   found.
 #'
 #' @examples \dontrun{
 #'   util_map_player_ids(c("Joe SAKIC", "peter Forsberg", "test"))
@@ -359,10 +337,10 @@ util_map_player_ids <- function(
 #'
 #' @inheritParams util_map_player_ids
 #'
-#' @return `integer()` named vector of found valid player
+#' @return `integer()`, named vector of found valid player
 #'  ids, those not found omitted.
 #' @examples \dontrun{
-#'  util_prepare_player_ids(c("joe sakic", "fake player"))
+#'   util_prepare_player_ids(c("joe sakic", "fake player"))
 #' }
 util_prepare_player_ids <- function(
   playerNames,
@@ -382,7 +360,7 @@ util_prepare_player_ids <- function(
 #' @param tgtPath `character(1)`, path where to save
 #'   the generated object, `NULL` to not save.
 #'
-#' @return `data.frame` with player name hashes and ids.
+#' @return `data.frame`, with player name hashes and ids.
 util_generate_sysdata <- function(
   playerIds = 8444849L:8490000L,
   tgtPath = "sysdata.rda"
@@ -403,10 +381,10 @@ util_generate_sysdata <- function(
 
 nhl_process_result <- function(x, elName) {
   res <- util_process_copyright(x)
-  res_df <- res[[elName]]
-  if (identical(res_df, list())) res_df <- as.data.frame(res_df)
-  res_df <- util_attributes_to_cols(res, res_df)
-  res_df
+  resDf <- res[[elName]]
+  if (identical(resDf, list())) resDf <- as.data.frame(resDf)
+  resDf <- util_attributes_to_cols(res, resDf)
+  resDf
 }
 
 nhl_process_results <- function(x, elName) {

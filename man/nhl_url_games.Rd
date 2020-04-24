@@ -43,7 +43,7 @@ Currently the valid elements seem to be:
 }}
 }
 \value{
-\code{character()} of same length as \code{gameIds}
+\code{character()}, of same length as \code{gameIds}.
 }
 \description{
 Create an NHL API URL for games

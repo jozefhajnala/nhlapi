@@ -16,8 +16,8 @@ nhl_tournaments_olympics(seasons = NULL, expand = NULL)
 nhl_tournaments_worldcups(seasons = NULL, expand = NULL)
 }
 \arguments{
-\item{tournamentTypes}{\code{character()}, vector of one or more tournament
-types. Currently supported types seem to be.
+\item{tournamentTypes}{\code{character()}, vector of one or more
+tournament types. Currently supported types seem to be
 \itemize{
 \item \code{"playoffs"}
 \item \code{"olympics"}
@@ -41,7 +41,7 @@ Alternatively, also accepts \code{character()} with seasons in the
 format \code{"YYYYZZZZ"}, where \code{ZZZZ = YYYY + 1}, e.g. \code{"19951996"}.
 This is the format that ultimately gets sent to the NHL API.
 
-Some API endpoints, notably \code{seasons} exposed via \code{nhl_seasons()}
+Some API endpoints, notably \code{seasons} exposed via \code{\link[=nhl_seasons]{nhl_seasons()}}
 also allow the value \code{"current"} to passed. This value will be
 returned unchanged.}
 

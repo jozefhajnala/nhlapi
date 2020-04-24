@@ -12,7 +12,7 @@ for all teams. As of end of 2019, the valid team ids seem to be
 in the \code{1:54} range.}
 }
 \value{
-data.frame, with elements with names starting with
+\code{data.frame}, with elements with names starting with
 \code{nextGameSchedule} that contain data on the teams' upcoming
 game. One row per team.
 }

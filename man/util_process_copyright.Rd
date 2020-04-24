@@ -14,7 +14,7 @@ Defaults to \code{"copyright"} as this is the intended use
 of the function.}
 }
 \value{
-\code{list} with the \code{el} element removed and added
+\code{list}, with the \code{el} element removed and added
 as attribute, if it is present in \code{x}. Unchanged \code{x}
 otherwise.
 }

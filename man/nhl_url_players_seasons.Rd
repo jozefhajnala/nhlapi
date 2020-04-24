@@ -22,18 +22,18 @@ Alternatively, also accepts \code{character()} with seasons in the
 format \code{"YYYYZZZZ"}, where \code{ZZZZ = YYYY + 1}, e.g. \code{"19951996"}.
 This is the format that ultimately gets sent to the NHL API.
 
-Some API endpoints, notably \code{seasons} exposed via \code{nhl_seasons()}
+Some API endpoints, notably \code{seasons} exposed via \code{\link[=nhl_seasons]{nhl_seasons()}}
 also allow the value \code{"current"} to passed. This value will be
 returned unchanged.}
 
-\item{playoffs}{\code{logical(1)} if \code{FALSE} (default) get the regular
+\item{playoffs}{\code{logical(1)}, if \code{FALSE} (default) get the regular
 seasons data, if \code{TRUE}, get the data for the playoffs.}
 }
 \description{
 Create an NHL API URL for  players' seasons statistics
 }
 \details{
-If multiple players and seasons are provided, urls will
+If multiple players and seasons are provided, URLs will
 be created for all combinations of players and seasons.
 }
 \examples{

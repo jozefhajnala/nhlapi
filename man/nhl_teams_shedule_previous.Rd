@@ -12,9 +12,9 @@ for all teams. As of end of 2019, the valid team ids seem to be
 in the \code{1:54} range.}
 }
 \value{
-data.frame, with elements with names starting with
-\code{previousGameSchedule} that contain data on the teams' previous
-game. One row per team.
+\code{data.frame}, with elements with names starting with
+\code{previousGameSchedule} that contain data on the teams'
+previous game. One row per team.
 }
 \description{
 Get details for the teams' previous game

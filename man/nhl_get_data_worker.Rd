@@ -15,16 +15,16 @@ nhl_get_data_worker(url, flatten = getOption("nhlapi_flatten"),
 \item{flatten}{\code{logical(1)}, if \code{TRUE} (default) automatically
 flattens nested data frames into a single non-nested data frame.}
 
-\item{silent}{\code{logical(1)}, passed to \code{try()}.}
+\item{silent}{\code{logical(1)}, passed to \code{[try()]}.}
 
 \item{retries}{\code{integer(1)}, number of retries in case of failed
 data retrieval (\code{0L} for no no retries).}
 
-\item{retrySleep}{\code{integer(1)}, number of seconds to \code{Sys.sleep()}
-in between retries.}
+\item{retrySleep}{\code{integer(1)}, number of seconds to
+\code{[Sys.sleep()]} in between retries.}
 }
 \value{
-\code{list} with the retrieved data or class \code{nhl_get_data_error}.
+\code{list}, with the retrieved data or class \code{nhl_get_data_error}.
 }
 \description{
 Gets data from the NHL API using \code{\link[=nhl_from_json]{nhl_from_json()}}.

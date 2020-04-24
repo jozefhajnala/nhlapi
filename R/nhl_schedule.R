@@ -27,7 +27,7 @@
 #'  )
 #' }
 #'
-#' @return `character()` vector of URLs.
+#' @return `character()`, vector of URLs.
 nhl_url_schedule <- function(
   seasons = NULL,
   teamIds = NULL,
@@ -59,8 +59,8 @@ nhl_url_schedule <- function(
 #'
 #' @inheritParams nhl_url_schedule
 #'
-#' @return `list`, with information on schedule, depending on provided
-#'   arguments.
+#' @return `list`, with information on schedule, depending on
+#'   provided arguments.
 #'
 #' @examples \dontrun{
 #'  # Get current schedule
@@ -104,8 +104,9 @@ nhl_schedule <- function(
   x
 }
 
-#' @describeIn nhl_schedule Shortcut to get information on today's schedule.
-#' @param ... other named parameters passed to [nhl_schedule()]
+#' @describeIn nhl_schedule Shortcut to get information on
+#'   today's schedule.
+#' @param ... other named parameters passed to [nhl_schedule()].
 #' @export
 #' @examples \dontrun{
 #'   nhl_schedule_today()
@@ -133,8 +134,8 @@ nhl_schedule_seasons <- function(seasons, ...) {
   nhl_schedule(seasons = seasons, ...)
 }
 
-#' @describeIn nhl_schedule Shortcut to get information on schedule
-#'   for a range of dates in `"YYYY-MM-DD"` format.
+#' @describeIn nhl_schedule Shortcut to get information on
+#'   schedule for a range of dates in `"YYYY-MM-DD"` format.
 #' @export
 #' @examples \dontrun{
 #'   # Schedule for October and November 2015

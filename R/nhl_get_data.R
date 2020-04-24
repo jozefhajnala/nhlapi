@@ -3,19 +3,19 @@
 #' @param url `character(1)`, the URL to get the data from.
 #' @param flatten `logical(1)`, if `TRUE` (default) automatically
 #'   flattens nested data frames into a single non-nested data frame.
-#' @param silent `logical(1)`, passed to `try()`.
+#' @param silent `logical(1)`, passed to `[try()]`.
 #' @param retries `integer(1)`, number of retries in case of failed
 #'   data retrieval (`0L` for no no retries).
-#' @param retrySleep `integer(1)`, number of seconds to `Sys.sleep()`
-#'   in between retries.
+#' @param retrySleep `integer(1)`, number of seconds to
+#'   `[Sys.sleep()]` in between retries.
 #' @param noRetryPatt `character(1)`, string pattern. If the error
 #'   condition's message contains this pattern, there will be no
 #'   retries. Useful for e.g. `404` returns where retries are likely
 #'   useless.
 #' @importFrom jsonlite fromJSON
 #'
-#' @return retrieved data if succeeded, or a `try-error` class object
-#'   otherwise.
+#' @return `list`, retrieved data if succeeded, a `try-error` class
+#'   object otherwise.
 nhl_from_json <- function(
   url,
   flatten = getOption("nhlapi_flatten"),
@@ -58,7 +58,7 @@ nhl_from_json <- function(
 #' @inheritParams nhl_from_json
 #' @seealso [nhl_from_json()], [nhl_url()]
 #'
-#' @return `list` with the retrieved data or class `nhl_get_data_error`.
+#' @return `list`, with the retrieved data or class `nhl_get_data_error`.
 nhl_get_data_worker <- function(
   url,
   flatten = getOption("nhlapi_flatten"),
@@ -84,9 +84,9 @@ nhl_get_data_worker <- function(
 }
 
 
-#' Get data from the API for one or more urls
+#' Get data from the API for one or more URLs
 #'
-#' @param urls `character()`, vector of urls to retrieve
+#' @param urls `character()`, vector of URLs to retrieve
 #'   the data from.
 #'
 #' @inheritParams nhl_get_data_worker
@@ -106,7 +106,7 @@ nhl_get_data_worker <- function(
 #'   )
 #' }
 #'
-#' @return `list` of results retrieved using [nhl_get_data_worker()].
+#' @return `list`, results retrieved using [nhl_get_data_worker()].
 #'   One element per url. The elements contain the retrieved data
 #'   if retrieval succeeded, otherwise an `nhl_get_data_error` class
 #'   object.
