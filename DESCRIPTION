@@ -1,10 +1,10 @@
 Package: nhlapi
 Type: Package
-Title: Get And Process NHL Statistics
-Version: 0.0.9
-Author: person("Jozef", "Hajnala", email = "jozef.hajnala@gmail.com", role = c("aut", "cre"))
+Title: A Minimum-Dependency R Interface to the NHL API
+Version: 0.1.0
+Authors@R: person("Jozef", "Hajnala", email = "jozef.hajnala@gmail.com", role = c("aut", "cre"))
 Maintainer: Jozef Hajnala <jozef.hajnala@gmail.com>
-Description: Get and process the data from the NHL API.
+Description: Get and process the data exposed by the open NHL API.
 Depends: R (>= 2.10)
 Imports: jsonlite
 Encoding: UTF-8
@@ -21,3 +21,4 @@ URL: https://github.com/jozefhajnala/nhlapi
 BugReports: https://github.com/jozefhajnala/nhlapi/issues
 VignetteBuilder: knitr
 SysDataCompression: xz
+Copyright: NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams.

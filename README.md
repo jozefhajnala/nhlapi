@@ -1,9 +1,29 @@
 # nhlapi
 
-R interface to the NHL API
+A minimum-dependency R interface to the NHL API.
 
 ![MSWin](https://github.com/jozefhajnala/nhlapi/workflows/check_win/badge.svg)
 ![MacOS](https://github.com/jozefhajnala/nhlapi/workflows/check_macos/badge.svg)
+
+## Installation
+
+You can install nhlapi from CRAN. 
+
+```r
+install.packages("languageserversetup")
+```
+
+You can also install the latest development version from the master branch on GitHub using the remotes package:
+
+```r
+remotes::install_github("jozefhajnala/languageserversetup")
+```
+
+## Usage
+
+You retrieve the data from the NHL API by calling the functions exported by the nhlapi package. They start with `nhl_` so you can easily find them with autocomplete in your favourite editor:
+
+![nhlapi Preview](https://user-images.githubusercontent.com/23148397/80225712-b5dc3c00-864b-11ea-9613-a5c08749933f.gif)
 
 ## Implemented API endpoints
 
@@ -63,3 +83,9 @@ R interface to the NHL API
 ## Acknowledgments
 
 Thanks go to Drew Hynes for documenting this so well in [https://gitlab.com/dword4/nhlapi/blob/master/stats-api.md](https://gitlab.com/dword4/nhlapi/blob/master/stats-api.md)
+
+
+## Copyright message
+
+> NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2020. All Rights Reserved.
+
