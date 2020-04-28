@@ -30,12 +30,16 @@
 nhl_make_seasons <- function(seasons = 1950:2019) {
   UseMethod("nhl_make_seasons", seasons)
 }
+
+#'@export
 nhl_make_seasons.default <- function(seasons) seasons
 
+#'@export
 nhl_make_seasons.numeric <- function(seasons = 1950:2019) {
   paste0(seasons, seasons + 1L)
 }
 
+#'@export
 nhl_make_seasons.character <- function(seasons){
   reservedValues <- c("current", NA_character_)
   if (length(seasons) == 1L && seasons %in% reservedValues) {

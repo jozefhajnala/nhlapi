@@ -1,3 +1,5 @@
+skipRemoteTests <- !identical(Sys.getenv("NHLAPI_REMOTE_TESTS"), "true")
+
 mock_return <- function(...) return(list(...))
 mock_identity <- function(x) return(x)
 mock_error <- function(...) stop("I must fail.")

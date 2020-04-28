@@ -3,6 +3,8 @@ context("nhl_standings")
 testthat::test_that(
   "nhl_standings is a data frame with correct names", {
     testthat::skip_if_offline(host = "nhl.com")
+    testthat::skip_if(skipRemoteTests)
+
     res <- nhl_standings()
 
     testthat::expect_true(
@@ -26,6 +28,8 @@ testthat::test_that(
 testthat::test_that(
   "nhl_standings for 2 seasons", {
     testthat::skip_if_offline(host = "nhl.com")
+    testthat::skip_if(skipRemoteTests)
+
     res <- nhl_standings(seasons = 2015:2016)
 
     testthat::expect_true(
@@ -49,6 +53,8 @@ testthat::test_that(
 testthat::test_that(
   "nhl_standings for 2 seasons by division", {
     testthat::skip_if_offline(host = "nhl.com")
+    testthat::skip_if(skipRemoteTests)
+
     res <- nhl_standings(seasons = 2015:2016, standingsTypes = "byDivision")
 
     testthat::expect_true(
@@ -77,6 +83,8 @@ testthat::test_that(
 testthat::test_that(
   "nhl_standings for 2 seasons by division with expand", {
     testthat::skip_if_offline(host = "nhl.com")
+    testthat::skip_if(skipRemoteTests)
+
     res <- nhl_standings(
       seasons = 2015:2016,
       standingsTypes = "byDivision",

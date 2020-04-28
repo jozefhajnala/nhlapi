@@ -3,6 +3,8 @@ context("nhl_tournaments")
 testthat::test_that(
   "nhl_tournaments_playoffs has correct names", {
     testthat::skip_if_offline(host = "nhl.com")
+    testthat::skip_if(skipRemoteTests)
+
     res <- nhl_tournaments_playoffs(2015L)[[1L]]
     testthat::expect_true(all(is.element(
       c("copyright", "id", "name", "season", "defaultRound", "rounds"),
@@ -14,6 +16,8 @@ testthat::test_that(
 testthat::test_that(
   "nhl_tournaments_olympics has correct names", {
     testthat::skip_if_offline(host = "nhl.com")
+    testthat::skip_if(skipRemoteTests)
+
     res <- nhl_tournaments_olympics(2009)[[1L]]
     testthat::expect_true(all(is.element(
       c("copyright", "id", "name", "season"),
@@ -25,6 +29,8 @@ testthat::test_that(
 testthat::test_that(
   "nhl_tournaments_worldcups has correct names", {
     testthat::skip_if_offline(host = "nhl.com")
+    testthat::skip_if(skipRemoteTests)
+
     res <- nhl_tournaments_worldcups(2003L)[[1L]]
     testthat::expect_true(all(is.element(
       c("copyright", "id", "name", "season", "rounds"),

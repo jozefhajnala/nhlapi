@@ -3,6 +3,8 @@ context("nhl_draft_prospects")
 testthat::test_that(
   "nhl_draft_prospects has correct names", {
     testthat::skip_if_offline(host = "nhl.com")
+    testthat::skip_if(skipRemoteTests)
+
     res <- nhl_draft_prospects()
     testthat::expect_true(all(
       c(

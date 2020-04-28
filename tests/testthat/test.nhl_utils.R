@@ -293,6 +293,8 @@ context("util_generate_sysdata")
 testthat::test_that(
   "sysdata.rda generated correctly for a player", {
     testthat::skip_if_offline(host = "nhl.com")
+    testthat::skip_if(skipRemoteTests)
+
     tmpFile <- tempfile()
     res <- util_generate_sysdata(8444855L, tgtPath = tmpFile)
     load(tmpFile)
