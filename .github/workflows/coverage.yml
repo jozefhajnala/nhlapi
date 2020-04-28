@@ -1,0 +1,13 @@
+name: test_coverage
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Covr test_coverage
+      env:
+        DOCKER_LOGIN_TOKEN: ${{ secrets.DOCKER_LOGIN_TOKEN }}
+        NHLAPI_REMOTE_TESTS: true
+        NHLAPI_TOKEN_CODECOV: ${{ secrets.NHLAPI_TOKEN_CODECOV }}
+      run: sh ci/docker_stage.sh ci/test_coverage.R

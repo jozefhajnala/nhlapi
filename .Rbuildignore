@@ -6,3 +6,4 @@ LICENSE
 ^\.github
 ^.vscode
 .lintr
+^ci

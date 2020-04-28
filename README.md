@@ -2,8 +2,9 @@
 
 A minimum-dependency R interface to the NHL API.
 
-![MSWin](https://github.com/jozefhajnala/nhlapi/workflows/check_win/badge.svg)
-![MacOS](https://github.com/jozefhajnala/nhlapi/workflows/check_macos/badge.svg)
+![CRAN Checks](https://github.com/jozefhajnala/nhlapi/workflows/check_cran/badge.svg)
+![Remote API Tests](https://github.com/jozefhajnala/nhlapi/workflows/test_remote_api/badge.svg)
+[![Coverage](https://img.shields.io/codecov/c/github/jozefhajnala/nhlapi/master.svg)](https://codecov.io/github/jozefhajnala/nhlapi?branch=master)
 
 ## Installation
 
