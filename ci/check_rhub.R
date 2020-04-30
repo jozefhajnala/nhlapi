@@ -14,7 +14,9 @@ if (platform == "cran") {
     show_status = TRUE,
     env_vars = c(
       `_R_CHECK_CRAN_INCOMING_REMOTE_` = "false",
-      Sys.getenv("LANGSERVERSETUP_RUN_DEPLOY", names = TRUE)
+      `_R_CHECK_FORCE_SUGGESTS_` = "true",
+      `_R_CHECK_CRAN_INCOMING_USE_ASPELL_` = "true",
+      `R_COMPILE_AND_INSTALL_PACKAGES` = "always"
     )
   )
 } else {
