@@ -11,13 +11,13 @@ A minimum-dependency R interface to the NHL API.
 You can install nhlapi from CRAN. 
 
 ```r
-install.packages("languageserversetup")
+install.packages("nhlapi")
 ```
 
 You can also install the latest development version from the master branch on GitHub using the remotes package:
 
 ```r
-remotes::install_github("jozefhajnala/languageserversetup")
+remotes::install_github("jozefhajnala/nhlapi")
 ```
 
 ## Usage
