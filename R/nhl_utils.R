@@ -411,3 +411,13 @@ util_all_null <- function(x) {
 util_drop_nulls <- function(x) {
   Filter(Negate(is.null), x)
 }
+
+initialize_options <- function(...) {
+  initialize_option <- function(optName, optValue) {
+    if (is.null(getOption(optName))) {
+      options(structure(list(optValue), .Names = optName))
+    }
+  }
+  opts <- list(...)
+  invisible(Map(initialize_option, names(opts), opts))
+}

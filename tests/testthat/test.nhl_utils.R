@@ -352,3 +352,17 @@ testthat::test_that(
   )
 )
 
+initialize_options(tmpOption = 1L)
+expect_equal(
+  getOption("tmpOption"),
+  1L,
+  info = "non-existing option created"
+)
+
+initialize_options(tmpOption = 10L)
+expect_equal(
+  getOption("tmpOption"),
+  1L,
+  info = "existing option not overwritten"
+)
+options(tmpOption = NULL)
