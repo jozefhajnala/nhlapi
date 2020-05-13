@@ -37,7 +37,5 @@ pasted to the end of the message.}
 Create a log message
 }
 \examples{
-\dontrun{
-  make_log("Dummy warning", type = "W")
-}
+  nhlapi:::make_log("Dummy warning", type = "W")
 }

@@ -19,9 +19,7 @@ length \code{1} if \code{draftYears} is \code{NULL}.
 Create an NHL API URL for drafts
 }
 \examples{
-\dontrun{
-  nhl_url_drafts()
-  nhl_url_drafts(2015:2017)
-}
+  nhlapi:::nhl_url_drafts()
+  nhlapi:::nhl_url_drafts(2015:2017)
 
 }

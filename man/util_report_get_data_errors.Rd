@@ -26,12 +26,12 @@ Report errors encountered during \code{nhl_get_data}
 }
 \examples{
 \dontrun{
-c("none", "8451101", "some") \%>\%
-  nhl_url_players() \%>\%
-  nhl_get_data() \%>\%
+  # Write errors to a temporary text file
+  tmpFile <- tempfile()
   util_report_get_data_errors(
-    reporter = log_file,
-    con = file("~/log.txt")
+    nhl_get_data(nhl_url_players(c("none", "8451101", "some"))),
+    reporter = writeLines,
+    con = tmpFile
   )
 }
 

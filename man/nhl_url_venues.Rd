@@ -20,9 +20,7 @@ length \code{1} if \code{venueIds} is \code{NULL}.
 Create an NHL API URL for venues
 }
 \examples{
-\dontrun{
-  nhl_url_venues()
-  nhl_url_venues(5000:5006)
-}
+  nhlapi:::nhl_url_venues()
+  nhlapi:::nhl_url_venues(5000:5006)
 
 }

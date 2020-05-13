@@ -51,15 +51,16 @@ and \code{"schedule.broadcasts"}, \code{"schedule.linescore"},
 Create an NHL API URL for schedules
 }
 \examples{
-\dontrun{
- nhl_url_schedule(seasons = 2015:2016)
- nhl_url_schedule(startDate = "2018-01-02", endDate = "2018-01-02")
- nhl_url_schedule(
+ nhlapi:::nhl_url_schedule(seasons = 2015:2016)
+ nhlapi:::nhl_url_schedule(
+   startDate = "2018-01-02",
+   endDate = "2018-01-02"
+ )
+ nhlapi:::nhl_url_schedule(
    startDate = "2018-01-02",
    endDate = "2018-01-02",
    teamIds = c(29, 30),
    expand = "schedule.linescore"
  )
-}
 
 }

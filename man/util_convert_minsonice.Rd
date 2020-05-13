@@ -20,7 +20,5 @@ as \code{chr}.
 Convert \code{"mm:ss"} character to numeric minutes
 }
 \examples{
-\dontrun{
-   nhlstats:::MakeMinsOnIce(c("20:00", "1500:30"))
-}
+   nhlapi:::util_convert_minsonice(c("20:00", "1500:30"))
 }

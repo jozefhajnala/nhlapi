@@ -4,10 +4,9 @@
 #'   `YYYY` format or `NULL` (default) for the current year's draft.
 #'   Also accepts a character vector of years in `YYYY` format.
 #'
-#' @examples \dontrun{
-#'   nhl_url_drafts()
-#'   nhl_url_drafts(2015:2017)
-#' }
+#' @examples
+#'   nhlapi:::nhl_url_drafts()
+#'   nhlapi:::nhl_url_drafts(2015:2017)
 #'
 #' @return `character()`, API URLs, same length as `draftYears` or
 #'   length `1` if `draftYears` is `NULL`.

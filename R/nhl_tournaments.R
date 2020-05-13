@@ -18,11 +18,10 @@
 #'   and `"schedule.game.seriesSummary"`. `NULL` for no expand
 #'   parameter.
 #'
-#' @examples \dontrun{
-#'   nhl_url_tournaments("olympics")
-#'   nhl_url_tournaments("playoffs", 2015:2016)
-#'   nhl_url_tournaments("playoffs", 2015:2016, "round.series")
-#' }
+#' @examples
+#'   nhlapi:::nhl_url_tournaments("olympics")
+#'   nhlapi:::nhl_url_tournaments("playoffs", 2015:2016)
+#'   nhlapi:::nhl_url_tournaments("playoffs", 2015:2016, "round.series")
 #'
 #' @seealso [nhl_md_tournament_types()]
 #'

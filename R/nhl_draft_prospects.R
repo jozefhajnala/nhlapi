@@ -3,9 +3,8 @@
 #' @param prospectIds `integer()`, vector of one or more ids of
 #'   draft prospects or `NULL` (default) for all exposed prospects.
 #'
-#' @examples \dontrun{
-#'   nhl_url_draft_prospects()
-#' }
+#' @examples
+#'   nhlapi:::nhl_url_draft_prospects()
 #'
 #' @return `character()`, API URLs, same length as `prospectIds` or
 #'   length `1` if `prospectIds` is `NULL`.

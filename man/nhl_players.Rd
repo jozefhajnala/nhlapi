@@ -25,7 +25,6 @@ they take precedence over \code{playerIds}.
 }
 \examples{
 \dontrun{
-
  # With player names
  nhl_players(c("joe SAKIC", "patrick roy"))
 

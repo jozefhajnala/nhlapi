@@ -49,9 +49,10 @@ Currently the valid elements seem to be:
 Create an NHL API URL for games
 }
 \examples{
-\dontrun{
-  nhl_url_games(2017010001, "content")
-  nhl_url_games(c(2017010001, 2017010002), c("content", "boxscore"))
-}
+  nhlapi:::nhl_url_games(2017010001, "content")
+  nhlapi:::nhl_url_games(
+    c(2017010001, 2017010002),
+    c("content", "boxscore")
+  )
 
 }

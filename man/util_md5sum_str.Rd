@@ -19,7 +19,5 @@ using \code{writeChar()} and computes the \code{md5sum()}
 on that file, removing the file afterwards.
 }
 \examples{
-\dontrun{
-  util_md5sum_str("test")
-}
+  nhlapi:::util_md5sum_str("test")
 }

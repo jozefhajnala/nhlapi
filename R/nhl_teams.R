@@ -5,10 +5,9 @@
 #'   in the `1:54` range.
 #' @inheritParams nhl_url
 #'
-#' @examples \dontrun{
-#'   nhl_url_teams()
-#'   nhl_url_teams(1:3)
-#' }
+#' @examples
+#'   nhlapi:::nhl_url_teams()
+#'   nhlapi:::nhl_url_teams(1:3)
 #'
 #' @return `character()`, API URLs, same length as `teamIds` or
 #'   length `1` if `teamIds` is `NULL`.

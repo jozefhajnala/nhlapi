@@ -19,9 +19,7 @@ division ids seem to be in the \code{1:25} range.}
 Create an NHL API URL for divisions
 }
 \examples{
-\dontrun{
-  nhl_url_divisions()
-  nhl_url_divisions(1:3)
-}
+  nhlapi:::nhl_url_divisions()
+  nhlapi:::nhl_url_divisions(1:3)
 
 }

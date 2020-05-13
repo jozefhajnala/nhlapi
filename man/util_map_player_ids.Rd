@@ -25,7 +25,7 @@ found.
 Retrieve a player ids from their names
 }
 \examples{
-\dontrun{
-  util_map_player_ids(c("Joe SAKIC", "peter Forsberg", "test"))
-}
+  nhlapi:::util_map_player_ids(
+    c("Joe SAKIC", "peter Forsberg", "test")
+  )
 }

@@ -19,9 +19,7 @@ length \code{1} if \code{teamIds} is \code{NULL}.
 Create an NHL API URL for conferences
 }
 \examples{
-\dontrun{
-  nhl_url_conferences()
-  nhl_url_conferences(1:3)
-}
+  nhlapi:::nhl_url_conferences()
+  nhlapi:::nhl_url_conferences(1:3)
 
 }

@@ -37,14 +37,13 @@ If multiple players and seasons are provided, URLs will
 be created for all combinations of players and seasons.
 }
 \examples{
-\dontrun{
   # Joe Sakic, regular season 1995/1996
-  nhl_url_players_seasons(8451101L, 1995)
+  nhlapi:::nhl_url_players_seasons(8451101L, 1995)
+
   # Joe Sakic, playoffs 1995/1996, 1996/1997 and 1997/1998
-  nhl_url_players_seasons(
+  nhlapi:::nhl_url_players_seasons(
     8451101L,
     1995:1997,
     playoffs = TRUE
    )
-}
 }

@@ -24,7 +24,5 @@ ids, those not found omitted.
 Prepare player ids based on player names
 }
 \examples{
-\dontrun{
-  util_prepare_player_ids(c("joe sakic", "fake player"))
-}
+  nhlapi:::util_prepare_player_ids(c("joe sakic", "fake player"))
 }

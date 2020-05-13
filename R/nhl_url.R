@@ -5,9 +5,9 @@
 #' @inheritParams nhl_url_add_params
 #' @param baseUrl `character(1)`, URL of the NHL API base location.
 #'
-#' @examples \dontrun{
-#'   nhl_url("people", "8477474")
-#' }
+#' @examples
+#'   nhlapi:::nhl_url("people", "8477474")
+#'
 #' @return `character()`, the created URLs.
 nhl_url <- function(
   endPoint = NULL,

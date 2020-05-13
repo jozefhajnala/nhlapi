@@ -19,12 +19,11 @@
 #'     also allow the value `"current"` to passed. This value will be
 #'     returned unchanged.
 #'
-#' @examples \dontrun{
-#'   nhl_make_seasons()
-#'   nhl_make_seasons(1995:2000)
-#'   nhl_make_seasons(c(1995, 2015))
-#'   nhl_make_seasons(c("1995", "2015"))
-#' }
+#' @examples
+#'   nhlapi:::nhl_make_seasons()
+#'   nhlapi:::nhl_make_seasons(1995:2000)
+#'   nhlapi:::nhl_make_seasons(c(1995, 2015))
+#'   nhlapi:::nhl_make_seasons(c("1995", "2015"))
 #'
 #' @return `character()`, vector of seasons suited for the NHL API.
 nhl_make_seasons <- function(seasons = 1950:2019) {
@@ -94,9 +93,11 @@ util_process_copyright <- function(x, el = "copyright") {
 #'   returns `do.call(rbind, lst)`.
 #'
 #' @return `data.frame`, the elements of `lst`, `rbind`-ed into one.
-#' @examples \dontrun{
-#'   util_rbindlist(list(mtcars[1, 2:3], mtcars[2, 4:5]))
-#' }
+#' @examples
+#'   nhlapi:::util_rbindlist(list(
+#'     datasets::mtcars[1, 2:3],
+#'     datasets::mtcars[2, 4:5]
+#'   ))
 util_rbindlist <- function(lst, fill = TRUE) {
   lst <- Filter(function(x) nrow(x) != 0L, lst)
 
@@ -170,12 +171,12 @@ util_remove_get_data_errors <- function(x) {
 #'   `reporter`.
 #'
 #' @examples \dontrun{
-#' c("none", "8451101", "some") %>%
-#'   nhl_url_players() %>%
-#'   nhl_get_data() %>%
+#'   # Write errors to a temporary text file
+#'   tmpFile <- tempfile()
 #'   util_report_get_data_errors(
-#'     reporter = log_file,
-#'     con = file("~/log.txt")
+#'     nhl_get_data(nhl_url_players(c("none", "8451101", "some"))),
+#'     reporter = writeLines,
+#'     con = tmpFile
 #'   )
 #' }
 #'
@@ -208,9 +209,8 @@ util_report_get_data_errors <- function(x, reporter = log_e, ...) {
 #'   minutes and seconds in elements of `chr`.
 #' @return `numeric()`, vector of times in minutes. Same length
 #'   as `chr`.
-#' @examples \dontrun{
-#'    nhlstats:::MakeMinsOnIce(c("20:00", "1500:30"))
-#' }
+#' @examples
+#'    nhlapi:::util_convert_minsonice(c("20:00", "1500:30"))
 util_convert_minsonice <- function(chr, splitter = ":")  {
   mins <- strsplit(chr, split = splitter, fixed = TRUE)
   vapply(mins, function(x) {
@@ -269,9 +269,8 @@ util_attributes_to_cols <- function(lst, df, atrs = c("url", "copyright")) {
 #' @return `character(1)`, MD5 hash of a text file
 #'   created from `x` using [writeChar()].
 #'
-#' @examples \dontrun{
-#'   util_md5sum_str("test")
-#' }
+#' @examples
+#'   nhlapi:::util_md5sum_str("test")
 util_md5sum_str <- function(x) {
   stopifnot(is.character(x))
   on.exit(unlink(tmpFile, force = TRUE))
@@ -296,16 +295,15 @@ util_md5sum_str <- function(x) {
 #' @return `integer(1)`, id of the player or `NA_integer`
 #'   if not found.
 #'
-#' @examples \dontrun{
-#'   util_map_player_id(
+#' @examples
+#'   nhlapi:::util_map_player_id(
 #'    "Joe Sakic",
 #'    data.frame(
-#'      nameMd5 = "bfa8adc1bf05dd7b8a3eeca6556d6930",
-#'      id = 1L,
+#'      nameMd5 = "9d2a915c8610dbc524c1bc800e010fcc",
+#'      id = 19L,
 #'      stringsAsFactors = FALSE
 #'    )
 #'  )
-#' }
 util_map_player_id <- function(x, map = getOption("nhlapi_player_map")) {
   md <- util_md5sum_str(tolower(x))
   res <- map[map[["nameMd5"]] == md, "id"]
@@ -326,9 +324,10 @@ util_map_player_id <- function(x, map = getOption("nhlapi_player_map")) {
 #'   `NA_integer`` for those names where id was not
 #'   found.
 #'
-#' @examples \dontrun{
-#'   util_map_player_ids(c("Joe SAKIC", "peter Forsberg", "test"))
-#' }
+#' @examples
+#'   nhlapi:::util_map_player_ids(
+#'     c("Joe SAKIC", "peter Forsberg", "test")
+#'   )
 util_map_player_ids <- function(
   playerNames,
   map = getOption("nhlapi_player_map")
@@ -343,9 +342,8 @@ util_map_player_ids <- function(
 #'
 #' @return `integer()`, named vector of found valid player
 #'  ids, those not found omitted.
-#' @examples \dontrun{
-#'   util_prepare_player_ids(c("joe sakic", "fake player"))
-#' }
+#' @examples
+#'   nhlapi:::util_prepare_player_ids(c("joe sakic", "fake player"))
 util_prepare_player_ids <- function(
   playerNames,
   map = getOption("nhlapi_player_map")

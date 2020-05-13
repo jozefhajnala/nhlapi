@@ -3,7 +3,8 @@
 #' @inheritParams nhl_url_players
 #' @inheritParams nhl_url
 #'
-#' @examples \dontrun{nhl_url_players_stats(8477474)}
+#' @examples
+#'   nhlapi:::nhl_url_players_stats(8477474)
 #'
 #' @return `character()`, of API URLs, same length as `playerIds`.
 nhl_url_players_stats <- function(playerIds, params = NULL) {
@@ -24,16 +25,16 @@ nhl_url_players_stats <- function(playerIds, params = NULL) {
 
 #' @param playoffs `logical(1)`, if `FALSE` (default) get the regular
 #'   seasons data, if `TRUE`, get the data for the playoffs.
-#' @examples \dontrun{
+#' @examples
 #'   # Joe Sakic, regular season 1995/1996
-#'   nhl_url_players_seasons(8451101L, 1995)
+#'   nhlapi:::nhl_url_players_seasons(8451101L, 1995)
+#'
 #'   # Joe Sakic, playoffs 1995/1996, 1996/1997 and 1997/1998
-#'   nhl_url_players_seasons(
+#'   nhlapi:::nhl_url_players_seasons(
 #'     8451101L,
 #'     1995:1997,
 #'     playoffs = TRUE
 #'    )
-#' }
 nhl_url_players_seasons <- function(playerIds, seasons, playoffs = FALSE) {
   statsString <- if (isTRUE(playoffs))
     "statsSingleSeasonPlayoffs"
@@ -48,10 +49,9 @@ nhl_url_players_seasons <- function(playerIds, seasons, playoffs = FALSE) {
 #' Create an NHL API URL for all players' seasons statistics
 #'
 #' @inheritParams nhl_url_players_seasons
-#' @examples \dontrun{
+#' @examples
 #'   # Joe Sakic, all seasons
-#'   nhl_url_players_allseasons(8451101L)
-#' }
+#'   nhlapi:::nhl_url_players_allseasons(8451101L)
 nhl_url_players_allseasons <- function(playerIds) {
   nhl_url_players_stats(
     playerIds = playerIds,

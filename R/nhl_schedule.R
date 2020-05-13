@@ -16,16 +16,18 @@
 #'   Valid game types are for example `"R"` for regular season or `"P"`
 #'   for playoffs. See [nhl_md_game_types()] for all values and their
 #'   descriptions.
-#' @examples \dontrun{
-#'  nhl_url_schedule(seasons = 2015:2016)
-#'  nhl_url_schedule(startDate = "2018-01-02", endDate = "2018-01-02")
-#'  nhl_url_schedule(
+#' @examples
+#'  nhlapi:::nhl_url_schedule(seasons = 2015:2016)
+#'  nhlapi:::nhl_url_schedule(
+#'    startDate = "2018-01-02",
+#'    endDate = "2018-01-02"
+#'  )
+#'  nhlapi:::nhl_url_schedule(
 #'    startDate = "2018-01-02",
 #'    endDate = "2018-01-02",
 #'    teamIds = c(29, 30),
 #'    expand = "schedule.linescore"
 #'  )
-#' }
 #'
 #' @return `character()`, vector of URLs.
 nhl_url_schedule <- function(
@@ -67,14 +69,14 @@ nhl_url_schedule <- function(
 #'  nhl_schedule()
 #'
 #'  # Get schedule for historical seasons
-#'  nhl_url_schedule(seasons = 2015:2016)
+#'  nhl_schedule(seasons = 2015:2016)
 #'
 #'  # Get schedule for a date range
-#'  nhl_url_schedule(startDate = "2018-01-02", endDate = "2018-01-02")
+#'  nhl_schedule(startDate = "2018-01-02", endDate = "2018-01-02")
 #'
 #'  # Get schedule for a date range, specific teams
 #'  # and expand on line scores
-#'  nhl_url_schedule(
+#'  nhl_schedule(
 #'    startDate = "2018-01-02",
 #'    endDate = "2018-01-02",
 #'    teamIds = c(29, 30),

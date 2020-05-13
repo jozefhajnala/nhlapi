@@ -22,7 +22,8 @@ taking into consideration that some data frames in
 \code{NA} values.
 }
 \examples{
-\dontrun{
-  util_rbindlist(list(mtcars[1, 2:3], mtcars[2, 4:5]))
-}
+  nhlapi:::util_rbindlist(list(
+    datasets::mtcars[1, 2:3],
+    datasets::mtcars[2, 4:5]
+  ))
 }

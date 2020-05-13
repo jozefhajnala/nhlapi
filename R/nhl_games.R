@@ -25,10 +25,12 @@
 #'   * `"content"`
 #'   * `"feed/live"`
 #'
-#' @examples \dontrun{
-#'   nhl_url_games(2017010001, "content")
-#'   nhl_url_games(c(2017010001, 2017010002), c("content", "boxscore"))
-#' }
+#' @examples
+#'   nhlapi:::nhl_url_games(2017010001, "content")
+#'   nhlapi:::nhl_url_games(
+#'     c(2017010001, 2017010002),
+#'     c("content", "boxscore")
+#'   )
 #'
 #' @return `character()`, of same length as `gameIds`.
 nhl_url_games <- function(gameIds, element) {

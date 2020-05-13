@@ -18,8 +18,6 @@ length \code{1} if \code{prospectIds} is \code{NULL}.
 Create an NHL API URL for draft prospects
 }
 \examples{
-\dontrun{
-  nhl_url_draft_prospects()
-}
+  nhlapi:::nhl_url_draft_prospects()
 
 }

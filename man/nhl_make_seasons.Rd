@@ -31,11 +31,9 @@ a vector of years in \code{"YYYY"} format and create a vector of
 such seasons to be used with the API.
 }
 \examples{
-\dontrun{
-  nhl_make_seasons()
-  nhl_make_seasons(1995:2000)
-  nhl_make_seasons(c(1995, 2015))
-  nhl_make_seasons(c("1995", "2015"))
-}
+  nhlapi:::nhl_make_seasons()
+  nhlapi:::nhl_make_seasons(1995:2000)
+  nhlapi:::nhl_make_seasons(c(1995, 2015))
+  nhlapi:::nhl_make_seasons(c("1995", "2015"))
 
 }

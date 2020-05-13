@@ -38,12 +38,10 @@ to the API URL. A valid example seems to be \code{"standings.record"}.
 Create an NHL API URL for standings
 }
 \examples{
-\dontrun{
- nhl_url_standings(seasons = 2015:2016)
- nhl_url_standings(
+ nhlapi:::nhl_url_standings(seasons = 2015:2016)
+ nhlapi:::nhl_url_standings(
    standingsType = "byDivision",
    expand = "standings.record"
  )
-}
 
 }

@@ -16,8 +16,6 @@ can be provided for more convenient usage.}
 Create an NHL API URL for all players' seasons statistics
 }
 \examples{
-\dontrun{
   # Joe Sakic, all seasons
-  nhl_url_players_allseasons(8451101L)
-}
+  nhlapi:::nhl_url_players_allseasons(8451101L)
 }

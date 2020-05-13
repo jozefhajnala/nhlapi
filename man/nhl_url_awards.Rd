@@ -19,9 +19,7 @@ length \code{1} if \code{awardIds} is \code{NULL}.
 Create an NHL API URL for awards
 }
 \examples{
-\dontrun{
-  nhl_url_awards()
-  nhl_url_awards(1:3)
-}
+  nhlapi:::nhl_url_awards()
+  nhlapi:::nhl_url_awards(1:3)
 
 }

@@ -5,10 +5,9 @@
 #'   exported values seem incomplete, so it may be worth it to
 #'   investigate other ids.
 #'
-#' @examples \dontrun{
-#'   nhl_url_venues()
-#'   nhl_url_venues(5000:5006)
-#' }
+#' @examples
+#'   nhlapi:::nhl_url_venues()
+#'   nhlapi:::nhl_url_venues(5000:5006)
 #'
 #' @return `character()`, API URLs, same length as `venueIds` or
 #'   length `1` if `venueIds` is `NULL`.

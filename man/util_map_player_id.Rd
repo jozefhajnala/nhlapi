@@ -25,14 +25,12 @@ Using a table of hashed names and
 ids, get a player id based on the name.
 }
 \examples{
-\dontrun{
-  util_map_player_id(
+  nhlapi:::util_map_player_id(
    "Joe Sakic",
    data.frame(
-     nameMd5 = "bfa8adc1bf05dd7b8a3eeca6556d6930",
-     id = 1L,
+     nameMd5 = "9d2a915c8610dbc524c1bc800e010fcc",
+     id = 19L,
      stringsAsFactors = FALSE
    )
  )
-}
 }

@@ -24,6 +24,6 @@ are created. Multiple parameters are separated by \code{&}.}
 Create an NHL API stats URL for players
 }
 \examples{
-\dontrun{nhl_url_players_stats(8477474)}
+  nhlapi:::nhl_url_players_stats(8477474)
 
 }

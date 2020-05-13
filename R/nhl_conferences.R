@@ -4,10 +4,9 @@
 #'   (default) for all conferences As of end of 2019, the valid
 #'   conference ids seem to be in the `1:7` range.
 #'
-#' @examples \dontrun{
-#'   nhl_url_conferences()
-#'   nhl_url_conferences(1:3)
-#' }
+#' @examples
+#'   nhlapi:::nhl_url_conferences()
+#'   nhlapi:::nhl_url_conferences(1:3)
 #'
 #' @return `character()`, API URLs, same length as `teamIds` or
 #'   length `1` if `teamIds` is `NULL`.

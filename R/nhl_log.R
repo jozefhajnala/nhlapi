@@ -15,9 +15,8 @@
 #'
 #' @return `character(1)`, constructed log message.
 #'
-#' @examples \dontrun{
-#'   make_log("Dummy warning", type = "W")
-#' }
+#' @examples
+#'   nhlapi:::make_log("Dummy warning", type = "W")
 make_log <- function(
   msg, ..., type = "I", dtFormat = getOption("nhlapi_log_datetime"),
   newLine = FALSE, sep = " | ", collapse = " ", lineBreak = "$",

@@ -4,10 +4,9 @@
 #'   or `NULL` (default) for all awards. The current set of valid
 #'   ids seems to be `1:24`.
 #'
-#' @examples \dontrun{
-#'   nhl_url_awards()
-#'   nhl_url_awards(1:3)
-#' }
+#' @examples
+#'   nhlapi:::nhl_url_awards()
+#'   nhlapi:::nhl_url_awards(1:3)
 #'
 #' @return `character()`, API URLs, same length as `awardIds` or
 #'   length `1` if `awardIds` is `NULL`.

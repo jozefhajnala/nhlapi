@@ -5,9 +5,8 @@
 #'   API people endpoint. For most cases the `playerNames` argument
 #'   can be provided for more convenient usage.
 #'
-#' @examples \dontrun{
-#'   nhl_url_players(playerIds = c(8477474, 8477475))
-#' }
+#' @examples
+#'   nhlapi:::nhl_url_players(playerIds = c(8477474, 8477475))
 #'
 #' @return `character()`, API URLs, same length as `playerIds`.
 nhl_url_players <- function(playerIds) {
@@ -27,7 +26,6 @@ nhl_url_players <- function(playerIds) {
 #' @export
 #'
 #' @examples \dontrun{
-#'
 #'  # With player names
 #'  nhl_players(c("joe SAKIC", "patrick roy"))
 #'

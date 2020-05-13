@@ -29,10 +29,8 @@ or length \code{1} if \code{seasons} is \code{NULL}.
 Create an NHL API URL for seasons
 }
 \examples{
-\dontrun{
-  nhl_url_seasons()
-  nhl_url_seasons(2015:2017)
-  nhl_url_seasons("20152016")
-}
+  nhlapi:::nhl_url_seasons()
+  nhlapi:::nhl_url_seasons(2015:2017)
+  nhlapi:::nhl_url_seasons("20152016")
 
 }

@@ -88,14 +88,14 @@ schedule for a range of dates in \code{"YYYY-MM-DD"} format.
  nhl_schedule()
 
  # Get schedule for historical seasons
- nhl_url_schedule(seasons = 2015:2016)
+ nhl_schedule(seasons = 2015:2016)
 
  # Get schedule for a date range
- nhl_url_schedule(startDate = "2018-01-02", endDate = "2018-01-02")
+ nhl_schedule(startDate = "2018-01-02", endDate = "2018-01-02")
 
  # Get schedule for a date range, specific teams
  # and expand on line scores
- nhl_url_schedule(
+ nhl_schedule(
    startDate = "2018-01-02",
    endDate = "2018-01-02",
    teamIds = c(29, 30),

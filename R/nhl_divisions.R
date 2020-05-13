@@ -4,10 +4,9 @@
 #'   (default) for all divisions. As of end of 2019, the valid
 #'   division ids seem to be in the `1:25` range.
 #'
-#' @examples \dontrun{
-#'   nhl_url_divisions()
-#'   nhl_url_divisions(1:3)
-#' }
+#' @examples
+#'   nhlapi:::nhl_url_divisions()
+#'   nhlapi:::nhl_url_divisions(1:3)
 #'
 #' @return `character()`, of same length as `teamIds` or length
 #'   `1` if `teamIds` is `NULL`.

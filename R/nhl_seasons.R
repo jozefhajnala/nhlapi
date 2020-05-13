@@ -2,11 +2,10 @@
 #'
 #' @inheritParams nhl_make_seasons
 #'
-#' @examples \dontrun{
-#'   nhl_url_seasons()
-#'   nhl_url_seasons(2015:2017)
-#'   nhl_url_seasons("20152016")
-#' }
+#' @examples
+#'   nhlapi:::nhl_url_seasons()
+#'   nhlapi:::nhl_url_seasons(2015:2017)
+#'   nhlapi:::nhl_url_seasons("20152016")
 #'
 #' @return `character()`, of API URLs, same length as `seasons`
 #'   or length `1` if `seasons` is `NULL`.
