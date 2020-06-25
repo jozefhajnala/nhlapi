@@ -99,7 +99,7 @@ util_process_copyright <- function(x, el = "copyright") {
 #'     datasets::mtcars[2, 4:5]
 #'   ))
 util_rbindlist <- function(lst, fill = TRUE) {
-  lst <- Filter(function(x) nrow(x) != 0L, lst)
+  lst <- Filter(function(x) is.data.frame(x) && nrow(x) != 0L, lst)
 
   if (length(lst) == 0L) {
     return(data.frame())
@@ -114,15 +114,20 @@ util_rbindlist <- function(lst, fill = TRUE) {
   }
   lstAllNames <- unique(unlist(lstNames))
   fill_df <- function(df, allNms) {
-    if (identical(names(df), allNms)) {
+    missingCols <- setdiff(allNms, names(df))
+    if (length(missingCols) == 0L) {
       return(data.frame(df, row.names = NULL))
     }
     filledCols <- vapply(
-      setdiff(allNms, names(df)),
-      function(thisCol) NA,
-      FUN.VALUE = logical(1)
+      missingCols,
+      function(thisCol) structure(list(rep(NA, nrow(df))), names = thisCol),
+      FUN.VALUE = list(1)
     )
-    data.frame(c(df, filledCols), stringsAsFactors = FALSE)
+    data.frame(
+      list(df, filledCols),
+      stringsAsFactors = FALSE,
+      row.names = NULL
+    )
   }
   filledDfs <- lapply(lst, fill_df, allNms = lstAllNames)
   do.call(rbind, filledDfs)
