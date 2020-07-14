@@ -24,6 +24,16 @@ You can also install the latest development version from the master branch on Gi
 remotes::install_github("jozefhajnala/nhlapi")
 ```
 
+## Use and develop with Docker
+
+The Docker image [jozefhajnala/nhlapi](https://hub.docker.com/repository/docker/jozefhajnala/nhlapi) has RStudio and a set of useful packages for both interactive use of the `{nhlapi}` package and its development. 
+
+Running the following command and opening `localhost:8787` in a web browser should open RStudio with a setup ready for analysis and development. Login user is `rstudio` and passowrd is `pass` (can be changed by changing the PASSWORD option below):
+
+```bash
+docker run --rm -p 8787:8787 -e PASSWORD=pass jozefhajnala/nhlapi
+```
+
 ## Usage
 
 You retrieve the data from the NHL API by calling the functions exported by the nhlapi package. They start with `nhl_` so you can easily find them with autocomplete in your favorite editor:
