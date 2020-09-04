@@ -3,6 +3,7 @@
 #' @details The placement of rink features & their sizes are exact according to the NHL rulebook; see citation.
 #' @references \url{https://nhl.bamcontent.com/images/assets/binary/308893668/binary-file/file.pdf}
 #' @export
+#' @importFrom graphics lines polygon
 plot_rink = function() {
   # blank plot with correct dimensions and aspect ratio
   plot(NA, xlim=c(-1, 1)*.5*rink_width, ylim=c(-1, 1)*.5*rink_height,
