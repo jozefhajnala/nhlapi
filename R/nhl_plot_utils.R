@@ -45,10 +45,17 @@ plot_quadrant = function(multipliers) {
   plot_filled_circle(xmult*dot_displacement, ymult*dot_y,  dot_radius, col=nhl_red)
 
   # add goal creases
+  # "paint" the crease before the lines for proper layering
+  polygon(
+    xmult*c(rep(goal_x_coord, 2L), crease_x_coord),
+    ymult*c(0, rep(crease_width, 2L)),
+    col=nhl_crease, border=NA
+  )
   ## straight portion orthogonal to goal line
   segments(xmult*goal_x_coord, ymult*crease_width, xmult*crease_x_coord, col=nhl_red)
   ## arced portion truncated at intersection with straight portion
   plot_circle_arc(xmult*goal_x_coord, 0, crease_radius, alpha0, alpha1, col=nhl_red)
+  plot_sector(xmult*goal_x_coord, 0, crease_radius, alpha0, alpha1, col=nhl_crease)
 }
 
 # utils/constants
@@ -77,8 +84,9 @@ dzone_dot_x = rink_width - end_width - dot_displacement
 crease_x_coord = rink_width - end_width - sqrt(crease_radius^2-crease_width^2)
 crease_theta = asin(crease_width/crease_radius)
 ## colors
-nhl_red = '#cf142b'  # PMS 186
-nhl_blue = '#0033ab' # PMS 286
+nhl_red = '#cf142b'    # PMS 186
+nhl_blue = '#0033ab'   # PMS 286
+nhl_crease = '#41b6e6' # PSM 298
 # a vertical segment starting at 0
 plot_symm_vseg = function(x, y, ...) lines(c(x, x), c(0, y), ...)
 # a horizontal segment starting at 0
