@@ -66,6 +66,13 @@ plot_quadrant = function(multipliers) {
   ## arced portion truncated at intersection with straight portion
   plot_circle_arc(xmult*goal_x_coord, 0, crease_radius, alpha0, alpha1, col=nhl_red)
   plot_sector(xmult*goal_x_coord, 0, crease_radius, alpha0, alpha1, col=nhl_crease)
+
+  # add trapezoid
+  segments(
+    xmult*goal_x_coord, ymult*trapezoid_width_small,
+    xmult*rink_width, ymult*trapezoid_width_large,
+    col=nhl_red
+  )
 }
 
 # utils/constants
@@ -80,6 +87,8 @@ dot_y = 44/2 # span between centers of faceoff dots
 crease_width = 8/2
 hash_width = 2
 hash_delta_x = (5 + 9/12)/2
+trapezoid_width_small = 22/2
+trapezoid_width_large = 28/2
 board_radius = 28
 faceoff_radius = 15
 crease_radius = 6
