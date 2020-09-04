@@ -10,7 +10,7 @@ plot_rink = function() {
        asp=1, bty='n', axes=FALSE, xlab='', ylab='')
   # rink is symmetric by quadrant -- write code to plot one quadrant,
   #   and then reflect it 4 times
-  lapply(list(c(1, 1), c(1, -1), c(-1, -1), c(-1, 1)), plot_quadrant)
+  lapply(quadrants, plot_quadrant)
 
 }
 
@@ -39,6 +39,16 @@ plot_quadrant = function(multipliers) {
   plot_circle_arc(0, 0, faceoff_radius, theta0, theta1, col=nhl_blue)
   plot_circle(xmult*dzone_dot_x, ymult*dot_y, faceoff_radius, col=nhl_red)
 
+  # add hash marks to defensive circles
+  for (submult in quadrants) {
+    y0 = ymult*dot_y + submult[2L]*hash_delta_y
+    segments(
+      xmult*dzone_dot_x + submult[1L]*hash_delta_x,
+      y0, y1=y0 + submult[2L]*hash_width,
+      col = nhl_red
+    )
+  }
+
   # add faceoff dots
   plot_sector(0, 0, center_dot_radius, theta0, theta1, col=nhl_blue)
   plot_filled_circle(xmult*dzone_dot_x, ymult*dot_y,  dot_radius, col=nhl_red)
@@ -60,6 +70,7 @@ plot_quadrant = function(multipliers) {
 
 # utils/constants
 ## dimensional constants
+quadrants = list(c(1, 1), c(1, -1), c(-1, -1), c(-1, 1))
 rink_width = 200/2
 rink_height = 85/2
 end_width = 11 # between goal line & end boards
@@ -67,6 +78,8 @@ nzone_width = 50/2 # width of neutral zone
 dot_displacement = 20 # between faceoff dot & reference line (goal line for D zone, center for N zone)
 dot_y = 44/2 # span between centers of faceoff dots
 crease_width = 8/2
+hash_width = 2
+hash_delta_x = (5 + 9/12)/2
 board_radius = 28
 faceoff_radius = 15
 crease_radius = 6
@@ -83,14 +96,12 @@ dzone_dot_x = rink_width - end_width - dot_displacement
 ### coordinates of the goal crease (end of straight line & angle where circle is truncated)
 crease_x_coord = rink_width - end_width - sqrt(crease_radius^2-crease_width^2)
 crease_theta = asin(crease_width/crease_radius)
+### where the hash marks meet the D zone circle
+hash_delta_y = sqrt(faceoff_radius^2 - hash_delta_x^2)
 ## colors
 nhl_red = '#cf142b'    # PMS 186
 nhl_blue = '#0033ab'   # PMS 286
 nhl_crease = '#41b6e6' # PSM 298
-# a vertical segment starting at 0
-plot_symm_vseg = function(x, y, ...) lines(c(x, x), c(0, y), ...)
-# a horizontal segment starting at 0
-plot_symm_hseg = function(x, y, ...) lines(c(0, x), c(y, y), ...)
 # simplest way I could come up with to go from multipliers -> quadrants,
 #   to use to get the arc endpoints for circular segments (e.g.
 #   the end boards go from 0 to pi/2 in quadrant 0, pi/2 to pi in quadrant 1, ...
