@@ -8,4 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag nhlapi:$(date +%s)
+      env:
+        RHUB_EMAIL: nhlapi@jozef.io
+        RHUB_TOKEN: 37aa6a58c015433a9ffea2235052abbf
+      run: docker build . --file Dockerfile --tag nhlapi:$(date +%s) --build-arg RHUB_EMAIL=${RHUB_EMAIL} --build-arg RHUB_TOKEN=${RHUB_TOKEN}

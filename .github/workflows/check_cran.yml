@@ -7,5 +7,5 @@ jobs:
     - uses: actions/checkout@v1
     - name: Check for CRAN
       env:
-        DOCKER_LOGIN_TOKEN: ${{ secrets.DOCKER_LOGIN_TOKEN }}
+        RHUB_EMAIL: nhlapi@jozef.io
       run: sh ci/docker_stage.sh ci/check_rhub.R "cran"
