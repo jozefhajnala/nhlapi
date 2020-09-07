@@ -30,7 +30,7 @@ Retrieve metadata on NHL seasons from the API
 }
 \examples{
 \dontrun{
-  # Get information on current draft
+  # Get information on all seasons
   nhl_seasons()
 
   # Get information on 3 historical seasons

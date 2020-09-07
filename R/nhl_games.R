@@ -52,6 +52,18 @@ nhl_url_games <- function(gameIds, element) {
 #'
 #'   # Get both box score and content for 2 games
 #'   nhl_games(c(2017010001, 2017010002), c("content", "boxscore"))
+#'
+#'   # Get content for a game
+#'   nhl_games_content(2017010001)
+#'
+#'   # Get the game feed for a game
+#'   nhl_games_feed(2017010001)
+#'
+#'   # Get the box score for a game
+#'   nhl_games_boxscore(2017010001)
+#'
+#'   # Get the line score for a game
+#'   nhl_games_linescore(2017010001)
 #' }
 #'
 #' @export
@@ -67,9 +79,6 @@ nhl_games <- function(gameIds, element) {
 #'   of media relating to the game including videos of shots,
 #'   goals and saves.
 #' @export
-#' @examples \dontrun{
-#'   nhl_games_content(2017010001)
-#' }
 nhl_games_content <- function(gameIds) {
   nhl_games(gameIds = gameIds, element = "content")
 }
@@ -80,9 +89,6 @@ nhl_games_content <- function(gameIds) {
 #'   shootouts. Note that the data returned is sizable, often over
 #'   30 000 lines.
 #' @export
-#' @examples \dontrun{
-#'   nhl_games_feed(2017010001)
-#' }
 nhl_games_feed <- function(gameIds) {
   nhl_games(gameIds = gameIds, element = "feed/live")
 }
@@ -91,9 +97,6 @@ nhl_games_feed <- function(gameIds) {
 #'   and may be more suitable for analyzing post-game statistics
 #'   including goals, shots, penalty minutes, blocked, takeaways, etc.
 #' @export
-#' @examples \dontrun{
-#'   nhl_games_boxscore(2017010001)
-#' }
 nhl_games_boxscore <- function(gameIds) {
   nhl_games(gameIds = gameIds, element = "boxscore")
 }
@@ -103,9 +106,6 @@ nhl_games_boxscore <- function(gameIds) {
 #'   and goalie pulled status, number of skaters and shootout
 #'   information if applicable.
 #' @export
-#' @examples \dontrun{
-#'   nhl_games_linescore(2017010001)
-#' }
 nhl_games_linescore <- function(gameIds) {
   nhl_games(gameIds = gameIds, element = "linescore")
 }

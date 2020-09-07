@@ -90,18 +90,18 @@ information if applicable.
 
   # Get both box score and content for 2 games
   nhl_games(c(2017010001, 2017010002), c("content", "boxscore"))
-}
 
-\dontrun{
+  # Get content for a game
   nhl_games_content(2017010001)
-}
-\dontrun{
+
+  # Get the game feed for a game
   nhl_games_feed(2017010001)
-}
-\dontrun{
+
+  # Get the box score for a game
   nhl_games_boxscore(2017010001)
-}
-\dontrun{
+
+  # Get the line score for a game
   nhl_games_linescore(2017010001)
 }
+
 }
