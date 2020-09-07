@@ -12,18 +12,20 @@ if (!is.element(platform, c("cran", rhub::platforms()[[1L]]))) {
 if (platform == "cran") {
   cr <- rhub::check_for_cran(
     show_status = TRUE,
+    email = Sys.getenv("RHUB_EMAIL"),
     env_vars = c(
       `_R_CHECK_CRAN_INCOMING_REMOTE_` = "false",
       `_R_CHECK_FORCE_SUGGESTS_` = "true",
       `_R_CHECK_CRAN_INCOMING_USE_ASPELL_` = "true",
-      `R_COMPILE_AND_INSTALL_PACKAGES` = "always"
+      `R_COMPILE_AND_INSTALL_PACKAGES` = "always",
+      `_R_CHECK_SYSTEM_CLOCK_` = "false"
     )
   )
 } else {
   cr <- rhub::check(
     platform = platform,
     show_status = TRUE,
-    env_vars = Sys.getenv("LANGSERVERSETUP_RUN_DEPLOY", names = TRUE)
+    email = Sys.getenv("RHUB_EMAIL")
   )
 }
 statuses <- cr[[".__enclos_env__"]][["private"]][["status_"]]

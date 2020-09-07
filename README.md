@@ -8,37 +8,53 @@ A minimum-dependency R interface to the NHL API.
 ![Remote API Tests](https://github.com/jozefhajnala/nhlapi/workflows/test_remote_api/badge.svg)
 [![Coverage](https://img.shields.io/codecov/c/github/jozefhajnala/nhlapi/master.svg)](https://codecov.io/github/jozefhajnala/nhlapi?branch=master)
 
+`{nhlapi}` is an R package that provides functionality to retrieve and process the data exposed by the open NHL API. This includes information on players, teams, games, tournaments, drafts, standings, schedules and other endpoints. A lower-level interface to access the data via URLs directly is also provided. See [below for a full list of endpoints](#implemented-api-endpoints).
+
 ## Installation
 
-`{nhlapi}` is an R package that provides functionality to retrieve and process the data exposed by the open 'NHL' API. This includes information on players, teams, games, tournaments, drafts, standings, schedules and other endpoints. A lower-level interface to access the data via URLs directly is also provided. See [below for a full list of endpoints](#implemented-api-endpoints)
-
-You can install `{nhlapi}` from CRAN.
+You can install `{nhlapi}` from CRAN:
 
 ```r
 install.packages("nhlapi")
 ```
 
-You can also install the latest development version from the master branch on GitHub using the `{remotes}` package.
+You can also install the latest development version from the master branch on GitHub using the `{remotes}` or `{devtools}` packages:
 
 ```r
+# With remotes
 remotes::install_github("jozefhajnala/nhlapi")
+
+# Or with devtools
+devtools::install_github("jozefhajnala/nhlapi")
 ```
 
 ## Use and develop with Docker
 
-The Docker image [jozefhajnala/nhlapi](https://hub.docker.com/repository/docker/jozefhajnala/nhlapi) has RStudio and a set of useful packages for both interactive use of the `{nhlapi}` package and its development. 
+The Docker image [jozefhajnala/nhlapi](https://hub.docker.com/r/jozefhajnala/nhlapi) has RStudio and a set of useful packages for both interactive use of the `{nhlapi}` package and its development. 
 
-Running the following command and opening `localhost:8787` in a web browser should open RStudio with a setup ready for analysis and development. Login user is `rstudio` and passowrd is `pass` (can be changed by changing the PASSWORD option below):
+Running the following command and opening `localhost:8787` in a web browser should open RStudio with a setup ready for analysis and development. Login user is `rstudio` and password is `pass`:
 
 ```bash
+# Password can be changed by changing the PASSWORD option below:
+# If you need root permissions, add `-e ROOT=true`
 docker run --rm -p 8787:8787 -e PASSWORD=pass jozefhajnala/nhlapi
 ```
 
 ## Usage
 
-You retrieve the data from the NHL API by calling the functions exported by the nhlapi package. They start with `nhl_` so you can easily find them with autocomplete in your favorite editor:
+We retrieve the data from the NHL API by calling the functions exported by the `{nhlapi}` package. They start with `nhl_` so you can easily find them with auto-complete in your favorite editor:
 
 ![nhlapi Preview](https://user-images.githubusercontent.com/23148397/80225712-b5dc3c00-864b-11ea-9613-a5c08749933f.gif)
+
+
+## In-depth look at use
+
+The package's vignettes provide a more detailed overview of some of the functionality:
+
+- [Low Level NHL API](https://CRAN.R-project.org/package=nhlapi/vignettes/low_level_api.html) vignette
+- [High-level teams API](https://CRAN.R-project.org/package=nhlapi/vignettes/nhl_teams_api.html) vignette
+- [High-level players API](https://CRAN.R-project.org/package=nhlapi/vignettes/nhl_players_api.html) vignette
+- [Full reference manual](https://CRAN.R-project.org/package=nhlapi/nhlapi.pdf) on CRAN (pdf)
 
 ## Implemented API endpoints
 
@@ -97,7 +113,7 @@ You retrieve the data from the NHL API by calling the functions exported by the 
 
 ## Acknowledgments
 
-Thanks go to Drew Hynes for documenting this so well in [https://gitlab.com/dword4/nhlapi/blob/master/stats-api.md](https://gitlab.com/dword4/nhlapi/blob/master/stats-api.md)
+Thanks go to Drew Hynes for documenting this so well on [GitLab](https://gitlab.com/dword4/nhlapi/blob/master/stats-api.md).
 
 
 ## Copyright message

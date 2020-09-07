@@ -439,7 +439,7 @@ retrievedplayerplayoffs <- data.frame(
   stat.powerPlayGoals = 6L,
   stat.powerPlayPoints = 16L,
   stat.penaltyMinutes = "14",
-  stat.shotPct = 18.4,
+  stat.shotPct = 18.37,
   stat.gameWinningGoals = 6L,
   stat.overTimeGoals = 2L,
   stat.shortHandedGoals = 0L,
