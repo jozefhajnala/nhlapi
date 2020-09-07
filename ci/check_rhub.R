@@ -17,7 +17,8 @@ if (platform == "cran") {
       `_R_CHECK_CRAN_INCOMING_REMOTE_` = "false",
       `_R_CHECK_FORCE_SUGGESTS_` = "true",
       `_R_CHECK_CRAN_INCOMING_USE_ASPELL_` = "true",
-      `R_COMPILE_AND_INSTALL_PACKAGES` = "always"
+      `R_COMPILE_AND_INSTALL_PACKAGES` = "always",
+      `_R_CHECK_SYSTEM_CLOCK_` = "false"
     )
   )
 } else {
