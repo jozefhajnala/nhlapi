@@ -89,3 +89,20 @@ testthat::test_that(
     )
   }
 )
+
+testthat::test_that(
+  "Retrieve all seasons for 4 players with the same name", {
+    testthat::skip_if_offline(host = "nhl.com")
+    testthat::skip_if(skipRemoteTests)
+
+    res <- nhl_players_allseasons("John Adams")
+    testthat::expect_equal(
+      inherits(res, "data.frame"),
+      TRUE
+    )
+    testthat::expect_equal(
+      length(unique(res$playerId)),
+      4L
+    )
+  }
+)
