@@ -29,7 +29,6 @@ make_log <- function(
   msg <- gsub("\n", lineBreak, msg)
   msg <- paste(
     format(Sys.time(), dtFormat),
-    length(sys.calls()) - 3L,
     type, msg,
     sep = sep
   )
