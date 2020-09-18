@@ -2,8 +2,6 @@ FROM rocker/rstudio
 
 ARG RHUB_EMAIL
 ARG RHUB_TOKEN
-ENV RHUB_EMAIL ${RHUB_EMAIL}
-ENV RHUB_TOKEN ${RHUB_TOKEN}
 
 RUN apt-get update -qq \
   && apt-get install -y --no-install-recommends \
@@ -23,14 +21,16 @@ RUN Rscript -e "install.packages(c('roxygen2', 'devtools'))"
 RUN Rscript -e "install.packages(c('poorman', 'data.table', 'dplyr'))"
 
 # Charting
-RUN Rscript -e "install.packages(c('igraph', 'highcharter', 'ggplot2'), repos = 'https://cloud.r-project.org')"
+RUN Rscript -e "install.packages('ggplot2')"
+RUN Rscript -e "install.packages('igraph', repos = 'https://cloud.r-project.org', Ncpus = parallel::detectCores())"
+RUN Rscript -e "install.packages('highcharter')"
 
 # R Hub for GH Actions
 RUN Rscript -e "install.packages('rhub')"
 RUN mkdir -p /home/rstudio/.local/share/rhub/ \
   && mkdir -p /root/.local/share/rhub/ \
-  && echo ${RHUB_EMAIL},${RHUB_TOKEN} > /home/rstudio/.local/share/rhub/validated_emails.csv \
-  && echo ${RHUB_EMAIL},${RHUB_TOKEN} > /root/.local/share/rhub/validated_emails.csv
+  && echo 'nhlapi@jozef.io,37aa6a58c015433a9ffea2235052abbf' > /home/rstudio/.local/share/rhub/validated_emails.csv \
+  && echo 'nhlapi@jozef.io,37aa6a58c015433a9ffea2235052abbf' > /root/.local/share/rhub/validated_emails.csv
 
 # Clone the repo for fast development
 RUN git clone \
