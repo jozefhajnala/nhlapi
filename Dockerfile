@@ -23,7 +23,7 @@ RUN Rscript -e "install.packages(c('roxygen2', 'devtools'))"
 RUN Rscript -e "install.packages(c('poorman', 'data.table', 'dplyr'))"
 
 # Charting
-RUN Rscript -e "install.packages(c('highcharter', 'ggplot2'))"
+RUN Rscript -e "install.packages(c('igraph', 'highcharter', 'ggplot2'), repos = 'https://cloud.r-project.org')"
 
 # R Hub for GH Actions
 RUN Rscript -e "install.packages('rhub')"
