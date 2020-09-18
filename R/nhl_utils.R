@@ -314,7 +314,10 @@ util_map_player_id <- function(x, map = getOption("nhlapi_player_map")) {
   res <- map[map[["nameMd5"]] == md, "id"]
   if (length(res) == 0L) {
     res <- NA_integer_
-    log_w("Id for player: ", x, " not found.")
+    log_w("Id for player name:", sQuote(x), "not found.")
+  }
+  if (length(res) > 1L) {
+    log_w("Multiple ids:", toString(res), "found for name:", sQuote(x))
   }
   res
 }
@@ -327,7 +330,8 @@ util_map_player_id <- function(x, map = getOption("nhlapi_player_map")) {
 #'
 #' @return `integer()`, named vector of player ids,
 #'   `NA_integer`` for those names where id was not
-#'   found.
+#'   found. In case a player name has multiple ids,
+#'   all of them are returned.
 #'
 #' @examples
 #'   nhlapi:::util_map_player_ids(
@@ -337,7 +341,9 @@ util_map_player_ids <- function(
   playerNames,
   map = getOption("nhlapi_player_map")
 ) {
-  vapply(playerNames, util_map_player_id, FUN.VALUE = integer(1), map = map)
+  res <- lapply(playerNames, util_map_player_id, map = map)
+  names(res) <- playerNames
+  unlist(res, recursive = FALSE)
 }
 
 

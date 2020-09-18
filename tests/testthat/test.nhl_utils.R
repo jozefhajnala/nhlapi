@@ -268,6 +268,14 @@ testthat::test_that(
   )
 )
 
+testthat::test_that(
+  "util_map_player_ids works for name with multiple ids",
+  testthat::expect_equal(
+    util_map_player_ids("Ryan O'Reilly"),
+    c("Ryan O'Reilly1" = 8475158L, "Ryan O'Reilly2" = 8481026L)
+  )
+)
+
 
 context("util_prepare_player_ids")
 
