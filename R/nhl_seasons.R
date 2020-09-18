@@ -23,7 +23,7 @@ nhl_url_seasons <- function(seasons = NULL) {
 #' @export
 #'
 #' @examples \dontrun{
-#'   # Get information on current draft
+#'   # Get information on all seasons
 #'   nhl_seasons()
 #'
 #'   # Get information on 3 historical seasons

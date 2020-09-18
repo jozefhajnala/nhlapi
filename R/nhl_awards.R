@@ -23,7 +23,7 @@ nhl_url_awards <- function(awardIds = NULL) {
 #' @export
 #'
 #' @examples \dontrun{
-#'   # Get information on current draft
+#'   # Get information on all awards
 #'   nhl_awards()
 #'
 #'   # Get information on 3 historical awards

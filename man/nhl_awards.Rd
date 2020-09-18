@@ -19,7 +19,7 @@ Retrieve metadata on NHL awards from the API
 }
 \examples{
 \dontrun{
-  # Get information on current draft
+  # Get information on all awards
   nhl_awards()
 
   # Get information on 3 historical awards
