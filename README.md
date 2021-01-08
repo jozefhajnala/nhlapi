@@ -118,4 +118,4 @@ Thanks go to Drew Hynes for documenting this so well on [GitLab](https://gitlab.
 
 ## Copyright message
 
-> NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2020. All Rights Reserved.
+> NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2021. All Rights Reserved.

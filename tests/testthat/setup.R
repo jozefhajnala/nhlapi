@@ -13,7 +13,7 @@ copyright <- paste(
   "NHL and the NHL Shield are registered trademarks",
   "of the National Hockey League.",
   "NHL and NHL team marks are the property of the NHL and its teams.",
-  "© NHL 2020. All Rights Reserved."
+  "© NHL", format(Sys.Date(), "%Y."), "All Rights Reserved."
 )
 
 testplayers <- list(
@@ -160,12 +160,7 @@ testplayers_processed <- data.frame(
     "https://statsapi.web.nhl.com/api/v1/people/8451101",
     "https://statsapi.web.nhl.com/api/v1/people/8451033"
   ),
-  copyright = paste(
-    "NHL and the NHL Shield are registered trademarks",
-    "of the National Hockey League.",
-    "NHL and NHL team marks are the property of the NHL and its teams.",
-    "© NHL 2020. All Rights Reserved."
-  ),
+  copyright = copyright,
   stringsAsFactors = FALSE
 )
 
@@ -680,7 +675,7 @@ divisions_done <- data.frame(
   nameShort = "Metro",
   link = "/api/v1/divisions/18",
   abbreviation = "M",
-  active = TRUE,
+  active = FALSE,
   conference.id = 6L,
   conference.name = "Eastern",
   conference.link = "/api/v1/conferences/6",

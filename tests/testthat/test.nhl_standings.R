@@ -15,9 +15,7 @@ testthat::test_that(
       c(
         "standingsType", "teamRecords",
         "league.id", "league.name",  "league.link",
-        "division.id", "division.name", "division.nameShort",
-        "division.link", "division.abbreviation",
-        "conference.id", "conference.name",  "conference.link",
+        "division.id", "division.name", "division.link",
         "url", "copyright"
       ),
       names(res)
