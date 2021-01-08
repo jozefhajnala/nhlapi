@@ -12,8 +12,8 @@ players. The ids correspond to the ids expected by the NHL
 API people endpoint. For most cases the \code{playerNames} argument
 can be provided for more convenient usage.}
 
-\item{params}{\code{named list()} of parameters that will be
-concatenated to the end of the URLs after \code{?}. Parameters
+\item{params}{\verb{named list()} of parameters that will be
+concatenated to the end of the URLs after \verb{?}. Parameters
 can have multiple values, in which case multiple URLs
 are created. Multiple parameters are separated by \code{&}.}
 }

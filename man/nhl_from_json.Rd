@@ -4,11 +4,14 @@
 \alias{nhl_from_json}
 \title{Get URL using \code{fromJSON}}
 \usage{
-nhl_from_json(url, flatten = getOption("nhlapi_flatten"),
+nhl_from_json(
+  url,
+  flatten = getOption("nhlapi_flatten"),
   silent = getOption("nhlapi_try_silent"),
   retries = getOption("nhlapi_get_retries"),
   retrySleep = getOption("nhlapi_get_retry_sleep"),
-  noRetryPatt = getOption("nhlapi_get_noretry"))
+  noRetryPatt = getOption("nhlapi_get_noretry")
+)
 }
 \arguments{
 \item{url}{\code{character(1)}, the URL to get the data from.}
@@ -16,13 +19,13 @@ nhl_from_json(url, flatten = getOption("nhlapi_flatten"),
 \item{flatten}{\code{logical(1)}, if \code{TRUE} (default) automatically
 flattens nested data frames into a single non-nested data frame.}
 
-\item{silent}{\code{logical(1)}, passed to \code{[try()]}.}
+\item{silent}{\code{logical(1)}, passed to \verb{[try()]}.}
 
 \item{retries}{\code{integer(1)}, number of retries in case of failed
 data retrieval (\code{0L} for no no retries).}
 
 \item{retrySleep}{\code{integer(1)}, number of seconds to
-\code{[Sys.sleep()]} in between retries.}
+\verb{[Sys.sleep()]} in between retries.}
 
 \item{noRetryPatt}{\code{character(1)}, string pattern. If the error
 condition's message contains this pattern, there will be no

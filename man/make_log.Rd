@@ -4,9 +4,17 @@
 \alias{make_log}
 \title{Create a log message}
 \usage{
-make_log(msg, ..., type = "I", dtFormat = getOption("nhlapi_log_datetime"),
-  newLine = FALSE, sep = " | ", collapse = " ", lineBreak = "$",
-  endNewLine = FALSE)
+make_log(
+  msg,
+  ...,
+  type = "I",
+  dtFormat = getOption("nhlapi_log_datetime"),
+  newLine = FALSE,
+  sep = " | ",
+  collapse = " ",
+  lineBreak = "$",
+  endNewLine = FALSE
+)
 }
 \arguments{
 \item{msg}{\code{character(1)}, to be logged.}
@@ -16,12 +24,12 @@ pasted to \code{msg} and collapsed using the \code{collapse} argument.}
 
 \item{type}{\code{character(1)} ideally 1 uppercase letter.}
 
-\item{dtFormat}{\code{character(1)}, passed to format for \code{[Sys.time()]}}
+\item{dtFormat}{\code{character(1)}, passed to format for \verb{[Sys.time()]}}
 
 \item{newLine}{\code{logical(1)}, if \code{TRUE}, new line will be pasted.
 to the beginning of the message.}
 
-\item{sep}{\code{character(1) string}, to separate parts of the message.}
+\item{sep}{\verb{character(1) string}, to separate parts of the message.}
 
 \item{collapse}{\code{character(1)}, to collapse \code{msg} and \code{...}.}
 

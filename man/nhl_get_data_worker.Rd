@@ -4,10 +4,13 @@
 \alias{nhl_get_data_worker}
 \title{Get data from the API for 1 URL}
 \usage{
-nhl_get_data_worker(url, flatten = getOption("nhlapi_flatten"),
+nhl_get_data_worker(
+  url,
+  flatten = getOption("nhlapi_flatten"),
   silent = getOption("nhlapi_try_silent"),
   retries = getOption("nhlapi_get_retries"),
-  retrySleep = getOption("nhlapi_get_retry_sleep"))
+  retrySleep = getOption("nhlapi_get_retry_sleep")
+)
 }
 \arguments{
 \item{url}{\code{character(1)}, the URL to get the data from.}
@@ -15,13 +18,13 @@ nhl_get_data_worker(url, flatten = getOption("nhlapi_flatten"),
 \item{flatten}{\code{logical(1)}, if \code{TRUE} (default) automatically
 flattens nested data frames into a single non-nested data frame.}
 
-\item{silent}{\code{logical(1)}, passed to \code{[try()]}.}
+\item{silent}{\code{logical(1)}, passed to \verb{[try()]}.}
 
 \item{retries}{\code{integer(1)}, number of retries in case of failed
 data retrieval (\code{0L} for no no retries).}
 
 \item{retrySleep}{\code{integer(1)}, number of seconds to
-\code{[Sys.sleep()]} in between retries.}
+\verb{[Sys.sleep()]} in between retries.}
 }
 \value{
 \code{list}, with the retrieved data or class \code{nhl_get_data_error}.

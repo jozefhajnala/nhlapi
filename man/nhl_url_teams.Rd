@@ -11,8 +11,8 @@ nhl_url_teams(teamIds = NULL, params = NULL)
 for all teams. As of end of 2019, the valid team ids seem to be
 in the \code{1:54} range.}
 
-\item{params}{\code{named list()} of parameters that will be
-concatenated to the end of the URLs after \code{?}. Parameters
+\item{params}{\verb{named list()} of parameters that will be
+concatenated to the end of the URLs after \verb{?}. Parameters
 can have multiple values, in which case multiple URLs
 are created. Multiple parameters are separated by \code{&}.}
 }

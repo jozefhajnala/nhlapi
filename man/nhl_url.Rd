@@ -4,8 +4,12 @@
 \alias{nhl_url}
 \title{Create an NHL API URL}
 \usage{
-nhl_url(endPoint = NULL, suffixes = NULL, params = NULL,
-  baseUrl = getOption("nhlapi_baseurl"))
+nhl_url(
+  endPoint = NULL,
+  suffixes = NULL,
+  params = NULL,
+  baseUrl = getOption("nhlapi_baseurl")
+)
 }
 \arguments{
 \item{endPoint}{\code{character(1)}, the API endpoint.}
@@ -13,8 +17,8 @@ nhl_url(endPoint = NULL, suffixes = NULL, params = NULL,
 \item{suffixes}{\code{list()}, of suffixes that will be
 concatenated to the end of the URLs, separated by \code{/}.}
 
-\item{params}{\code{named list()} of parameters that will be
-concatenated to the end of the URLs after \code{?}. Parameters
+\item{params}{\verb{named list()} of parameters that will be
+concatenated to the end of the URLs after \verb{?}. Parameters
 can have multiple values, in which case multiple URLs
 are created. Multiple parameters are separated by \code{&}.}
 

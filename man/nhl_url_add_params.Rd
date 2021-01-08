@@ -9,8 +9,8 @@ nhl_url_add_params(url, params = NULL)
 \arguments{
 \item{url}{\code{character()}, vector of URLs.}
 
-\item{params}{\code{named list()} of parameters that will be
-concatenated to the end of the URLs after \code{?}. Parameters
+\item{params}{\verb{named list()} of parameters that will be
+concatenated to the end of the URLs after \verb{?}. Parameters
 can have multiple values, in which case multiple URLs
 are created. Multiple parameters are separated by \code{&}.}
 }

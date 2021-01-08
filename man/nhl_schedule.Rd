@@ -7,8 +7,14 @@
 \alias{nhl_schedule_date_range}
 \title{Retrieve metadata on NHL schedule from the API}
 \usage{
-nhl_schedule(seasons = NULL, teamIds = NULL, startDate = NULL,
-  endDate = NULL, gameTypes = NULL, expand = NULL)
+nhl_schedule(
+  seasons = NULL,
+  teamIds = NULL,
+  startDate = NULL,
+  endDate = NULL,
+  gameTypes = NULL,
+  expand = NULL
+)
 
 nhl_schedule_today(...)
 

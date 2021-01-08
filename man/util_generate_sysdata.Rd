@@ -4,8 +4,7 @@
 \alias{util_generate_sysdata}
 \title{Generate the \code{sysdata.rda} file}
 \usage{
-util_generate_sysdata(playerIds = 8444849L:8490000L,
-  tgtPath = "sysdata.rda")
+util_generate_sysdata(playerIds = 8444849L:8490000L, tgtPath = "sysdata.rda")
 }
 \arguments{
 \item{playerIds}{\code{integer()}, vector of \code{playerIds}.}

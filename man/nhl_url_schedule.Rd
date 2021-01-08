@@ -4,8 +4,14 @@
 \alias{nhl_url_schedule}
 \title{Create an NHL API URL for schedules}
 \usage{
-nhl_url_schedule(seasons = NULL, teamIds = NULL, startDate = NULL,
-  endDate = NULL, gameTypes = NULL, expand = NULL)
+nhl_url_schedule(
+  seasons = NULL,
+  teamIds = NULL,
+  startDate = NULL,
+  endDate = NULL,
+  gameTypes = NULL,
+  expand = NULL
+)
 }
 \arguments{
 \item{seasons}{\code{numeric()}, \code{integer()} or \code{character()},

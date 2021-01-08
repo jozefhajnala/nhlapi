@@ -4,8 +4,7 @@
 \alias{nhl_players_seasons}
 \title{Retrieve selected seasons statistics for players}
 \usage{
-nhl_players_seasons(playerNames, seasons, playerIds = NULL,
-  playoffs = FALSE)
+nhl_players_seasons(playerNames, seasons, playerIds = NULL, playoffs = FALSE)
 }
 \arguments{
 \item{playerNames}{\code{character()}, vector of one or more player names.

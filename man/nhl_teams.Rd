@@ -11,7 +11,7 @@ nhl_teams(teamIds = NULL, params = NULL)
 for all teams. As of end of 2019, the valid team ids seem to be
 in the \code{1:54} range.}
 
-\item{params}{\code{named list()}, further parameters passed to
+\item{params}{\verb{named list()}, further parameters passed to
 \code{nhl_url_teams}.}
 }
 \value{
