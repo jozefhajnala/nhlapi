@@ -14,7 +14,7 @@ expect_image_equal <- function(object, expected, ...) {
 testthat::test_that(
   "Rink generated with plot_rink() is equal to prototype",
   expect_image_equal(
-    plot_rink(),
+    nhl_plot_rink(),
     "prototype/rink.svg"
   )
 )
