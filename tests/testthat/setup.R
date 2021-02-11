@@ -698,3 +698,52 @@ conferences_done <- data.frame(
   copyright = rep(copyright, 2L),
   stringsAsFactors = FALSE
 )
+
+
+# Image testing helpers ----
+plot_image <- function(expr) {
+  # plot to svg and return file contant as character
+  file <- tempfile(fileext = ".svg")
+  on.exit(unlink(file))
+  svg(file)
+  expr
+  dev.off()
+  readLines(file)
+}
+
+ignore_svg_id <- function(lines) {
+  # the IDs differ at each `svg` call, we remove them
+  gsub(
+    pattern = "(xlink:href|id)=\"#?([a-z0-9]+)-?(?<![0-9])[0-9]+\"",
+    replacement = "\\1=\"\\2\"",
+    x = lines,
+    perl = TRUE
+  )
+}
+
+round_svg_numbers <- function(lines) {
+  # Round the numbers in svg - there can be tiny differences
+  pattern <- "(-)?[[:digit:]]+\\.[[:digit:]]*"
+  matchedNumbers <- gregexpr(pattern, lines)
+  regmatches(lines, matchedNumbers) <- lapply(
+    regmatches(lines, matchedNumbers),
+    function(x) round(as.numeric(x), 4)
+  )
+  lines
+}
+
+# create reference image
+create_reference_image <- function(expr, file) {
+  svg(file)
+  expr
+  dev.off()
+}
+
+plot_image <- function(expr) {
+  file <- tempfile(fileext = ".svg")
+  on.exit(unlink(file))
+  svg(file)
+  expr
+  dev.off()
+  readLines(file)
+}
