@@ -39,7 +39,7 @@ nhl_make_seasons.numeric <- function(seasons = 1950:2019) {
 }
 
 #'@export
-nhl_make_seasons.character <- function(seasons){
+nhl_make_seasons.character <- function(seasons) {
   reservedValues <- c("current", NA_character_)
   if (length(seasons) == 1L && seasons %in% reservedValues) {
     return(seasons)
