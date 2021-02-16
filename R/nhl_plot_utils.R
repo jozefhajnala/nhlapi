@@ -4,9 +4,6 @@
 #'   a to-scale NHL rink as the background
 #' @details The placement of rink features & their sizes
 #'   are exact according to the NHL rule book; see citation.
-#' @references \url{
-#'   https://nhl.bamcontent.com/images/assets/binary/308893668/binary-file/file.pdf
-#'  }
 #' @export
 #' @importFrom graphics lines polygon plot segments
 #' @examples \dontrun{

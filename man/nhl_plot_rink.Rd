@@ -43,8 +43,3 @@ are exact according to the NHL rule book; see citation.
   points(goals$coordinates.x, goals$coordinates.y)
 }
 }
-\references{
-\url{
-  https://nhl.bamcontent.com/images/assets/binary/308893668/binary-file/file.pdf
- }
-}
