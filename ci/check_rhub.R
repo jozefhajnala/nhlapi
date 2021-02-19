@@ -10,7 +10,12 @@ if (!is.element(platform, c("cran", rhub::platforms()[[1L]]))) {
 }
 
 if (platform == "cran") {
-  cr <- rhub::check_for_cran(
+  platforms <- unique(c(
+    grep("solaris", rhub::platforms()[[1L]], fixed = TRUE, value = TRUE)[[1L]],
+    rhub:::default_cran_check_platforms(".")
+  ))
+  cr <- rhub::check(
+    platform = platforms,
     show_status = TRUE,
     email = Sys.getenv("RHUB_EMAIL"),
     env_vars = c(
