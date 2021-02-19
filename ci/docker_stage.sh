@@ -14,6 +14,7 @@ docker cp $dir_root $container_name:/root
 docker exec \
   --workdir /root/$dir_package \
   --env NHLAPI_REMOTE_TESTS=$NHLAPI_REMOTE_TESTS \
+  --env NHLAPI_NHLAPI_SELECTED_TESTS=$NHLAPI_NHLAPI_SELECTED_TESTS \
   --env NHLAPI_TOKEN_CODECOV=$NHLAPI_TOKEN_CODECOV \
   --env RHUB_EMAIL=$RHUB_EMAIL \
   $container_name \

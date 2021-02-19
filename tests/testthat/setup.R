@@ -1,4 +1,8 @@
+# For skipping tests reliant on remote sources (e.g. NHL API requests)
 skipRemoteTests <- !identical(Sys.getenv("NHLAPI_REMOTE_TESTS"), "true")
+
+# For skipping selected tests on CRAN (e.g. SVG comparison on Solaris)
+skipSelectedTests <- !identical(Sys.getenv("NHLAPI_SELECTED_TESTS"), "true")
 
 mock_return <- function(...) return(list(...))
 mock_identity <- function(x) return(x)

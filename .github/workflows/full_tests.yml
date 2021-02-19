@@ -8,4 +8,5 @@ jobs:
     - name: All remote tests
       env:
         NHLAPI_REMOTE_TESTS: true
+        NHLAPI_SELECTED_TESTS: true
       run: sh ci/docker_stage.sh ci/test_all.R

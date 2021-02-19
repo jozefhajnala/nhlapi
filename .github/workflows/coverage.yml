@@ -8,5 +8,6 @@ jobs:
     - name: Covr test_coverage
       env:
         NHLAPI_REMOTE_TESTS: true
+        NHLAPI_SELECTED_TESTS: true
         NHLAPI_TOKEN_CODECOV: ${{ secrets.NHLAPI_TOKEN_CODECOV }}
       run: sh ci/docker_stage.sh ci/test_coverage.R
